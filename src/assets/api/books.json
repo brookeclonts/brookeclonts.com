@@ -1,0 +1,15 @@
+[
+    {
+        "title": "The Curse of the Mekori",
+        "id": 1,
+        "description": "",
+        "imageUrl": "/assets/images/BC_CurseOfTheMekori_Cover_12-2016_v01-01.jpg",
+        "platforms": [{
+                "platformName": "Amazon",
+                "url": ""
+            },{
+                "platformName": "Kindle",
+                "url": ""
+        }]
+    }
+]
