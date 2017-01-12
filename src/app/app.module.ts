@@ -2,19 +2,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import {ROUTES} from './app.routes';
+import {RouterModule} from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { MenuComponent } from './menu/menu.component';
+import { FooterComponent } from './footer/footer.component';
+import { FacebookComponent } from './facebook/facebook.component';
+import { TwitterComponent } from './twitter/twitter.component';
+import { InstagramComponent } from './instagram/instagram.component';
+import { HomeComponent } from './home/home.component';
+
+import {AnimationService} from './services/animation.service';
+import {HttpService} from './services/http.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MenuComponent,
+    FooterComponent,
+    FacebookComponent,
+    TwitterComponent,
+    InstagramComponent,
+    HomeComponent
   ],
   imports: [
+    RouterModule.forRoot(ROUTES),
     BrowserModule,
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [AnimationService, HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
