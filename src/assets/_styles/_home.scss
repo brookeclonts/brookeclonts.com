@@ -1,0 +1,67 @@
+$home-svg-height: 600px;
+$home-svg-width: 600px;
+
+app-home {
+    .hero-banner {
+        background-color: $blue-gray;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        display: table;
+
+        h1 {
+            color: white;
+            font-size: 58px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        button.btn {
+            border: solid 1px $white;
+            color: $white;
+            font-size: 20px;
+            padding: 10px 50px;
+
+            &:hover {
+                background-color: $white;
+                color: $blue-gray;
+            }
+        }
+    }
+
+    .hero-content {
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+    app-tattoo, svg {
+        display: block;
+        height: $home-svg-height;
+        width: $home-svg-width;
+        margin: auto;
+        text-align: center;
+    }
+
+    svg {
+        path {
+            fill-opacity: 0;
+            stroke-width: 3;
+            stroke-dasharray: 1500;
+            stroke-dashoffset: 1500;
+            animation-name: draw;
+            animation-duration: 10s;
+            animation-fill-mode: forwards; // Stay on the last frame
+            animation-iteration-count: 1; // Run only once
+            animation-timing-function: linear;
+            -webkit-animation-name: draw;
+            -webkit-animation-duration: 10s;
+            -webkit-animation-fill-mode: forwards; // Stay on the last frame
+            -webkit-animation-iteration-count: 1; // Run only once
+            -webkit-animation-timing-function: linear;
+        }
+
+        .st0, .st1 {
+            stroke: $gold;
+        }
+    }
+}

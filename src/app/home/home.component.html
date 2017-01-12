@@ -1,13 +1,20 @@
 <div class="hero-banner">
-    <img src="assets/images/mekori-tattoo.png" alt="Mekori witch tattoo"/>
-    <h1>
-        Welcome to BrookeClonts.com
-    </h1>
-    <a (click)="scrollToId('books')">See Books</a>
+    <div class="hero-content">
+        <app-tattoo></app-tattoo>
+        <h1>
+            Welcome to BrookeClonts.com
+        </h1>
+        <button (click)="scrollToId('books')" class="btn">
+            See Books
+        </button>
+    </div>
 </div>
 
 <div class="products-section" id="books">
     <div class="product" *ngFor="let book of books">
         <img src="{{book.imageUrl}}" alt="{{book.title}}"/>
+        <p class="status-message" *ngIf="book.status.length">
+            {{book.status}}
+        </p>
     </div>
 </div>

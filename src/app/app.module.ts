@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 
 import {AnimationService} from './services/animation.service';
 import {HttpService} from './services/http.service';
+import { TattooComponent } from './tattoo/tattoo.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpService} from './services/http.service';
     FacebookComponent,
     TwitterComponent,
     InstagramComponent,
-    HomeComponent
+    HomeComponent,
+    TattooComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
