@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpService} from'../services/http.service';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+    subscribe = {
+        'email': '',
+        'name': ''
+    };
 
-  ngOnInit() {
-  }
+    constructor(private httpService: HttpService) { }
+
+    submitEmail(obj) {
+        this.httpService.postEmail(obj);
+    }
+
+    ngOnInit() {
+    }
 
 }

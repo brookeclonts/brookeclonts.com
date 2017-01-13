@@ -16,7 +16,6 @@ export class HomeComponent {
         httpService.productsAnnounced$.subscribe(
             (value: IProduct[]) => {
             this.books = value;
-            console.log(this.books);
         });
     }
 

@@ -1,3 +1,56 @@
-<p>
-  footer works!
-</p>
+<div class="footer-section">
+    <h3>
+        Helpful Links
+    </h3>
+    <div class="links">
+        <div class="link">
+            <a [routerLink]="'/'" (click)="scrollToId('books')">Books</a>
+        </div>
+        <div class="link">
+            <a href="blog/brookeclonts.com" target="_blank">Blog</a>
+        </div>
+        <div class="link">
+            <a [routerLink]="'about'">About the Author</a>
+        </div>
+    </div>
+</div>
+
+<div class="footer-section">
+    <h3>
+        Subscribe and get the inside scoop!
+    </h3>
+    <!-- Begin MailChimp Signup Form -->
+        <form (ngSubmit)="submitEmail(subscribeForm.value)" #subscribeForm="ngForm">
+            <p class="invalid" *ngIf="name.errors && (name.dirty || name.touched)">
+                Name is invalid
+            </p>
+            <input
+                type="text"
+                pattern="[a-zA-Z ]*"
+                name="name"
+                id="name"
+                #name="ngModel"
+                [(ngModel)]="subscribe.name"
+                placeholder="full name"
+                required>
+
+            <p class="invalid" *ngIf="email.errors && email.touched">
+                Email is invalid
+            </p>
+            <input
+                type="text"
+                placeholder="email address"
+                pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?"
+                name="email"
+                id="email"
+                #email="ngModel"
+                [(ngModel)]="subscribe.email"/>
+
+            <!--<input type="email" [(ngModel)]="subscribe.email" placeholder="email address" value="" name="EMAIL" id="mce-EMAIL" required>-->
+            <!--<input type="text" [(ngModel)]="subscribe.firstName" placeholder="first name" value="" name="FNAME" class="" id="mce-FNAME">
+            <input type="text" [(ngModel)]="subscribe.lastName" placeholder="last name" value="" name="LNAME" class="" id="mce-LNAME">-->
+            <button class="btn" type="submit" [disabled]="!subscribeForm.valid">
+                Subscribe
+            </button>
+        </form>
+</div>

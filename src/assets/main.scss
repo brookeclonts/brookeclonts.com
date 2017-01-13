@@ -7,9 +7,11 @@ $desktop: 1020px;
 @import '/_styles/_text';
 
 @import '/_styles/_menu';
+@import '/_styles/_footer';
 
 // pages
 @import '/_styles/_home';
+@import '/_styles/_about';
 
 body, main {
     margin: 0;

@@ -1,17 +1,23 @@
-$home-svg-size: 600px;
+$home-svg-size: 400px;
 $draw-speed: 800;
 
 app-home {
+    h2 {
+        font-size: 38px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+
     .hero-banner {
         background-color: $blue-gray;
         height: 100vh;
         width: 100vw;
         text-align: center;
         display: table;
-        padding: 50px 0;
+        padding: 160px 0 100px;
 
         h1 {
-            color: white;
+            color: $white;
             font-size: 58px;
             margin-bottom: 30px;
             letter-spacing: 2px;
@@ -37,8 +43,8 @@ app-home {
 
     app-tattoo, svg {
         display: block;
-        height: 200;
-        width: 200;
+        height: 200px;
+        width: 200px;
         margin: auto;
         text-align: center;
 
@@ -63,18 +69,18 @@ app-home {
         }
 
         .st0, .st1 {
-            stroke: $gold;
+            stroke: $light-pink;
         }
     }
 
     .products-section {
-        background-color: $pink;
+        background-color: $green;
         display: table;
         height: 100vh;
         width: 100vw;
         margin: auto;
         text-align: center;
-        padding: 50px 0;
+        padding: 100px 0;
 
         .products-wrapper {
             display: table-cell;

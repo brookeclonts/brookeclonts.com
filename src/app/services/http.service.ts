@@ -8,9 +8,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
+    emailURL= '//brookeclonts.us14.list-manage.com/subscribe/post?u=b56f526ae5a8b450ae52bfac1&amp;id=b762b0fa4f';
     productURL= 'assets/api/products.json';
     products = new BehaviorSubject<IProduct[]>([]);
     productsAnnounced$ = this.products.asObservable();
+    subscribe = new BehaviorSubject(true);
+    subscribeAnnounced$ = this.subscribe.asObservable();
 
     constructor(private _http: Http) {
         this.getProducts();
@@ -20,9 +23,26 @@ export class HttpService {
         this.products.next(products);
     }
 
+    sendEmailResponse(response) {
+        this.subscribe.next(response);
+    }
+
     getProducts() {
         this._http.get(this.productURL).subscribe((response) => {
             this.updateProducts(response.json());
+        });
+    }
+
+    postEmail(obj) {
+        let fullName = obj.name.split(' ');
+        let newObj = {
+            'EMAIL': obj.email,
+            'FNAME': fullName[0],
+            'LNAME': fullName[1]
+
+        };
+        this._http.post(this.emailURL, newObj).subscribe((response) => {
+            this.sendEmailResponse(response.json());
         });
     }
 

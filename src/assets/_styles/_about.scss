@@ -1,0 +1,34 @@
+app-about {
+    padding: 0px 20px 100px;
+    text-align: center;
+
+    h1 {
+        font-size: 38px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+        margin-top: 160px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.5;
+        margin: 0;
+        margin-left: 20px;
+        text-align: left;
+    }
+
+    p, .img-wrapper {
+        display: flex-inline;
+    }
+
+    img {
+        max-width: 600px;
+    }
+
+    .about-content {
+        display: flex;
+        max-width: 900px;
+        margin: auto;
+        margin-top: 50px;
+    }
+}

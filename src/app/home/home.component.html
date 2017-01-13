@@ -12,6 +12,7 @@
 
 <div class="products-section" id="books">
     <div class="products-wrapper">
+        <h2>Books</h2>
         <div class="product" *ngFor="let book of books">
             <img src="{{book.imageUrl}}" alt="{{book.title}}"/>
             <p class="status-message" *ngIf="book.status.length">

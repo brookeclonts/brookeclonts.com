@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AnimationService} from '../services/animation.service';
+
 
 @Component({
     selector: 'app-menu',
@@ -8,10 +10,14 @@ import { Component, OnInit } from '@angular/core';
 export class MenuComponent implements OnInit {
     menu = false;
 
-    constructor() { }
+    constructor(private animate: AnimationService) { }
 
     toggleMenu() {
         this.menu = !this.menu;
+    }
+
+    scrollToId(id) {
+        this.animate.scrollAnimation(id);
     }
 
     ngOnInit() {
