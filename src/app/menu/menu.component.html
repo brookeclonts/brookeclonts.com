@@ -1,5 +1,29 @@
-<p>
-  <a href="blog/brookeclonts.com">Blog</a>
-  <a [routerLink]="about">About the Author</a>
-  <a [routerLink]="books">Books</a>
-</p>
+<div class="header-menu">
+    <div class="logo-wrapper">
+        <a [routerLink]="about">BROOKECLONTS.COM</a>
+    </div>
+
+    <div class="links hide-tab-down">
+        <a [routerLink]="books">Books</a>
+        <a href="blog/brookeclonts.com">Blog</a>
+        <a [routerLink]="about">About the Author</a>
+    </div>
+
+    <div class="mobile-icon hide-tab-up" (click)="toggleMenu()">
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+        <span class="menu-icon"></span>
+    </div>
+</div>
+
+<div class="mobile-links hide-tab-up" *ngIf="menu">
+    <div class="mobile-link">
+        <a [routerLink]="books">Books</a>
+    </div>
+    <div class="mobile-link">
+        <a href="blog/brookeclonts.com">Blog</a>
+    </div>
+    <div class="mobile-link">
+        <a [routerLink]="about">About the Author</a>
+    </div>
+</div>

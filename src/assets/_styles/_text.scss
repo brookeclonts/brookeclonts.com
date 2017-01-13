@@ -1,12 +1,15 @@
+$header-font: 'Medula One', 'Times New Roman', serif;
+$font: 'Open Sans', Helvetica, arial, sans-serif;
+
 p, span, button, input, li, a {
-    font-family: 'Open Sans', Helvetica, arial, sans-serif;
+    font-family: $font;
     color: $med-gray;
     font-weight: 300;
     font-size: 14px;
 }
 
 h1, h2, h3, h4 {
-    font-family: 'Medula One', 'Times New Roman', serif;
+    font-family: $header-font;
     color: $med-gray;
     font-weight: 300;
 }

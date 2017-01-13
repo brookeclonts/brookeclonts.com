@@ -1,10 +1,29 @@
+$tab: 768px;
+$mob: 300px;
+$desktop: 1020px;
+
 @import '/_styles/_colors';
 @import '/_styles/_animations';
 @import '/_styles/_text';
 
+@import '/_styles/_menu';
+
 // pages
 @import '/_styles/_home';
 
-body {
+body, main {
+    margin: 0;
     overflow-x: hidden;
+}
+
+.hide-tab-up {
+    @media screen and (min-width: $tab) {
+        display: none !important;
+    }
+}
+
+.hide-tab-down {
+    @media screen and (max-width: $tab + 1) {
+        display: none !important;
+    }
 }

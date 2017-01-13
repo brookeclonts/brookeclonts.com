@@ -11,10 +11,12 @@
 </div>
 
 <div class="products-section" id="books">
-    <div class="product" *ngFor="let book of books">
-        <img src="{{book.imageUrl}}" alt="{{book.title}}"/>
-        <p class="status-message" *ngIf="book.status.length">
-            {{book.status}}
-        </p>
+    <div class="products-wrapper">
+        <div class="product" *ngFor="let book of books">
+            <img src="{{book.imageUrl}}" alt="{{book.title}}"/>
+            <p class="status-message" *ngIf="book.status.length">
+                {{book.status}}
+            </p>
+        </div>
     </div>
 </div>
