@@ -3,32 +3,57 @@ app-about {
     text-align: center;
 
     h1 {
-        font-size: 38px;
+        font-size: 20px;
         margin-bottom: 20px;
         letter-spacing: 2px;
         margin-top: 160px;
+
+        @media screen and (min-width: $tab) {
+            font-size: 38px;
+        }
     }
 
     p {
         font-size: 14px;
         line-height: 1.5;
         margin: 0;
-        margin-left: 20px;
         text-align: left;
+
+        @media screen and (min-width: $tab) {
+            margin-left: 20px;
+        }
     }
 
     p, .img-wrapper {
-        display: flex-inline;
+        display: block;
+
+        @media screen and (min-width: $tab) {
+            display: flex-inline;
+        }
     }
 
     img {
         max-width: 600px;
+        width: 100%;
+    }
+
+    .img-wrapper {
+        padding: 20px;
+
+        @media screen and (min-width: $tab) {
+            padding: 0;
+        }
     }
 
     .about-content {
-        display: flex;
         max-width: 900px;
         margin: auto;
-        margin-top: 50px;
+        padding: 20px;
+
+        @media screen and (min-width: $tab) {
+            display: flex;
+            padding: 0;
+            margin-top: 50px;
+        }
     }
 }
