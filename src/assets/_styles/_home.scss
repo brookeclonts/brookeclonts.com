@@ -1,5 +1,4 @@
 $home-svg-size: 400px;
-$draw-speed: 800;
 
 app-home {
     h2 {
@@ -51,25 +50,6 @@ app-home {
         @media screen and (min-width: $tab) {
             height: $home-svg-size;
             width: $home-svg-size;
-        }
-    }
-
-    svg {
-        path {
-            fill-opacity: 0;
-            stroke-width: 3;
-            stroke-dasharray: $draw-speed;
-            stroke-dashoffset: 900;
-            animation-name: draw;
-            animation-duration: 10s;
-            animation-fill-mode: forwards; // Stay on the last frame
-            animation-iteration-count: 1; // Run only once
-            animation-timing-function: linear;
-            animation-delay: 0.3s;
-        }
-
-        .st0, .st1 {
-            stroke: $light-pink;
         }
     }
 

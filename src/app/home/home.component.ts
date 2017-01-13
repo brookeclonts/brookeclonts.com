@@ -8,8 +8,7 @@ import {AnimationService} from '../services/animation.service';
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.sass']
 })
-export class HomeComponent {
-
+export class HomeComponent implements OnInit {
     books: IProduct[];
 
     constructor(private httpService: HttpService, private animate: AnimationService) {
@@ -21,6 +20,9 @@ export class HomeComponent {
 
     scrollToId(id) {
         this.animate.scrollAnimation(id);
+    }
+
+    ngOnInit() {
     }
 
 }

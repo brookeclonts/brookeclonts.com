@@ -1,0 +1,25 @@
+.loader {
+    background-color: $blue-gray;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: table;
+    text-align: center;
+    width: 100%;
+    z-index: 100;
+
+    app-tattoo {
+        display: table-cell;
+        vertical-align: middle;
+        margin: auto;
+        height: 280px;
+        width: 280px;
+
+        @media screen and (min-width: $tab) {
+            height: 600px;
+            width: 600px;
+        }
+    }
+}
