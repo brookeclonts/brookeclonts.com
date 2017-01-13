@@ -6,21 +6,22 @@ $draw-speed: 800;
     }
 }
 
-svg {
-    path {
-        fill-opacity: 0;
-        stroke-width: 3;
-        stroke-dasharray: $draw-speed;
-        stroke-dashoffset: 900;
-        animation-name: draw;
-        animation-duration: 10s;
-        animation-fill-mode: forwards; // Stay on the last frame
-        animation-iteration-count: 1; // Run only once
-        animation-timing-function: linear;
-        animation-delay: 0.3s;
-    }
+app-tattoo{
+    svg {
+        path {
+            fill-opacity: 0;
+            stroke-width: 3;
+            stroke-dasharray: $draw-speed;
+            stroke-dashoffset: 900;
+            animation-name: draw;
+            animation-duration: 10s;
+            animation-fill-mode: forwards; // Stay on the last frame
+            animation-iteration-count: 1; // Run only once
+            animation-timing-function: linear;
+        }
 
-    .st0, .st1 {
-        stroke: $light-pink;
+        .st0, .st1 {
+            stroke: $light-pink;
+        }
     }
 }

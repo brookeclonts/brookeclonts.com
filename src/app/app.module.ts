@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {ROUTES} from './app.routes';
 import {RouterModule} from '@angular/router';
+import {JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -36,6 +37,7 @@ import { MessageComponent } from './message/message.component';
     RouterModule.forRoot(ROUTES),
     BrowserModule,
     FormsModule,
+    JsonpModule,
     HttpModule
   ],
   providers: [AnimationService, HttpService],

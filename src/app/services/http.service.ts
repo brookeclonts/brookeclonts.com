@@ -3,6 +3,7 @@ import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IProduct} from '../interfaces/products';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
@@ -24,7 +25,9 @@ export class HttpService {
     }
 
     sendEmailResponse(response) {
-        this.subscribe.next(response);
+        console.log(response);
+        let res = typeof response === 'string' ? response : '';
+        this.subscribe.next(res);
     }
 
     getProducts() {
@@ -36,18 +39,23 @@ export class HttpService {
     postEmail(obj) {
         let fullName = obj.name.split(' ');
         let newObj = {
-            'EMAIL': obj.email,
-            'FNAME': fullName[0],
-            'LNAME': fullName[1]
+            'email': obj.email,
+            'firstName': fullName[0],
+            'lastName': fullName[1]
 
         };
-        this._http.post(this.emailURL, newObj).subscribe((response) => {
-            console.log(response);
-            // this.sendEmailResponse(response.json());
-        });
+        this.sendPost(newObj).subscribe(
+            data => this.sendEmailResponse(data),
+            error => this.sendEmailResponse('Error HTTP Post Service')
+        );
     }
 
-    private handleError(error: Response) {
-        return Observable.throw(error.json().error || 'Server error');
+    sendPost(obj): Observable<any> {
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+        let params = `EMAIL=${obj.firstName}&FNAME=${obj.lastName}&LNAME=${obj.email}`;
+
+        return this._http.post(this.emailURL, params, {headers: headers})
+            .map(res => res.json())
+            .catch(err => err.json());
     }
 }
