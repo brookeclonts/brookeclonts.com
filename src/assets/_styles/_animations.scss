@@ -14,7 +14,7 @@ app-tattoo{
             stroke-dasharray: $draw-speed;
             stroke-dashoffset: 900;
             animation-name: draw;
-            animation-duration: 10s;
+            animation-duration: 5s;
             animation-fill-mode: forwards; // Stay on the last frame
             animation-iteration-count: 1; // Run only once
             animation-timing-function: linear;

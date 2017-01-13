@@ -1,5 +1,3 @@
-$home-svg-size: 400px;
-
 app-home {
     h2 {
         font-size: 38px;
@@ -17,9 +15,13 @@ app-home {
 
         h1 {
             color: $white;
-            font-size: 58px;
+            font-size: 38px;
             margin-bottom: 30px;
             letter-spacing: 2px;
+
+            @media screen and (min-width: $tab) {
+                font-size: 58px;
+            }
         }
 
         button.btn {

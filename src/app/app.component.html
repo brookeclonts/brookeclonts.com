@@ -1,7 +1,7 @@
 <app-menu></app-menu>
 <app-message></app-message>
-<div class="loader" *ngIf="loader">
-    <app-tattoo></app-tattoo>
+<div class="loader" [ngClass]="{fade: fadeOut}">
+    <app-tattoo id="loaderTat" [ngClass]="{fade: !loader}"></app-tattoo>
 </div>
 
 <main>
