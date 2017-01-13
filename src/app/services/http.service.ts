@@ -12,7 +12,7 @@ export class HttpService {
     productURL= 'assets/api/products.json';
     products = new BehaviorSubject<IProduct[]>([]);
     productsAnnounced$ = this.products.asObservable();
-    subscribe = new BehaviorSubject(true);
+    subscribe = new BehaviorSubject('');
     subscribeAnnounced$ = this.subscribe.asObservable();
 
     constructor(private _http: Http) {
@@ -42,7 +42,8 @@ export class HttpService {
 
         };
         this._http.post(this.emailURL, newObj).subscribe((response) => {
-            this.sendEmailResponse(response.json());
+            console.log(response);
+            // this.sendEmailResponse(response.json());
         });
     }
 

@@ -17,6 +17,7 @@ import {AnimationService} from './services/animation.service';
 import {HttpService} from './services/http.service';
 import { TattooComponent } from './tattoo/tattoo.component';
 import { AboutComponent } from './about/about.component';
+import { MessageComponent } from './message/message.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { AboutComponent } from './about/about.component';
     InstagramComponent,
     HomeComponent,
     TattooComponent,
-    AboutComponent
+    AboutComponent,
+    MessageComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
