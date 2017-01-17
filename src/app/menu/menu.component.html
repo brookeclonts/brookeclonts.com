@@ -5,7 +5,7 @@
 
     <div class="links hide-tab-down">
         <a [routerLink]="'/'" (click)="scrollToId('books')">Books</a>
-        <a href="blog/brookeclonts.com" target="_blank">Blog</a>
+        <a href="blog.brookeclonts.com" target="_blank">Blog</a>
         <a [routerLink]="'about'">About</a>
     </div>
 
@@ -13,10 +13,32 @@
         <span class="menu-icon"></span>
         <span class="menu-icon"></span>
         <span class="menu-icon"></span>
+        <div class="social-icons">
+            <a href="https://twitter.com/brookeclonts" target="_blank">
+                <app-twitter></app-twitter>
+            </a>
+            <a href="https://www.facebook.com/brookeclonts" target="_blank">
+                <app-facebook></app-facebook>
+            </a>
+            <a href="https://www.instagram.com/brookeclonts/" target="_blank">
+                <app-instagram></app-instagram>
+            </a>
+        </div>
     </div>
 </div>
 
 <div class="mobile-links hide-tab-up" *ngIf="menu">
+     <div class="social-icons">
+        <a href="https://twitter.com/brookeclonts" target="_blank">
+            <app-twitter></app-twitter>
+        </a>
+        <a href="https://www.facebook.com/brookeclonts" target="_blank">
+            <app-facebook></app-facebook>
+        </a>
+        <a href="https://www.instagram.com/brookeclonts/" target="_blank">
+            <app-instagram></app-instagram>
+        </a>
+    </div>
     <div class="mobile-link">
         <a [routerLink]="'/'" (click)="scrollToId('books')">Books</a>
     </div>

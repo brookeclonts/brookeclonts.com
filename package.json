@@ -5,6 +5,7 @@
   "angular-cli": {},
   "scripts": {
     "start": "node server.js",
+    "publish": "git push heroku master",
     "start-local": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
