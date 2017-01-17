@@ -1,0 +1,45 @@
+app-message {
+    .message {
+        background-color: $white;
+        position: fixed;
+        max-width: 300px;
+        padding: 20px;
+    }
+
+     // x mark for overlays
+    .close {
+        height: 20px;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:before, &:after {
+            background-color: $green;
+            border-radius: 13px;
+            content: '';
+            height: 1px;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            transform: rotate(0deg);
+            transition: transform 0.15s ease-in-out;
+            width: 25px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &.x-close {
+            &:before {
+                transform: rotate(40deg);
+            }
+
+            &:after {
+                transform: rotate(-40deg);
+            }
+        }
+    }
+}

@@ -1,0 +1,34 @@
+$tab: 768px;
+$mob: 300px;
+$desktop: 1020px;
+$home-svg-size: 400px;
+
+@import '/_styles/_colors';
+@import '/_styles/_text';
+@import '/_styles/_animations';
+
+@import '/_styles/_menu';
+@import '/_styles/_footer';
+@import '/_styles/_message';
+@import '/_styles/_loader';
+
+// pages
+@import '/_styles/_home';
+@import '/_styles/_about';
+
+body, main {
+    margin: 0;
+    overflow-x: hidden;
+}
+
+.hide-tab-up {
+    @media screen and (min-width: $tab) {
+        display: none !important;
+    }
+}
+
+.hide-tab-down {
+    @media screen and (max-width: $tab + 1) {
+        display: none !important;
+    }
+}
