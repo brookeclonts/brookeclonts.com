@@ -21,6 +21,12 @@ app-menu {
             padding: 5px 20px;
         }
 
+        .social-icons {
+            svg path {
+                fill: $blue-gray;
+            }
+        }
+
         .logo-wrapper {
             float: left;
 
@@ -116,6 +122,20 @@ app-menu {
                 &:hover {
                     color: $pink;
                 }
+            }
+        }
+
+        .social-icons {
+            svg {
+                margin: 5px;
+            }
+        }
+    }
+
+    .social-icons {
+        svg path {
+            &:hover {
+                fill: $green;
             }
         }
     }

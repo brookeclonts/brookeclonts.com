@@ -31,7 +31,8 @@ app-footer {
     padding: 20px;
 
     @media screen and (min-width: $tab) {
-        display: block;
+        display: inline-flex;
+        flex-grow: 1;
     }
 
     &:not(:first-child) {
@@ -53,7 +54,7 @@ app-footer {
 
     form {
         margin-right: 0;
-        max-width: 300px;
+        max-width: 400px;
     }
 
     input {

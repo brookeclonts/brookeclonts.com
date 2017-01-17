@@ -1,9 +1,24 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class AnimationService {
+    loader = new BehaviorSubject<boolean>(false);
+    loaderAnnounced$ = this.loader.asObservable();
+    alreadyLoaded: boolean = false;
 
     constructor() { }
+
+    updateLoader(value) {
+        this.loader.next(value);
+    }
+
+    showLoaderIcon() {
+        if (this.alreadyLoaded !== true) {
+            this.updateLoader(true);
+        }
+        this.alreadyLoaded = true;
+    }
 
     // flip animation
     flipTattoo() {
