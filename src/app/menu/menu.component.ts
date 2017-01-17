@@ -17,7 +17,9 @@ export class MenuComponent implements OnInit {
     }
 
     scrollToId(id) {
-        this.animate.scrollAnimation(id);
+        if (document.getElementById(id)) {
+            this.animate.scrollAnimation(id);
+        }
     }
 
     ngOnInit() {

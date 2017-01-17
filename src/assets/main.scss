@@ -21,6 +21,10 @@ body, main {
     overflow-x: hidden;
 }
 
+path {
+    transition: fill 0.3s ease;
+}
+
 .hide-tab-up {
     @media screen and (min-width: $tab) {
         display: none !important;

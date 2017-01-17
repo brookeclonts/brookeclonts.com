@@ -83,6 +83,20 @@ app-footer {
         }
     }
 
+    .social-icons {
+        margin-top: 20px;
+
+        svg {
+            margin-right: 10px;
+
+            path {
+                &:hover {
+                    fill: $pink;
+                }
+            }
+        }
+    }
+
     .invalid {
         margin-bottom: 5px;
         font-style: italic;
