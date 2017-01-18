@@ -5,7 +5,6 @@
   "angular-cli": {},
   "scripts": {
     "start": "node server.js",
-    "postinstall": "ng build",
     "start-local": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
