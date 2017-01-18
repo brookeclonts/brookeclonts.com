@@ -16,6 +16,7 @@ export class AnimationService {
     showLoaderIcon() {
         if (this.alreadyLoaded !== true) {
             this.updateLoader(true);
+            this.scrollTop();
         }
         this.alreadyLoaded = true;
     }
