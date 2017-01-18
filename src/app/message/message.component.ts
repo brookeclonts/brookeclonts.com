@@ -15,7 +15,9 @@ export class MessageComponent implements OnInit {
             (value: string) => {
                 console.log(value);
             this.message = value;
-            this.showMessage();
+            if (this.message) {
+                this.showMessage();
+            }
         });
     }
 
