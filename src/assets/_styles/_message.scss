@@ -1,9 +1,22 @@
 app-message {
     .message {
         background-color: $white;
+        border: solid 1px $blue-gray;
         position: fixed;
-        max-width: 300px;
         padding: 20px;
+        width: 300px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -150px;
+
+        @media screen and (min-width: $tab) {
+            width: 500px;
+            height: 400px;
+            margin-top: -200px;
+            margin-left: -250px;
+        }
     }
 
      // x mark for overlays
@@ -32,7 +45,7 @@ app-message {
             }
         }
 
-        &.x-close {
+        &.show {
             &:before {
                 transform: rotate(40deg);
             }
