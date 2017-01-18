@@ -1,0 +1,58 @@
+app-message {
+    .message {
+        background-color: $white;
+        border: solid 1px $blue-gray;
+        position: fixed;
+        padding: 20px;
+        width: 300px;
+        height: 200px;
+        top: 50%;
+        left: 50%;
+        margin-top: -100px;
+        margin-left: -150px;
+
+        @media screen and (min-width: $tab) {
+            width: 500px;
+            height: 400px;
+            margin-top: -200px;
+            margin-left: -250px;
+        }
+    }
+
+     // x mark for overlays
+    .close {
+        height: 20px;
+        width: 100%;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &:before, &:after {
+            background-color: $green;
+            border-radius: 13px;
+            content: '';
+            height: 1px;
+            position: absolute;
+            right: 20px;
+            top: 30px;
+            transform: rotate(0deg);
+            transition: transform 0.15s ease-in-out;
+            width: 25px;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &.show {
+            &:before {
+                transform: rotate(40deg);
+            }
+
+            &:after {
+                transform: rotate(-40deg);
+            }
+        }
+    }
+}
