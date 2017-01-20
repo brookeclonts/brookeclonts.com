@@ -78,7 +78,6 @@ app-menu {
                 .menu-icon {
                     &:nth-child(1) {
                         transform: rotate(39deg);
-                        // width: 50px;
                     }
 
                     &:nth-child(2) {
@@ -88,8 +87,6 @@ app-menu {
 
                     &:nth-child(3) {
                         transform: rotate(-39deg);
-                        // top: 31px;
-                        // width: 50px;
                     }
                 }
             }
@@ -97,22 +94,31 @@ app-menu {
     }
 
     .mobile-links {
-        background-color: $blue-gray;
-        color: $white;
+        background-color: $pink;
+        color: $blue-gray;
         display: block;
         text-align: center;
         font-size: 16px;
         padding-top: 20px;
         padding-bottom: 30px;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        transition: all 0.5s ease;
+        top: -250px;
+
+        &.open {
+            top: 48px;
+        }
 
         .mobile-link {
             padding: 10px 0;
 
             a {
-                color: $white;
+                color: $blue-gray;
 
                 &:hover {
-                    color: $pink;
+                    color: $green;
                 }
             }
         }
@@ -126,6 +132,8 @@ app-menu {
 
     .social-icons {
         svg path {
+            fill: $blue-gray;
+
             &:hover {
                 fill: $green;
             }

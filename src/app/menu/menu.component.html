@@ -27,7 +27,7 @@
     </div>
 </div>
 
-<div class="mobile-links hide-tab-up" *ngIf="menu">
+<div class="mobile-links hide-tab-up" [ngClass]="{open: menu}">
      <div class="social-icons">
         <a href="https://twitter.com/brookeclonts" target="_blank">
             <app-twitter></app-twitter>
