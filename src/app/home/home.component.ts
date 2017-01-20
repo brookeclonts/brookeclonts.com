@@ -22,9 +22,7 @@ export class HomeComponent implements OnInit {
         this.animate.scrollAnimation(id);
     }
 
-    ngOnInit() {
-        this.animate.showLoaderIcon();
-    }
+    ngOnInit() {}
 
 }
 

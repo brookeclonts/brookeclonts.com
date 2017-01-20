@@ -57,7 +57,9 @@ $desktop-loader-sz: 600px;
     &.fade {
         background-color: $blue-gray-fade;
         pointer-events: none;
+    }
 
+    &.resize {
         app-tattoo {
             @media screen and (min-width: $tab) {
                 height: $home-svg-size;

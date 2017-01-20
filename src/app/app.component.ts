@@ -11,13 +11,15 @@ export class AppComponent implements OnInit {
     fadeOut: boolean = true;
     route;
     showLoaderIcon: boolean;
+    move: boolean = false;
 
     constructor(private animate: AnimationService) {
         animate.loaderAnnounced$.subscribe(
             (value: boolean) => {
-            this.loader = value;
-            if (this.loader === true ){
+            if (value) {
                 this.showLoader();
+            } else {
+                this.loader = value;
             }
         });
     }
@@ -25,26 +27,30 @@ export class AppComponent implements OnInit {
     moveLoader() {
         let banner = document.getElementById('homeTat');
         let loader = document.getElementById('loaderTat');
-        let bannerOffset = banner.getBoundingClientRect().top;
-        loader.setAttribute('style', `margin-top: ${bannerOffset}px; top: 0`);
+        if (banner && loader) {
+            this.move = true;
+            let bannerOffset = banner.getBoundingClientRect().top;
+            loader.setAttribute('style', `margin-top: ${bannerOffset}px; top: 0`);
+        }
     }
 
     showLoader() {
+        this.loader = true;
         this.fadeOut = false;
         setTimeout(() => {
             this.moveLoader();
             this.fadeOutLoader();
-        }, 2500);
+        }, 2250);
     }
 
     fadeOutLoader() {
+        this.fadeOut = true;
         setTimeout(() => {
-            this.fadeOut = true;
-            setTimeout(() => {
-                this.animate.updateLoader(false);
-            }, 500);
+            this.animate.updateLoader(false);
         }, 500);
     }
 
-    ngOnInit() {}
+    ngOnInit() {
+        this.animate.showLoaderIcon();
+    }
 }
