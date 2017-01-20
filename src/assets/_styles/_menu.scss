@@ -77,27 +77,19 @@ app-menu {
             &.open {
                 .menu-icon {
                     &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                        transform: rotate(39deg);
+                        // width: 50px;
                     }
 
-                    &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                    &:nth-child(2) {
+                        width: 0%;
+                        opacity: 0;
                     }
 
                     &:nth-child(3) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
-                    }
-
-                    &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                        transform: rotate(-39deg);
+                        // top: 31px;
+                        // width: 50px;
                     }
                 }
             }
