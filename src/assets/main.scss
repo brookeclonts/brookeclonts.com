@@ -26,13 +26,13 @@ path {
 }
 
 .hide-tab-up {
-    @media screen and (min-width: $tab) {
+    @media screen and (min-width: $tab + 1) {
         display: none !important;
     }
 }
 
 .hide-tab-down {
-    @media screen and (max-width: $tab + 1) {
+    @media screen and (max-width: $tab) {
         display: none !important;
     }
 }
