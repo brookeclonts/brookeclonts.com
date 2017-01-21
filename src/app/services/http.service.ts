@@ -28,9 +28,8 @@ export class HttpService {
     }
 
     sendEmailResponse(response) {
-        console.log(response);
-        // let res = typeof response === 'string' ? response : '';
-        // this.subscribe.next(res);
+        let res = typeof response === 'string' ? response : '';
+        this.subscribe.next(res);
     }
 
     getProducts() {
@@ -50,33 +49,19 @@ export class HttpService {
             }
         };
         this.sendPost(newObj);
-        // this.sendPost(newObj).subscribe(
-        //     data => this.sendEmailResponse(data),
-        //     error => this.sendEmailResponse(error)
-        // );
+        this.sendPost(newObj).subscribe(
+            data => this.sendEmailResponse(data),
+            error => this.sendEmailResponse('Subscribe is under maintenance. Check back in tomorrow!')
+        );
     }
 
     sendPost(obj) {
-        // let headers = new Headers({'Content-Type': 'application/json; charset=UTF-8'});
-        // // headers.append('Authorization', 'Basic YnJvb2tlY2xvbnRzOmVkYjMwZmY2ZTIwN2JiNjhiNmMyNWZjY2NhOGU3MjNiLXVzMTQ=');
-        // headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
-        // let options = new RequestOptions({ headers: headers });
-        // // let params = `EMAIL=${obj.firstName}&FNAME=${obj.lastName}&LNAME=${obj.email}`;
-
-        // return this._http.post(this.emailURL, obj, options)
-        //     .map(res => res.json())
-        //     .catch(err => err.json());
-        let data = obj;
-        let url = this.emailURL;
-        let username: string = 'user';
-        let password: string = 'edb30ff6e207bb68b6c25fccca8e723b-us14';
-        let headers = new Headers();
-        // headers.append("Authorization", "Basic " + btoa(username + ":" + password));
+        let headers = new Headers({'Content-Type': 'application/json; charset=UTF-8'});
         headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
-        headers.append("Content-Type", "application/x-www-form-urlencoded");
-        return this._http.post(url, data, {headers: headers}).subscribe(
-            data => this.sendEmailResponse(data),
-            error => this.sendEmailResponse(error)
-        );
+        let options = new RequestOptions({ headers: headers });
+
+        return this._http.post(this.emailURL, obj, options)
+            .map(res => res.json())
+            .catch(err => err.json());
     }
 }

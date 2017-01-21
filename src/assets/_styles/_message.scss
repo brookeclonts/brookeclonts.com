@@ -4,18 +4,19 @@ app-message {
         border: solid 1px $blue-gray;
         position: fixed;
         padding: 20px;
-        width: 300px;
-        height: 200px;
-        top: 50%;
-        left: 50%;
-        margin-top: -100px;
-        margin-left: -150px;
+        max-width: 300px;
+        top: 50px;
+        left: 10px;
+        right: 10px;
 
         @media screen and (min-width: $tab) {
+            max-width: 500px;
             width: 500px;
-            height: 400px;
-            margin-top: -200px;
             margin-left: -250px;
+            max-width: auto;
+            left: 50%;
+            right: auto;
+            top: 25%;
         }
     }
 
