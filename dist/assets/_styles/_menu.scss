@@ -77,27 +77,16 @@ app-menu {
             &.open {
                 .menu-icon {
                     &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                        transform: rotate(39deg);
                     }
 
-                    &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                    &:nth-child(2) {
+                        width: 0%;
+                        opacity: 0;
                     }
 
                     &:nth-child(3) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
-                    }
-
-                    &:nth-child(1) {
-                        transform: rotate(38deg);
-                        width: 50px;
-                        margin-left: 13px;
+                        transform: rotate(-39deg);
                     }
                 }
             }
@@ -105,22 +94,31 @@ app-menu {
     }
 
     .mobile-links {
-        background-color: $blue-gray;
-        color: $white;
+        background-color: $pink;
+        color: $blue-gray;
         display: block;
         text-align: center;
         font-size: 16px;
         padding-top: 20px;
         padding-bottom: 30px;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        transition: all 0.5s ease;
+        top: -250px;
+
+        &.open {
+            top: 48px;
+        }
 
         .mobile-link {
             padding: 10px 0;
 
             a {
-                color: $white;
+                color: $blue-gray;
 
                 &:hover {
-                    color: $pink;
+                    color: $green;
                 }
             }
         }
@@ -134,6 +132,8 @@ app-menu {
 
     .social-icons {
         svg path {
+            fill: $blue-gray;
+
             &:hover {
                 fill: $green;
             }
