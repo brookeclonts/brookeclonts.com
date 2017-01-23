@@ -18,6 +18,7 @@
         <a routerLink="/" (click)="scrollToId('books')">Books</a>
         <a href="http://blog.brookeclonts.com" target="_blank">Blog</a>
         <a routerLink="about">About</a>
+        <a routerLink="projects" class="desktop-only">Other Projects</a>
     </div>
 
     <div class="mobile-icon hide-tab-up" (click)="toggleMenu()" [ngClass]="{open: menu}">
@@ -43,9 +44,12 @@
         <a routerLink="/" (click)="scrollToId('books')">Books</a>
     </div>
     <div class="mobile-link">
-        <a href="blog/brookeclonts.com" target="_blank">Blog</a>
+        <a href="http://blog.brookeclonts.com" target="_blank">Blog</a>
     </div>
     <div class="mobile-link">
         <a routerLink="about">About</a>
+    </div>
+    <div class="mobile-link">
+        <a routerLink="projects">Other Projects</a>
     </div>
 </div>

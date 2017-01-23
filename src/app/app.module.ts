@@ -19,6 +19,7 @@ import {HttpService} from './services/http.service';
 import { TattooComponent } from './tattoo/tattoo.component';
 import { AboutComponent } from './about/about.component';
 import { MessageComponent } from './message/message.component';
+import { ProjectsComponent } from './projects/projects.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MessageComponent } from './message/message.component';
     HomeComponent,
     TattooComponent,
     AboutComponent,
-    MessageComponent
+    MessageComponent,
+    ProjectsComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
