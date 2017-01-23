@@ -9,7 +9,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    emailURL= 'https://us14.api.mailchimp.com/3.0/lists/b762b0fa4f/members';
+    // emailURL= 'https://us14.api.mailchimp.com/3.0/lists/b762b0fa4f/members';
+    emailURL= '/mailchimp';
     productURL= 'assets/api/products.json';
     products = new BehaviorSubject<IProduct[]>([]);
     productsAnnounced$ = this.products.asObservable();
@@ -57,7 +58,7 @@ export class HttpService {
 
     sendPost(obj) {
         let headers = new Headers({'Content-Type': 'application/json; charset=UTF-8'});
-        headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
+        // headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
         let options = new RequestOptions({ headers: headers });
 
         return this._http.post(this.emailURL, obj, options)

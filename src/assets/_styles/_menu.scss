@@ -14,6 +14,9 @@ app-menu {
         background: $header-white;
         display: flex;
         padding: 10px 0;
+        position: absolute;
+        width: 100%;
+        z-index: 5;
 
         a {
             color: $blue-gray;
@@ -108,7 +111,7 @@ app-menu {
         top: -250px;
 
         &.open {
-            top: 48px;
+            top: 58px;
         }
 
         .mobile-link {
