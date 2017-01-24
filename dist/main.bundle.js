@@ -19684,7 +19684,6 @@ var HttpService = (function () {
         this.products.next(products);
     };
     HttpService.prototype.sendEmailResponse = function (response) {
-        console.log(response);
         var res = response.statusCode === 200 ? 'Success! Thank you for subscribing' : response.body.detail;
         if (typeof res === 'string') {
             this.subscribe.next(res);

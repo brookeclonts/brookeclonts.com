@@ -25,7 +25,6 @@ export class HttpService {
     }
 
     sendEmailResponse(response) {
-        console.log(response);
         let res = response.statusCode === 200 ? 'Success! Thank you for subscribing' : response.body.detail;
         if (typeof res === 'string') {
             this.subscribe.next(res);
