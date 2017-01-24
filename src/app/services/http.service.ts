@@ -9,16 +9,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    // emailURL= 'https://us14.api.mailchimp.com/3.0/lists/b762b0fa4f/members';
-    emailURL= '/mailchimp';
+    emailURL= '/api/mailchimp';
     productURL= 'assets/api/products.json';
     products = new BehaviorSubject<IProduct[]>([]);
     productsAnnounced$ = this.products.asObservable();
     subscribe = new BehaviorSubject('');
     subscribeAnnounced$ = this.subscribe.asObservable();
-
-    mcUsername = 'brookeclonts';
-    mcPassword = 'edb30ff6e207bb68b6c25fccca8e723b-us14';
 
     constructor(private _http: Http) {
         this.getProducts();
@@ -29,7 +25,7 @@ export class HttpService {
     }
 
     sendEmailResponse(response) {
-        let res = typeof response === 'string' ? response : '';
+        let res = response.body ? response.body.detail : 'Success! Thank you for subscribing';
         this.subscribe.next(res);
     }
 
@@ -42,27 +38,22 @@ export class HttpService {
     postEmail(obj) {
         let fullName = obj.name.split(' ');
         let newObj = {
-            'email_address': obj.email,
-            'status': 'subscribed',
-            'merge_fields': {
-                'FNAME': fullName[0],
-                'LNAME': fullName[1]
-            }
+            'email': obj.email,
+            'fName': fullName[0],
+            'lName': fullName[1]
         };
-        this.sendPost(newObj);
         this.sendPost(newObj).subscribe(
             data => this.sendEmailResponse(data),
-            error => this.sendEmailResponse('Subscribe is under maintenance. Check back in tomorrow!')
+            error => this.sendEmailResponse(`Error! Please try again later.`)
         );
     }
 
     sendPost(obj) {
-        let headers = new Headers({'Content-Type': 'application/json; charset=UTF-8'});
-        // headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
-        let options = new RequestOptions({ headers: headers });
+        let headers = new Headers({'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'});
+        let params = `fName=${obj.fName}&lName=${obj.lName}&email=${obj.email}`;
 
-        return this._http.post(this.emailURL, obj, options)
+        return this._http.post(this.emailURL, params, {headers: headers})
             .map(res => res.json())
-            .catch(err => err.json());
+            .catch(res => res.json());
     }
 }

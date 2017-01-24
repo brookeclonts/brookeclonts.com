@@ -18109,7 +18109,6 @@ var FormArray = (function (_super) {
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["b"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["c"]; });
 /* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["d"]; });
-/* harmony namespace reexport (by used) */ __webpack_require__.d(exports, "e", function() { return __WEBPACK_IMPORTED_MODULE_0__src_index__["e"]; });
 /**
  * @license
  * Copyright Google Inc. All Rights Reserved.
@@ -19673,21 +19672,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var HttpService = (function () {
     function HttpService(_http) {
         this._http = _http;
-        // emailURL= 'https://us14.api.mailchimp.com/3.0/lists/b762b0fa4f/members';
-        this.emailURL = '/mailchimp';
+        this.emailURL = '/api/mailchimp';
         this.productURL = 'assets/api/products.json';
         this.products = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]([]);
         this.productsAnnounced$ = this.products.asObservable();
         this.subscribe = new __WEBPACK_IMPORTED_MODULE_2_rxjs_BehaviorSubject__["BehaviorSubject"]('');
         this.subscribeAnnounced$ = this.subscribe.asObservable();
-        this.mcUsername = 'brookeclonts';
-        this.mcPassword = 'edb30ff6e207bb68b6c25fccca8e723b-us14';
         this.getProducts();
     }
     HttpService.prototype.updateProducts = function (products) {
         this.products.next(products);
     };
     HttpService.prototype.sendEmailResponse = function (response) {
+        if (response.body) {
+            response = response.body.detail;
+        }
+        else {
+            response = 'Success! Thank you for subscribing';
+        }
         var res = typeof response === 'string' ? response : '';
         this.subscribe.next(res);
     };
@@ -19701,27 +19703,22 @@ var HttpService = (function () {
         var _this = this;
         var fullName = obj.name.split(' ');
         var newObj = {
-            'email_address': obj.email,
-            'status': 'subscribed',
-            'merge_fields': {
-                'FNAME': fullName[0],
-                'LNAME': fullName[1]
-            }
+            'email': obj.email,
+            'fName': fullName[0],
+            'lName': fullName[1]
         };
-        this.sendPost(newObj);
-        this.sendPost(newObj).subscribe(function (data) { return _this.sendEmailResponse(data); }, function (error) { return _this.sendEmailResponse('Subscribe is under maintenance. Check back in tomorrow!'); });
+        this.sendPost(newObj).subscribe(function (data) { return _this.sendEmailResponse(data); }, function (error) { return _this.sendEmailResponse("Error! Please try again later."); });
     };
     HttpService.prototype.sendPost = function (obj) {
-        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/json; charset=UTF-8' });
-        // headers.append('Authorization', 'Basic ' + btoa('user:edb30ff6e207bb68b6c25fccca8e723b-us14'));
-        var options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* RequestOptions */]({ headers: headers });
-        return this._http.post(this.emailURL, obj, options)
+        var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
+        var params = "fName=" + obj.fName + "&lName=" + obj.lName + "&email=" + obj.email;
+        return this._http.post(this.emailURL, params, { headers: headers })
             .map(function (res) { return res.json(); })
-            .catch(function (err) { return err.json(); });
+            .catch(function (res) { return res.json(); });
     };
     HttpService = __decorate([
         __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["d" /* Injectable */])(), 
-        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["c" /* Http */]) === 'function' && _a) || Object])
+        __metadata('design:paramtypes', [(typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== 'undefined' && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === 'function' && _a) || Object])
     ], HttpService);
     return HttpService;
     var _a;
@@ -55710,7 +55707,7 @@ var JsonpModule = (function () {
 /* unused harmony reexport XHRBackend */
 /* unused harmony reexport XHRConnection */
 /* unused harmony reexport BaseRequestOptions */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_3__base_request_options__["a"]; });
+/* unused harmony reexport RequestOptions */
 /* unused harmony reexport BaseResponseOptions */
 /* unused harmony reexport ResponseOptions */
 /* unused harmony reexport ReadyState */
@@ -55718,10 +55715,10 @@ var JsonpModule = (function () {
 /* unused harmony reexport ResponseContentType */
 /* unused harmony reexport ResponseType */
 /* harmony reexport (binding) */ __webpack_require__.d(exports, "a", function() { return __WEBPACK_IMPORTED_MODULE_6__headers__["a"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "b", function() { return __WEBPACK_IMPORTED_MODULE_7__http__["a"]; });
 /* unused harmony reexport Jsonp */
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "e", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["b"]; });
-/* harmony reexport (binding) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["a"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "d", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["b"]; });
+/* harmony reexport (binding) */ __webpack_require__.d(exports, "c", function() { return __WEBPACK_IMPORTED_MODULE_8__http_module__["a"]; });
 /* unused harmony reexport Connection */
 /* unused harmony reexport ConnectionBackend */
 /* unused harmony reexport XSRFStrategy */
@@ -58334,8 +58331,8 @@ var AppModule = (function () {
                 __WEBPACK_IMPORTED_MODULE_5__angular_router__["a" /* RouterModule */].forRoot(__WEBPACK_IMPORTED_MODULE_4__app_routes__["a" /* ROUTES */]),
                 __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__["b" /* BrowserModule */],
                 __WEBPACK_IMPORTED_MODULE_2__angular_forms__["a" /* FormsModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_http__["d" /* JsonpModule */],
-                __WEBPACK_IMPORTED_MODULE_3__angular_http__["e" /* HttpModule */]
+                __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* JsonpModule */],
+                __WEBPACK_IMPORTED_MODULE_3__angular_http__["d" /* HttpModule */]
             ],
             providers: [__WEBPACK_IMPORTED_MODULE_13__services_animation_service__["a" /* AnimationService */], __WEBPACK_IMPORTED_MODULE_14__services_http_service__["a" /* HttpService */]],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_6__app_component__["a" /* AppComponent */]]
@@ -61851,7 +61848,7 @@ module.exports = "<div class=\"message\" *ngIf=\"show\">\n    <div [ngClass]=\"{
 /* 659 */
 /***/ function(module, exports) {
 
-module.exports = "<h1>Projects</h1>\n<div class=\"projects-content\">\n    <div class=\"contain\">\n        <p class=\"sub-header\">\n            Brooke Clonts is a MEAN developer. Below is a list of some of the projects she has worked on. <br>\n            <a href=\"https://github.com/brookeclonts\">\n                github: brookeclonts\n            </a>\n        </p>\n\n        <div class=\"projects\">\n            <div class=\"project\">\n                <a href=\"http://slenderiiz-calc.com/\" target=\"_blank\">\n                    <img src=\"/assets/images/projects/slenderiiz-calc.jpg\" alt=\"Slenderiiz Calculator\"/>\n                </a>\n                <p class=\"project-label\">\n                    Slenderiiz Calculator\n                </p>\n                <p class=\"project-description\">\n                    is an Angular2.0 project that calculates where you're weight is at compared to where it should be at.\n                    <br>\n                    You can view the project\n                    <a href=\"http://slenderiiz-calc.com/\" target=\"_blank\">\n                        here\n                    </a>\n                </p>\n            </div>\n            <div class=\"project\">\n                <a href=\"https://vacationcandy.com/\" target=\"_blank\">\n                    <img src=\"/assets/images/projects/vacationcandy.jpg\" alt=\"https://vacationcandy.com/\"/>\n                </a>\n                <p class=\"project-label\">\n                    VacationCandy\n                </p>\n                <p class=\"project-description\">\n                    is an Angular1.0 project that integrates with Laravel PHP. You can book resorts through this page.\n                    <br>\n                    You can view the project\n                    <a href=\"https://vacationcandy.com/\" target=\"_blank\">\n                        here\n                    </a>\n                </p>\n            </div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<h1>Projects</h1>\n<div class=\"projects-content\">\n    <div class=\"contain\">\n        <p class=\"sub-header\">\n            Brooke Clonts is a MEAN developer. Below is a list of projects she has worked on. <br>\n            <a href=\"https://github.com/brookeclonts\">\n                github: brookeclonts\n            </a>\n        </p>\n\n        <div class=\"projects\">\n            <div class=\"project\">\n                <a href=\"http://slenderiiz-calc.com/\" target=\"_blank\">\n                    <img src=\"/assets/images/projects/slenderiiz-calc.jpg\" alt=\"Slenderiiz Calculator\"/>\n                </a>\n                <p class=\"project-label\">\n                    Slenderiiz Calculator\n                </p>\n                <p class=\"project-description\">\n                    is an Angular2.0 project that calculates where you're weight is at compared to where it should be at.\n                    <br>\n                    You can view the project\n                    <a href=\"http://slenderiiz-calc.com/\" target=\"_blank\">\n                        here\n                    </a>\n                </p>\n            </div>\n            <div class=\"project\">\n                <a href=\"https://vacationcandy.com/\" target=\"_blank\">\n                    <img src=\"/assets/images/projects/vacationcandy.jpg\" alt=\"https://vacationcandy.com/\"/>\n                </a>\n                <p class=\"project-label\">\n                    VacationCandy\n                </p>\n                <p class=\"project-description\">\n                    is an Angular1.0 project that integrates with Laravel PHP. You can book resorts through this page.\n                    <br>\n                    You can view the project\n                    <a href=\"https://vacationcandy.com/\" target=\"_blank\">\n                        here\n                    </a>\n                </p>\n            </div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ },
 /* 660 */
