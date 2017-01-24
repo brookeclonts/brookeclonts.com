@@ -25,8 +25,11 @@ export class HttpService {
     }
 
     sendEmailResponse(response) {
-        let res = response.body ? response.body.detail : 'Success! Thank you for subscribing';
-        this.subscribe.next(res);
+        console.log(response);
+        let res = response.statusCode === 200 ? 'Success! Thank you for subscribing' : response.body.detail;
+        if (typeof res === 'string') {
+            this.subscribe.next(res);
+        }
     }
 
     getProducts() {

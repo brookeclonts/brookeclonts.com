@@ -19684,8 +19684,11 @@ var HttpService = (function () {
         this.products.next(products);
     };
     HttpService.prototype.sendEmailResponse = function (response) {
-        var res = response.body ? response.body.detail : 'Success! Thank you for subscribing';
-        this.subscribe.next(res);
+        console.log(response);
+        var res = response.statusCode === 200 ? 'Success! Thank you for subscribing' : response.body.detail;
+        if (typeof res === 'string') {
+            this.subscribe.next(res);
+        }
     };
     HttpService.prototype.getProducts = function () {
         var _this = this;
@@ -19701,7 +19704,7 @@ var HttpService = (function () {
             'fName': fullName[0],
             'lName': fullName[1]
         };
-        this.sendPost(newObj).subscribe(function (data) { return _this.sendEmailResponse(data); }, function (error) { return _this.sendEmailResponse("Error! Please try again later."); });
+        this.sendPost(newObj).subscribe(function (data) { return _this.sendEmailResponse(data); }, function (error) { return _this.sendEmailResponse(error); });
     };
     HttpService.prototype.sendPost = function (obj) {
         var headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({ 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' });
