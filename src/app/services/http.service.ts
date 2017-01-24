@@ -44,7 +44,7 @@ export class HttpService {
         };
         this.sendPost(newObj).subscribe(
             data => this.sendEmailResponse(data),
-            error => this.sendEmailResponse(`Error! Please try again later.`)
+            error => this.sendEmailResponse(error)
         );
     }
 

@@ -19684,13 +19684,7 @@ var HttpService = (function () {
         this.products.next(products);
     };
     HttpService.prototype.sendEmailResponse = function (response) {
-        if (response.body) {
-            response = response.body.detail;
-        }
-        else {
-            response = 'Success! Thank you for subscribing';
-        }
-        var res = typeof response === 'string' ? response : '';
+        var res = response.body ? response.body.detail : 'Success! Thank you for subscribing';
         this.subscribe.next(res);
     };
     HttpService.prototype.getProducts = function () {
