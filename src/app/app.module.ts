@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {ROUTES} from './app.routes';
-import {RouterModule} from '@angular/router';
+import {RouterModule, Router} from '@angular/router';
 import {JsonpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';

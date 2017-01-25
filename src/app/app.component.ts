@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
 import { AnimationService } from './services/animation.service';
-import{ Router, NavigationEnd } from '@angular/Router';
+import {Router, NavigationEnd} from '@angular/router';
 declare var ga: Function;
 
 @Component({
@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
     move: boolean = false;
     currentRoute: string;
 
-    constructor(private animate: AnimationService, private _router: Router, private location: Location) {
+    constructor(private animate: AnimationService, private router: Router, private location: Location) {
         animate.loaderAnnounced$.subscribe(
             (value: boolean) => {
             if (value) {
@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
             }
         });
 
-         _router.events.subscribe((event) => {
+         router.events.subscribe((event) => {
             // Send GA tracking on NavigationEnd event. You may wish to add other
             // logic here too or change which event to work with
             if (event instanceof NavigationEnd) {
