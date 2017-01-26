@@ -57,9 +57,11 @@ app-projects {
         }
 
         @media screen and (min-width: $tab) {
-            display: inline-block;
-            width: 33%;
+            display: inline;
+            width: 30%;
             padding: 10px;
+            float: left;
+            margin-bottom: 50px;
         }
 
         img {
