@@ -50,16 +50,17 @@ app-projects {
 
         &:not(:last-child) {
             margin-bottom: 20px;
-
-            @media screen and (min-width: $tab) {
-                margin-bottom: 0;
-            }
         }
 
         @media screen and (min-width: $tab) {
-            display: inline-block;
-            width: 33%;
+            display: inline;
+            width: 47%;
             padding: 10px;
+            float: left;
+        }
+
+        @media screen and (min-width: $desktop) {
+            width: 30%;
         }
 
         img {
