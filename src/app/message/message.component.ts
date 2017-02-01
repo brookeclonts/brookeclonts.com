@@ -13,7 +13,6 @@ export class MessageComponent implements OnInit {
     constructor(private httpService: HttpService) {
         httpService.subscribeAnnounced$.subscribe(
             (value: string) => {
-                console.log(value);
             this.message = value;
             if (this.message) {
                 this.showMessage();

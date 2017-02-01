@@ -9,50 +9,18 @@
         </p>
 
         <div class="projects">
-            <div class="project">
-                <a href="http://slenderiiz-calc.com/" target="_blank">
-                    <img src="/assets/images/projects/slenderiiz-calc.jpg" alt="Slenderiiz Calculator"/>
+            <div class="project" *ngFor="let project of projects">
+                <a href="{{project.url}}" target="_blank">
+                    <img src="{{project.img}}" alt="{{project.title}}"/>
                 </a>
                 <p class="project-label">
-                    Slenderiiz Calculator
+                    {{project.title}}
                 </p>
                 <p class="project-description">
-                    is an Angular2.0 project that calculates where you're weight is at compared to where it should be at.
+                    {{project.description}}
                     <br>
                     You can view the project
-                    <a href="http://slenderiiz-calc.com/" target="_blank">
-                        here
-                    </a>
-                </p>
-            </div>
-            <div class="project">
-                <a href="https://vacationcandy.com/" target="_blank">
-                    <img src="/assets/images/projects/vacationcandy.jpg" alt="Vacationcandy"/>
-                </a>
-                <p class="project-label">
-                    VacationCandy
-                </p>
-                <p class="project-description">
-                    is an Angular1.0 project that integrates with Laravel PHP. You can book resorts through this page.
-                    <br>
-                    You can view the project
-                    <a href="https://vacationcandy.com/" target="_blank">
-                        here
-                    </a>
-                </p>
-            </div>
-            <div class="project">
-                <a href="https://rxbalm.com/" target="_blank">
-                    <img src="/assets/images/projects/rxbalm.jpg" alt="RxBalm"/>
-                </a>
-                <p class="project-label">
-                    RxBalm.com
-                </p>
-                <p class="project-description">
-                    is a Wordpress and Woocommerce site that is now being managed by the company.
-                    <br>
-                    You can view the project
-                    <a href="https://rxbalm.com/" target="_blank">
+                    <a href="{{project.url}}" target="_blank">
                         here
                     </a>
                 </p>

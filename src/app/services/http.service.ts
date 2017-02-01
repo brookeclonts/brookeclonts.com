@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
 import {IProduct} from '../interfaces/products';
+import {IProject} from '../interfaces/projects';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import {Headers, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -9,19 +10,27 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    emailURL= '/api/mailchimp';
-    productURL= 'assets/api/products.json';
+    emailURL = '/api/mailchimp';
+    productURL = 'assets/api/products.json';
+    projectURL = 'assets/api/projects.json';
     products = new BehaviorSubject<IProduct[]>([]);
+    projects = new BehaviorSubject<IProject[]>([]);
     productsAnnounced$ = this.products.asObservable();
+    projectsAnnounced$ = this.projects.asObservable();
     subscribe = new BehaviorSubject('');
     subscribeAnnounced$ = this.subscribe.asObservable();
 
     constructor(private _http: Http) {
         this.getProducts();
+        this.getProjects();
     }
 
     updateProducts(products: IProduct[]) {
         this.products.next(products);
+    }
+
+    updateProjects(value: IProject[]) {
+        this.projects.next(value);
     }
 
     sendEmailResponse(response) {
@@ -34,6 +43,13 @@ export class HttpService {
     getProducts() {
         this._http.get(this.productURL).subscribe((response) => {
             this.updateProducts(response.json());
+        });
+    }
+
+    getProjects() {
+        this._http.get(this.projectURL).subscribe((response) => {
+            console.log(response);
+            this.updateProjects(response.json());
         });
     }
 

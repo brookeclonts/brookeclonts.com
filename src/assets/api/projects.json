@@ -1,0 +1,23 @@
+[
+    {
+        "title": "Slenderiiz Calculator",
+        "id": 1,
+        "description": "is an Angular2.0 project that calculates where you're weight is at compared to where it should be at.",
+        "url": "http://slenderiiz-calc.com/",
+        "img": "/assets/images/projects/slenderiiz-calc.jpg"
+    },
+    {
+        "title": "VacationCandy",
+        "id": 2,
+        "description": "is an Angular1.0 project that integrates with Laravel PHP. You can book resorts through this page.",
+        "url": "https://vacationcandy.com/",
+        "img": "/assets/images/projects/vacationcandy.jpg"
+    },
+    {
+        "title": "RxBalm.com",
+        "id": 3,
+        "description": "is a Wordpress and Woocommerce site that is now being managed by the company.",
+        "url": "https://rxbalm.com/",
+        "img": "/assets/images/projects/rxbalm.jpg"
+    }
+]
