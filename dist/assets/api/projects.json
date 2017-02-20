@@ -14,10 +14,10 @@
         "img": "/assets/images/projects/vacationcandy.jpg"
     },
     {
-        "title": "RxBalm.com",
+        "title": "XOffice",
         "id": 3,
-        "description": "is a Wordpress and Woocommerce site that is now being managed by the company.",
-        "url": "https://rxbalm.com/",
-        "img": "/assets/images/projects/rxbalm.jpg"
+        "description": "is a development test site for ordering products.",
+        "url": "http://onlineoramalama.com/",
+        "img": "/assets/images/projects/xoffice.jpg"
     }
 ]
