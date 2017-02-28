@@ -1,6 +1,6 @@
 export interface IProject {
     title: string;
-    id: number;
+    _id: number;
     url: string;
     description: any;
 }

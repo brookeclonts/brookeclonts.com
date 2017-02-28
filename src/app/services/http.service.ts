@@ -11,8 +11,10 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class HttpService {
     emailURL = '/api/mailchimp';
-    productURL = 'assets/api/products.json';
-    projectURL = 'assets/api/projects.json';
+    // productURL = 'assets/api/products.json';
+    // projectURL = 'assets/api/projects.json';
+    productURL = '/api/books';
+    projectURL = '/api/projects';
     products = new BehaviorSubject<IProduct[]>([]);
     projects = new BehaviorSubject<IProject[]>([]);
     productsAnnounced$ = this.products.asObservable();
@@ -41,15 +43,16 @@ export class HttpService {
     }
 
     getProducts() {
-        this._http.get(this.productURL).subscribe((response) => {
-            this.updateProducts(response.json());
+        this._http.get(this.productURL).subscribe((response: any) => {
+            let res = response.json();
+            this.updateProducts(res);
         });
     }
 
     getProjects() {
-        this._http.get(this.projectURL).subscribe((response) => {
-            console.log(response);
-            this.updateProjects(response.json());
+        this._http.get(this.projectURL).subscribe((response: any) => {
+            let res = response.json();
+            this.updateProjects(res);
         });
     }
 

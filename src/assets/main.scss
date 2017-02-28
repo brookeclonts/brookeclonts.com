@@ -26,6 +26,13 @@ path {
     transition: fill 0.3s ease;
 }
 
+app-root {
+    background-color: $blue-gray;
+    height: 100vh;
+    width: 100%;
+    display: block;
+}
+
 .contain {
     margin: auto;
     max-width: $desktop;

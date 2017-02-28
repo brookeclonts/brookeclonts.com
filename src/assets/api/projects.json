@@ -19,5 +19,12 @@
         "description": "is a development test site for ordering products.",
         "url": "http://onlineoramalama.com/",
         "img": "/assets/images/projects/xoffice.jpg"
+    },
+    {
+        "title": "Employee Order Form",
+        "id": 4,
+        "description": "is an employee site for ordering products.",
+        "url": "https://brookeclonts.github.io/monthly-order/",
+        "img": "/assets/images/projects/orders.jpg"
     }
 ]
