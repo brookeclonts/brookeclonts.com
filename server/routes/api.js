@@ -37,25 +37,22 @@ router.post('/projects', (req, res) => {
     });
 });
 
-router.delete('/projects/:id'), (req, res) => {
+router.delete('/projects/:id', (req, res) => {
     var id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
-        console.log('invalid');
         return res.status(404).send();
     }
 
     Project.findByIdAndRemove(id).then((project) => {
         if (!project) {
-            console.log('didnt find');
             return res.status(404).send();
         }
         return res.status(200).send(project);
     }).catch((e) => {
-        console.log('error');
         return res.status(400).send();
     });
-}
+});
 
 router.get('/books', (req, res) => {
     Book.find().then((books) => {
@@ -82,7 +79,7 @@ router.post('/books', (req, res) => {
     });
 });
 
-router.delete('/books/:id'), (req, res) => {
+router.delete('/books/:id', (req, res) => {
     var id = req.params.id;
 
     if (!ObjectID.isValid(id)) {
@@ -97,7 +94,7 @@ router.delete('/books/:id'), (req, res) => {
     }).catch((e) => {
         return res.status(400).send();
     });
-}
+});
 
 router.post('/mailchimp', function(req, res) {
     var username = 'user'
