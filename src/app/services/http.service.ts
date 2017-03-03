@@ -11,10 +11,10 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class HttpService {
     emailURL = '/api/mailchimp';
-    productURL = 'assets/api/products.json';
-    projectURL = 'assets/api/projects.json';
-    // productURL = '/api/books';
-    // projectURL = '/api/projects';
+    // productURL = 'assets/api/products.json';
+    // projectURL = 'assets/api/projects.json';
+    productURL = '/api/books';
+    projectURL = '/api/projects';
     products = new BehaviorSubject<IProduct[]>([]);
     projects = new BehaviorSubject<IProject[]>([]);
     productsAnnounced$ = this.products.asObservable();
