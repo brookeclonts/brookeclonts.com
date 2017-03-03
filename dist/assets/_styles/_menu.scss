@@ -20,11 +20,20 @@ app-menu {
 
         a {
             color: $blue-gray;
-            font-size: 27px;
+            font-size: 20px;
             padding: 5px 20px;
         }
 
         .social-icons {
+
+            app-twitter, app-facebook, app-instagram {
+                vertical-align: top;
+            }
+
+            svg {
+                vertical-align: middle;
+            }
+
             svg path {
                 fill: $blue-gray;
             }
