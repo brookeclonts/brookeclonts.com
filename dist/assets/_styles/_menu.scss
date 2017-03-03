@@ -20,7 +20,7 @@ app-menu {
 
         a {
             color: $blue-gray;
-            font-size: 20px;
+            font-size: 27px;
             padding: 5px 20px;
         }
 
@@ -111,7 +111,7 @@ app-menu {
         top: -260px;
 
         &.open {
-            top: 58px;
+            top: 48px;
         }
 
         .mobile-link {

@@ -4,7 +4,6 @@ app-about {
     padding: 50px 0px 50px;
     text-align: center;
     height: 100%;
-    width: 100%;
 
     @media screen and (min-width: $tab) {
         padding: 0px 20px 100px;
@@ -12,13 +11,14 @@ app-about {
 
     h1 {
         font-size: 20px;
-        margin-bottom: 20px;
+        padding-bottom: 20px;
         letter-spacing: 2px;
-        margin-top: 50px;
+        padding-top: 50px;
+        margin: 0;
 
         @media screen and (min-width: $tab) {
             font-size: 38px;
-            margin-top: 160px;
+            padding-top: 160px;
         }
     }
 
@@ -29,7 +29,7 @@ app-about {
         text-align: left;
 
         @media screen and (min-width: $tab) {
-            margin-left: 20px;
+            padding: 0 20px;
         }
     }
 
@@ -44,6 +44,11 @@ app-about {
     img {
         max-height: 500px;
         padding-bottom: 20px;
+        width: 100%;
+
+        @media screen and (min-width: 375px) {
+            width: auto;
+        }
 
         @media screen and (min-width: $tab) {
             padding-bottom: 0;
