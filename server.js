@@ -13,14 +13,14 @@ const compression = require('compression')
 const app = express();
 
 // compression
-// app.use(compression());
-//
+app.use(compression());
+
 // caching
-// app.use('production', function(){
-//   var oneYear = 31557600000;
-//   app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
-//   app.use(express.errorHandler());
-// });
+app.use('production', function(){
+  var oneYear = 31557600000;
+  app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
+  app.use(express.errorHandler());
+});
 
 // Parsers for POST data
 app.use(bodyParser.json());
@@ -30,7 +30,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Set our api routes
-// app.use('/api', api);
+app.use('/api', api);
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {
