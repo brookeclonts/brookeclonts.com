@@ -10,7 +10,7 @@ const bodyParser = require('body-parser');
 // const api = require('./server/routes/api');
 
 // const compression = require('compression')
-// const app = express();
+const app = express();
 
 // compression
 // app.use(compression());
