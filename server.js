@@ -13,7 +13,7 @@ const api = require('./server/routes/api');
 const app = express();
 
 // compression
-app.use(compression());
+// app.use(compression());
 //
 // caching
 // app.use('production', function(){
