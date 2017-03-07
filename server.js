@@ -13,7 +13,7 @@ const compression = require('compression')
 const app = express();
 
 // compression
-app.use(compression());
+// app.use(compression());
 
 // caching
 // app.use('production', function(){
