@@ -9,12 +9,12 @@ const bodyParser = require('body-parser');
 // Get our API routes
 const api = require('./server/routes/api');
 
-const compression = require('compression')
+// const compression = require('compression')
 const app = express();
 
 // compression
 app.use(compression());
-
+//
 // caching
 // app.use('production', function(){
 //   var oneYear = 31557600000;
