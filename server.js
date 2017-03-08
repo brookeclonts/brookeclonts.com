@@ -9,18 +9,18 @@ const bodyParser = require('body-parser');
 // Get our API routes
 const api = require('./server/routes/api');
 
-// const compression = require('compression')
+const compression = require('compression')
 const app = express();
 
 // compression
-// app.use(compression());
+app.use(compression());
 
 // caching
-// app.use('production', function(){
-//   var oneYear = 31557600000;
-//   app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
-//   app.use(express.errorHandler());
-// });
+app.use('production', function(){
+  var oneYear = 31557600000;
+  app.use(express.static(__dirname + '/public', { maxAge: oneYear }));
+  app.use(express.errorHandler());
+});
 
 // Parsers for POST data
 app.use(bodyParser.json());
