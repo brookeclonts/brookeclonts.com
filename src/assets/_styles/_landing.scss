@@ -2,7 +2,10 @@ app-landing-page {
     background-color: white;
     display: block;
     min-height: 100vh;
-    padding-top: 160px;
+
+    @media screen and (min-width: $tab) {
+        padding-top: 160px;
+    }
 
     div {
         width: 100%;
