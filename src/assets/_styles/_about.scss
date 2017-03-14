@@ -6,7 +6,7 @@ app-about {
     height: 100%;
 
     @media screen and (min-width: $tab) {
-        padding: 0px 20px 100px;
+        padding: 0px 0px 100px;
     }
 
     h1 {
@@ -66,8 +66,9 @@ app-about {
 
         @media screen and (min-width: $tab) {
             display: flex;
-            padding: 0;
+            padding: 0 20px;
             margin-top: 50px;
+            margin-bottom: 50px;
         }
     }
 }

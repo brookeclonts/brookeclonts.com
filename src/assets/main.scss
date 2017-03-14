@@ -16,6 +16,8 @@ $home-svg-size: 400px;
 @import '/_styles/_home';
 @import '/_styles/_about';
 @import '/_styles/_projects';
+@import '/_styles/_email-submission';
+@import '/_styles/_landing';
 
 body, main {
     margin: 0;
@@ -27,8 +29,8 @@ path {
 }
 
 app-root {
-    background-color: $blue-gray;
-    height: 100vh;
+    // background-color: $blue-gray;
+    // height: 100vh;
     width: 100%;
     display: block;
 }

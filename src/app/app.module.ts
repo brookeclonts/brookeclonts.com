@@ -20,6 +20,8 @@ import { TattooComponent } from './tattoo/tattoo.component';
 import { AboutComponent } from './about/about.component';
 import { MessageComponent } from './message/message.component';
 import { ProjectsComponent } from './projects/projects.component';
+import { EmailSubmissionComponent } from './email-submission/email-submission.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ProjectsComponent } from './projects/projects.component';
     TattooComponent,
     AboutComponent,
     MessageComponent,
-    ProjectsComponent
+    ProjectsComponent,
+    EmailSubmissionComponent,
+    LandingPageComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),

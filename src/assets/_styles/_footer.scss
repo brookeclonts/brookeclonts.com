@@ -52,37 +52,6 @@ app-footer {
         margin-top: 0;
     }
 
-    form {
-        margin-right: 0;
-        max-width: 400px;
-    }
-
-    input {
-        border: solid 1px $white;
-        border-radius: 0;
-        outline: none;
-        box-shadow: none;
-        color: $white;
-        background-color: transparent;
-        width: 100%;
-        padding: 10px;
-        font-size: 16px;
-
-        &:not(:last-child) {
-            margin-bottom: 10px;
-        }
-
-        &:placeholder,
-        &::-webkit-input-placeholder,
-        &:-moz-placeholder {
-            color: $white;
-        }
-
-        &:focus {
-            outline: none;
-        }
-    }
-
     .social-icons {
         margin-top: 20px;
 
@@ -94,24 +63,6 @@ app-footer {
                     fill: $pink;
                 }
             }
-        }
-    }
-
-    .invalid {
-        margin-bottom: 5px;
-        font-style: italic;
-        color: $white;
-    }
-
-    .btn {
-        background-color: $pink;
-        color: $blue-gray;
-        width: 200px;
-        margin-top: 10px;
-
-        &:hover {
-            background-color: $white;
-            color: $blue-gray;
         }
     }
 }

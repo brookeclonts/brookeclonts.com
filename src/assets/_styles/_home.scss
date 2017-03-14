@@ -13,6 +13,10 @@ app-home {
         display: table;
         padding: 0;
 
+        @media screen and (min-width: 1200px) {
+            padding: 50px 0;
+        }
+
         h1 {
             color: $white;
             font-size: 38px;
@@ -42,7 +46,7 @@ app-home {
         vertical-align: middle;
     }
 
-    app-tattoo, svg {
+    app-tattoo, app-tattoo svg {
         display: block;
         height: 200px;
         width: 200px;
