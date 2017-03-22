@@ -6,6 +6,7 @@ var {mongoose} = require('./../db/mongoose');
 var {Project} = require('./../models/projects');
 var {Book} = require('./../models/books');
 const {ObjectID} = require('mongodb');
+require('dotenv').config();
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -106,8 +107,10 @@ router.post('/mailchimp', function(req, res) {
         json: {
             "email_address": req.body.email,
             "status": "subscribed",
-            "FNAME": req.body.fName,
-            "LNAME": req.body.lName
+            "merge_fields": {
+                "FNAME": req.body.fName,
+                "LNAME": req.body.lName
+            }
         },
         headers: {
             'Authorization': `${username} ${password}`,
