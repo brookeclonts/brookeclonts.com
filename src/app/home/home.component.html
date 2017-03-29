@@ -1,13 +1,18 @@
 <app-menu></app-menu>
 <div class="hero-banner">
     <div class="hero-content">
-        <app-tattoo id="homeTat"></app-tattoo>
-        <h1>
-            Welcome to BrookeClonts.com
-        </h1>
-        <button (click)="scrollToId('books')" class="btn">
-            See Books
-        </button>
+        <div class="banner-left banner-section">
+            <h1>
+                Welcome to BrookeClonts.com
+            </h1>
+            <!--<button (click)="scrollToId('books')" class="btn">
+                See Books
+            </button>-->
+        </div>
+        <div class="banner-right banner-section">
+            <!--<app-tattoo id="homeTat"></app-tattoo>-->
+            <app-email-submission></app-email-submission>
+        </div>
     </div>
 </div>
 

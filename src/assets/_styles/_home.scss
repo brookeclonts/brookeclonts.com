@@ -39,6 +39,25 @@ app-home {
                 color: $blue-gray;
             }
         }
+
+        .banner-section{
+            form {
+                margin: auto;
+                max-width: 300px;
+
+                .btn {
+                    border: none;
+                    font-size: 16px;
+                    color: $blue-gray;
+
+                    &[disabled] {
+                        &:hover {
+                            background-color: $pink;
+                        }
+                    }
+                }
+            }
+        }
     }
 
     .hero-content {
