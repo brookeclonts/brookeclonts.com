@@ -12,6 +12,7 @@ app-home {
         text-align: center;
         display: table;
         padding: 0;
+        overflow: hidden;
 
         @media screen and (min-width: 1200px) {
             padding: 50px 0;
@@ -22,6 +23,7 @@ app-home {
             font-size: 38px;
             margin-bottom: 30px;
             letter-spacing: 2px;
+            margin-top: 0;
 
             @media screen and (min-width: $tab) {
                 font-size: 58px;
@@ -41,9 +43,26 @@ app-home {
         }
 
         .banner-section{
+            max-width: $max-width;
+            margin: 0;
+            padding-left: 20px;
+            margin: auto;
+
+            @media screen and (min-width: $tab) {
+                text-align: left;
+            }
+
+            @media screen and (min-width: 1600px) {
+                max-width: initial;
+            }
+
             form {
                 margin: auto;
                 max-width: 300px;
+
+                @media screen and (min-width: $tab) {
+                    margin: 0;
+                }
 
                 .btn {
                     border: none;
@@ -58,24 +77,35 @@ app-home {
                 }
             }
         }
+
+        app-tattoo, app-tattoo svg {
+            display: none;
+            height: 200px;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+
+            @media screen and (min-width: $tab) {
+                height: $home-svg-size;
+                width: $home-svg-size;
+                top: -20%;
+                right: -10%;
+                position: absolute;
+                display: block;
+                opacity: 0.5;
+            }
+
+            @media screen and (min-width: 1600px) {
+                top: 20px;
+                right: 10px;
+            }
+        }
     }
 
     .hero-content {
         display: table-cell;
         vertical-align: middle;
-    }
-
-    app-tattoo, app-tattoo svg {
-        display: block;
-        height: 200px;
-        width: 200px;
-        margin: auto;
-        text-align: center;
-
-        @media screen and (min-width: $tab) {
-            height: $home-svg-size;
-            width: $home-svg-size;
-        }
+        position: relative;
     }
 
     .products-section {

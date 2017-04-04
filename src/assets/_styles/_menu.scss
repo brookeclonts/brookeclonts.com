@@ -10,6 +10,22 @@ app-menu {
         position: fixed;
     }
 
+    app-tattoo, app-tattoo svg {
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        transition: none;
+
+        path {
+            animation: none;
+            transition: none;
+        }
+
+        .st0, .st1 {
+            stroke: $blue-gray;
+        }
+    }
+
     .header-menu {
         background: $header-white;
         display: flex;

@@ -1,7 +1,9 @@
 $tab: 768px;
 $mob: 300px;
 $desktop: 1200px;
-$home-svg-size: 400px;
+$home-svg-size: 1000px;
+
+$max-width: 968px;
 
 @import '/_styles/_colors';
 @import '/_styles/_text';
