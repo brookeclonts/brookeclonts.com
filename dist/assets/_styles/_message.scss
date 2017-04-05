@@ -8,6 +8,7 @@ app-message {
         top: 50px;
         left: 10px;
         right: 10px;
+        z-index: 1;
 
         @media screen and (min-width: $tab) {
             max-width: 500px;

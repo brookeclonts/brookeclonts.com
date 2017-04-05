@@ -84,6 +84,7 @@ app-home {
             width: 200px;
             margin: auto;
             text-align: center;
+            z-index: 0;
 
             @media screen and (min-width: $tab) {
                 height: $home-svg-size;
