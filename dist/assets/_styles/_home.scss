@@ -1,0 +1,129 @@
+app-home {
+    h2 {
+        font-size: 38px;
+        margin-bottom: 20px;
+        letter-spacing: 2px;
+    }
+
+    .hero-banner {
+        background-color: $blue-gray;
+        height: 100vh;
+        width: 100vw;
+        text-align: center;
+        display: table;
+        padding: 0;
+        overflow: hidden;
+
+        @media screen and (min-width: 1200px) {
+            padding: 50px 0;
+        }
+
+        h1 {
+            color: $white;
+            font-size: 38px;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+            margin-top: 0;
+
+            @media screen and (min-width: $tab) {
+                font-size: 58px;
+            }
+        }
+
+        button.btn {
+            border: solid 1px $white;
+            color: $white;
+            font-size: 20px;
+            padding: 10px 50px;
+
+            &:hover {
+                background-color: $white;
+                color: $blue-gray;
+            }
+        }
+
+        .banner-section{
+            max-width: $max-width;
+            margin: 0;
+            padding-left: 20px;
+            margin: auto;
+
+            @media screen and (min-width: $tab) {
+                text-align: left;
+            }
+
+            @media screen and (min-width: 1600px) {
+                max-width: initial;
+            }
+
+            form {
+                margin: auto;
+                max-width: 300px;
+
+                @media screen and (min-width: $tab) {
+                    margin: 0;
+                }
+
+                .btn {
+                    border: none;
+                    font-size: 16px;
+                    color: $blue-gray;
+
+                    &[disabled] {
+                        &:hover {
+                            background-color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+
+        app-tattoo, app-tattoo svg {
+            display: none;
+            height: 200px;
+            width: 200px;
+            margin: auto;
+            text-align: center;
+
+            @media screen and (min-width: $tab) {
+                height: $home-svg-size;
+                width: $home-svg-size;
+                top: -20%;
+                right: -10%;
+                position: absolute;
+                display: block;
+                opacity: 0.5;
+            }
+
+            @media screen and (min-width: 1600px) {
+                top: 20px;
+                right: 10px;
+            }
+        }
+    }
+
+    .hero-content {
+        display: table-cell;
+        vertical-align: middle;
+        position: relative;
+    }
+
+    .products-section {
+        background-color: $green;
+        display: table;
+        height: 100vh;
+        width: 100vw;
+        margin: auto;
+        text-align: center;
+
+        .products-wrapper {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+        .status-message {
+            color: $blue-gray;
+            font-size: 20px;
+        }
+    }
+}
