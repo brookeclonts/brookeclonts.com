@@ -4,6 +4,7 @@ import {HomeComponent} from './home/home.component';
 import {AboutComponent} from './about/about.component';
 import {ProjectsComponent} from './projects/projects.component';
 import {LandingPageComponent} from './landing-page/landing-page.component';
+import {SitemapComponent} from './sitemap/sitemap.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -11,5 +12,6 @@ export const ROUTES: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'landing', component: LandingPageComponent },
     { path: 'projects', component: ProjectsComponent },
+    { path: 'sitemap', component: SitemapComponent },
     { path: '**', redirectTo: '', pathMatch: 'full' }
 ];

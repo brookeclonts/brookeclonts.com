@@ -26,10 +26,27 @@ app-about {
         font-size: 14px;
         line-height: 1.5;
         margin: 0;
+        margin-bottom: 10px;
+        text-align: left;
+
+        a {
+            color: $dark-pink;
+
+            &:hover {
+                color: $green;
+            }
+        }
+    }
+
+    .about-content-wrapper {
         text-align: left;
 
         @media screen and (min-width: $tab) {
             padding: 0 20px;
+        }
+
+        .fb_iframe_widget {
+            margin-top: 10px;
         }
     }
 

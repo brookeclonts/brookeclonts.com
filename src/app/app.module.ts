@@ -22,6 +22,7 @@ import { MessageComponent } from './message/message.component';
 import { ProjectsComponent } from './projects/projects.component';
 import { EmailSubmissionComponent } from './email-submission/email-submission.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { SitemapComponent } from './sitemap/sitemap.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     MessageComponent,
     ProjectsComponent,
     EmailSubmissionComponent,
-    LandingPageComponent
+    LandingPageComponent,
+    SitemapComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),

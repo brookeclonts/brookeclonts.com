@@ -137,6 +137,7 @@ app-menu {
 
         &.open {
             top: 48px;
+            z-index: 1;
         }
 
         .mobile-link {
