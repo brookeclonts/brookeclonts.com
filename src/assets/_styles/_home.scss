@@ -44,12 +44,12 @@ app-home {
 
         .banner-section{
             max-width: $max-width;
-            margin: 0;
-            padding-left: 20px;
+            // margin: 0;
             margin: auto;
 
             @media screen and (min-width: $tab) {
                 text-align: left;
+                padding-left: 20px;
             }
 
             @media screen and (min-width: 1600px) {
