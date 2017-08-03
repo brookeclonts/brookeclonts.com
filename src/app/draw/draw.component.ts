@@ -71,7 +71,10 @@ export class DrawComponent implements OnInit {
     });
     canvas.addEventListener('touchend', () => isDrawing = false);
     canvas.addEventListener('touchcancel', () => isDrawing = false);
-    canvas.addEventListener('touchmove', draw);
+    canvas.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        draw(e);
+    });
   }
 
 }
