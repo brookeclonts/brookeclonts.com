@@ -19,6 +19,12 @@ export class DrawComponent implements OnInit {
     ctx.lineWidth = 100;
     ctx.globalCompositeOperation = 'hard-lights'; // can play with blend modes
 
+    document.body.style.overflowX = 'hidden';
+    document.body.style.overflow = 'hidden';
+    document.body.style.position = 'relative';
+    document.body.style.margin = '0';
+    document.body.style.padding = '0';
+
     let isDrawing = false;
     let lastX = 0;
     let lastY = 0;
