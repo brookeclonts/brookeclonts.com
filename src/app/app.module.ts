@@ -23,6 +23,7 @@ import { ProjectsComponent } from './projects/projects.component';
 import { EmailSubmissionComponent } from './email-submission/email-submission.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SitemapComponent } from './sitemap/sitemap.component';
+import { DrawComponent } from './draw/draw.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { SitemapComponent } from './sitemap/sitemap.component';
     ProjectsComponent,
     EmailSubmissionComponent,
     LandingPageComponent,
-    SitemapComponent
+    SitemapComponent,
+    DrawComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
