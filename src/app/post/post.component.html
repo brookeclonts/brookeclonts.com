@@ -1,0 +1,14 @@
+<div class="blog-post">
+    <h1>
+        {{post?.title}}
+    </h1>
+    <div [innerHTML]="post?.body">
+    </div>
+</div>
+<div class="blog-subscription">
+    <a routerLink="/landing">
+        <div class="subscribe">
+            subscribe
+        </div>
+    </a>
+</div>

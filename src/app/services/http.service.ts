@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Http, Response} from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+import 'rxjs/add/observable/throw';
 import {IProduct} from '../interfaces/products';
 import {IProject} from '../interfaces/projects';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -10,11 +11,14 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    emailURL = '/api/mailchimp';
+    // path = '/';
+    path = 'http://localhost:3000/';
+    emailURL = `${this.path}api/mailchimp`;
+    postsUrl = `${this.path}api/blogposts`;
     // productURL = 'assets/api/products.json';
     // projectURL = 'assets/api/projects.json';
-    productURL = '/api/books';
-    projectURL = '/api/projects';
+    productURL = `${this.path}api/books`;
+    projectURL = `${this.path}api/projects`;
     products = new BehaviorSubject<IProduct[]>([]);
     projects = new BehaviorSubject<IProject[]>([]);
     productsAnnounced$ = this.products.asObservable();
@@ -49,6 +53,22 @@ export class HttpService {
         });
     }
 
+    getBlogPosts() {
+        return this._http.get(this.postsUrl)
+            .map(res => res.json())
+            .catch((e: any): Observable<any> => {
+                return this.handleError(e);
+            });
+    }
+
+    getBlogPost(title) {
+        return this._http.get(`${this.postsUrl}/${encodeURIComponent(title)}`)
+            .map(res => res.json())
+            .catch((e: any): Observable<any> => {
+                return this.handleError(e);
+            });
+    }
+
     getProjects() {
         this._http.get(this.projectURL).subscribe((response: any) => {
             let res = response.json();
@@ -76,5 +96,9 @@ export class HttpService {
         return this._http.post(this.emailURL, params, {headers: headers})
             .map(res => res.json())
             .catch(res => res.json());
+    }
+
+    handleError (error: Response, msg?) {
+        return Observable.throw(error);
     }
 }

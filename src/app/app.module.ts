@@ -14,8 +14,9 @@ import { TwitterComponent } from './twitter/twitter.component';
 import { InstagramComponent } from './instagram/instagram.component';
 import { HomeComponent } from './home/home.component';
 
-import {AnimationService} from './services/animation.service';
-import {HttpService} from './services/http.service';
+import { AnimationService } from './services/animation.service';
+import { HttpService } from './services/http.service';
+import { BlogPostsService } from './services/blog-posts.service';
 import { TattooComponent } from './tattoo/tattoo.component';
 import { AboutComponent } from './about/about.component';
 import { MessageComponent } from './message/message.component';
@@ -24,6 +25,8 @@ import { EmailSubmissionComponent } from './email-submission/email-submission.co
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { SitemapComponent } from './sitemap/sitemap.component';
 import { DrawComponent } from './draw/draw.component';
+import { PostComponent } from './post/post.component';
+import { BlogComponent } from './blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { DrawComponent } from './draw/draw.component';
     EmailSubmissionComponent,
     LandingPageComponent,
     SitemapComponent,
-    DrawComponent
+    DrawComponent,
+    PostComponent,
+    BlogComponent
   ],
   imports: [
     RouterModule.forRoot(ROUTES),
@@ -50,7 +55,7 @@ import { DrawComponent } from './draw/draw.component';
     JsonpModule,
     HttpModule
   ],
-  providers: [AnimationService, HttpService],
+  providers: [AnimationService, HttpService, BlogPostsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,8 +5,32 @@ const request = require('request');
 var {mongoose} = require('./../db/mongoose');
 var {Project} = require('./../models/projects');
 var {Book} = require('./../models/books');
+var {BlogPost} = require('./../models/blog-posts');
 const {ObjectID} = require('mongodb');
 require('dotenv').config();
+
+// CORS
+var env = process.env.NODE_ENV || 'development';
+
+if (env === 'development' || env === 'test') {
+    var cors = require('cors');
+    // var whitelist = [
+    //     'http://localhost:3000', 'http://localhost:4200'
+    // ];
+    var corsOptions = {
+        // exposedHeaders: ['x-auth'],
+        // origin: function (origin, callback) {
+        //     if (whitelist.indexOf(origin) !== -1) {
+        //         callback(null, true)
+        //     } else {
+        //         callback(new Error('Not allowed by CORS'))
+        //     }
+        // },
+        origin: '*',
+        credentials: true
+    }
+    router.all('*', cors(corsOptions));
+}
 
 /* GET api listing. */
 router.get('/', (req, res) => {
@@ -17,6 +41,25 @@ router.get('/projects', (req, res) => {
     Project.find().then((projects) => {
         res.setHeader('content-type', 'application/json');
         res.status(200).send(projects);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
+router.get('/blogposts', (req, res) => {
+    BlogPost.find().then((posts) => {
+        res.setHeader('content-type', 'application/json');
+        res.status(200).send(posts);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
+router.get('/blogposts/:title', (req, res) => {
+    var title = req.params.title;
+    BlogPost.findOne({title: title}).then((post) => {
+        res.setHeader('content-type', 'application/json');
+        res.status(200).send(post);
     }, (e) => {
         res.status(400).send(e);
     });
