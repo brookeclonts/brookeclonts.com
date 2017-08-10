@@ -1,0 +1,57 @@
+app-post {
+    padding-bottom: 50px;
+    text-align: center;
+
+    h1 {
+        font-size: 20px;
+        padding-bottom: 20px;
+        padding-top: 30px;
+        letter-spacing: 2px;
+        margin: 0;
+        text-align: center;
+
+        @media screen and (min-width: $tab) {
+            font-size: 38px;
+        }
+    }
+
+    .blog-post {
+        display: block;
+        margin: auto;
+        max-width: $desktop;
+        padding: 20px;
+
+        div {
+            text-align: left;
+        }
+    }
+
+    .blog-post-img {
+        max-width: 500px;
+        padding-top: 50px;
+
+        @media screen and (min-width: $tab) {
+            padding-top: 80px;
+        }
+    }
+
+    .blog-subscription {
+        display: block;
+        text-align: center;
+        padding: 50px 0;
+        margin: auto;
+        max-width: $desktop;
+    }
+
+    .subscribe {
+        display: inline-block;
+        margin: auto;
+        padding: 20px 40px;
+        background-color: $green;
+        color: $white;
+        text-transform: uppercase;
+        box-sizing: border-box;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+}

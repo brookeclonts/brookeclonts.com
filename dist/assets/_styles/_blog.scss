@@ -1,0 +1,76 @@
+app-blog {
+    h1 {
+        font-size: 20px;
+        padding-bottom: 20px;
+        letter-spacing: 2px;
+        padding-top: 50px;
+        margin: 0;
+        text-align: center;
+
+        @media screen and (min-width: $tab) {
+            font-size: 38px;
+            padding-top: 160px;
+        }
+    }
+
+    .blog {
+        display: block;
+        margin: auto;
+        max-width: $desktop;
+        padding: 20px;
+
+        .blog-post {
+            display: block;
+            padding: 0px 0 50px 0px;
+
+            @media screen and (min-width: $tab) {
+                padding: 10px 0;
+            }
+
+            .img-wrapper, .post-content {
+                @media screen and (min-width: $tab) {
+                    display: inline-block;
+                }
+            }
+
+            img {
+                padding: 0 20px;
+                width: 100%;
+                max-width: 400px;
+                box-sizing: border-box;
+
+                @media screen and (min-width: $tab) {
+                    padding: 0;
+                }
+            }
+
+            .img-wrapper {
+                @media screen and (min-width: $tab) {
+                    width: 15%;
+                }
+            }
+
+            .post-content {
+                display: inline-block;
+                padding-left: 20px;
+                vertical-align: top;
+
+                @media screen and (min-width: $tab) {
+                    width: 80%;
+                }
+
+                .title {
+                    font-size: 18px;
+                }
+
+                .link {
+                    color: $green;
+
+                    &:hover {
+                        color: $pink;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,171 @@
+app-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    vertical-align: middle;
+    width: 100%;
+
+    &.fixed {
+        position: fixed;
+    }
+
+    app-tattoo, app-tattoo svg {
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        transition: none;
+
+        path {
+            animation: none;
+            transition: none;
+        }
+
+        .st0, .st1 {
+            stroke: $blue-gray;
+        }
+    }
+
+    .header-menu {
+        background: $header-white;
+        display: flex;
+        padding: 10px 0;
+        position: absolute;
+        width: 100%;
+        z-index: 5;
+
+        a {
+            color: $blue-gray;
+            font-size: 20px;
+            padding: 5px 20px;
+        }
+
+        .social-icons {
+
+            app-twitter, app-facebook, app-instagram {
+                vertical-align: top;
+            }
+
+            svg {
+                vertical-align: middle;
+            }
+
+            svg path {
+                fill: $blue-gray;
+            }
+        }
+
+        .logo-wrapper {
+            float: left;
+
+            a {
+                font-family: $header-font;
+                font-size: 20px;
+                letter-spacing: 2px;
+
+                @media screen and (min-width: $tab) {
+                    font-size: 38px;
+                }
+            }
+        }
+
+        .links {
+            display: inline-flex;
+            margin-left: auto;
+            vertical-align: middle;
+        }
+
+        .mobile-icon {
+            height: 28px;
+            width: 28px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+            padding-right: 20px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            .menu-icon {
+                background: $blue-gray;
+                display: block;
+                margin: 3px;
+                height: 3px;
+                width: 30px;
+                border-radius: 12px;
+                opacity: 1;
+                transform: rotate(0deg);
+                transform-origin: left center;
+                transition: .25s ease-in-out;
+            }
+
+            &.open {
+                .menu-icon {
+                    &:nth-child(1) {
+                        transform: rotate(39deg);
+                    }
+
+                    &:nth-child(2) {
+                        width: 0%;
+                        opacity: 0;
+                    }
+
+                    &:nth-child(3) {
+                        transform: rotate(-39deg);
+                    }
+                }
+            }
+        }
+    }
+
+    .mobile-links {
+        background-color: $pink;
+        color: $blue-gray;
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        padding-top: 20px;
+        padding-bottom: 30px;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        transition: all 0.5s ease;
+        top: -260px;
+
+        &.open {
+            top: 48px;
+            z-index: 1;
+        }
+
+        .mobile-link {
+            padding: 10px 0;
+
+            a {
+                color: $blue-gray;
+
+                &:hover {
+                    color: $green;
+                }
+            }
+        }
+
+        .social-icons {
+            svg {
+                margin: 5px;
+            }
+        }
+    }
+
+    .social-icons {
+        svg path {
+            fill: $blue-gray;
+
+            &:hover {
+                fill: $green;
+            }
+        }
+    }
+}

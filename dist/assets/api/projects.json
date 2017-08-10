@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Slenderiiz Calculator",
+        "id": 1,
+        "description": "is an Angular2.0 project that calculates where you're weight is at compared to where it should be at.",
+        "url": "http://slenderiiz-calc.com/",
+        "img": "/assets/images/projects/slenderiiz-calc.jpg"
+    },
+    {
+        "title": "VacationCandy",
+        "id": 2,
+        "description": "is an Angular1.0 project that integrates with Laravel PHP. You can book resorts through this page.",
+        "url": "https://vacationcandy.com/",
+        "img": "/assets/images/projects/vacationcandy.jpg"
+    },
+    {
+        "title": "XOffice",
+        "id": 3,
+        "description": "is a development test site for ordering products.",
+        "url": "http://onlineoramalama.com/",
+        "img": "/assets/images/projects/xoffice.jpg"
+    },
+    {
+        "title": "Employee Order Form",
+        "id": 4,
+        "description": "is an employee site for ordering products.",
+        "url": "https://brookeclonts.github.io/monthly-order/",
+        "img": "/assets/images/projects/orders.jpg"
+    }
+]
