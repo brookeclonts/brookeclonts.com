@@ -11,8 +11,8 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    // path = '/';
-    path = 'http://localhost:3000/';
+    path = '/';
+    // path = 'http://localhost:3000/';
     emailURL = `${this.path}api/mailchimp`;
     postsUrl = `${this.path}api/blogposts`;
     instagramUrl = `${this.path}api/instagram`;
