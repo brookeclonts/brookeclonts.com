@@ -15,7 +15,7 @@
 </div>
 
 <div class="products-section" id="books">
-    <div class="products-wrapper">
+    <div class="products-wrapper wrapper">
         <h2>Books</h2>
         <div class="product" *ngFor="let book of books">
             <img src="{{book.imageUrl}}" alt="{{book.title}}"/>
@@ -27,31 +27,39 @@
 </div>
 
 <div class="blog-section" id="blog" *ngIf="post">
-    <div class="blog-wrapper">
+    <div class="blog-wrapper wrapper">
         <h2>Latest Blog Post</h2>
         <div class="post">
             <img src="{{post.imageUrl}}" alt="{{post.title}}"/>
+            <p class="title">
+                {{post.title}}
+            </p>
+            <p class="description">
+                {{post.description}}
+            </p>
         </div>
         <a [routerLink]="['/post', post.title]">
-            <div class="blog-button">
-                See More
+            <div class="btn blog-button">
+                Read More
             </div>
         </a>
     </div>
 </div>
 
 <div class="instagram-section" id="blog" *ngIf="instagramPosts.length">
-    <div class="instagram-wrapper">
+    <div class="instagram-wrapper wrapper">
         <h2>Instagram Feed</h2>
-         <div class="product" *ngFor="let post of instagramPosts | slice:0:4; let i=index">
-            <img src="{{post.images.low_resolution.url}}" alt="Brooke Clonts Instagram"/>
-            <p class="status-message">
-                {{post.caption.text}}
-            </p>
+        <div class="feed-wrapper">
+            <div class="feed" *ngFor="let post of instagramPosts | slice:0:4; let i=index">
+                <img src="{{post.images.low_resolution.url}}" alt="Brooke Clonts Instagram"/>
+                <p class="message">
+                    {{post.caption.text}}
+                </p>
+            </div>
         </div>
         <a href="https://www.instagram.com/brookeclontsbooks/" target="_blank">
-            <div class="blog-button">
-                Go to Page
+            <div class="btn feed-button">
+                See Page
             </div>
         </a>
     </div>
