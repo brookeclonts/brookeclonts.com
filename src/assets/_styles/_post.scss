@@ -1,8 +1,18 @@
 app-post {
     padding-bottom: 50px;
+    text-align: center;
 
     h1 {
+        font-size: 20px;
+        padding-bottom: 20px;
+        padding-top: 30px;
+        letter-spacing: 2px;
+        margin: 0;
         text-align: center;
+
+        @media screen and (min-width: $tab) {
+            font-size: 38px;
+        }
     }
 
     .blog-post {
@@ -10,6 +20,19 @@ app-post {
         margin: auto;
         max-width: $desktop;
         padding: 20px;
+
+        div {
+            text-align: left;
+        }
+    }
+
+    .blog-post-img {
+        max-width: 500px;
+        padding-top: 50px;
+
+        @media screen and (min-width: $tab) {
+            padding-top: 80px;
+        }
     }
 
     .blog-subscription {

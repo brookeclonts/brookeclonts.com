@@ -1,3 +1,4 @@
+<app-menu></app-menu>
 <h1>
     Recent Blog Posts
 </h1>
@@ -15,7 +16,7 @@
                 <p class="description">
                     {{post.description}}
                 </p>
-                <a [routerLink]="['/post', post.title]">
+                <a [routerLink]="['/post', post.title]" class="link">
                     Read Now >
                 </a>
             </div>

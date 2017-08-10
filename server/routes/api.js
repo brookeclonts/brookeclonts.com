@@ -170,5 +170,21 @@ router.post('/mailchimp', function(req, res) {
     })
 });
 
+router.get('/instagram', function(req, res) {
+    var key = process.env.INSTAGRAM_ACCESS;
+    var options = {
+        uri: `https://api.instagram.com/v1/users/self/media/recent/?access_token=${key}`,
+        method: 'GET'
+    }
+
+    request(options, function (err, result, body) {
+      if (err) {
+        res.send(err);
+        return
+      }
+      res.send(result.body);
+    })
+});
+
 
 module.exports = router;

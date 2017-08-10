@@ -25,4 +25,37 @@
         </div>
     </div>
 </div>
+
+<div class="blog-section" id="blog" *ngIf="post">
+    <div class="blog-wrapper">
+        <h2>Latest Blog Post</h2>
+        <div class="post">
+            <img src="{{post.imageUrl}}" alt="{{post.title}}"/>
+        </div>
+        <a [routerLink]="['/post', post.title]">
+            <div class="blog-button">
+                See More
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="instagram-section" id="blog" *ngIf="instagramPosts.length">
+    <div class="instagram-wrapper">
+        <h2>Instagram Feed</h2>
+         <div class="product" *ngFor="let post of instagramPosts | slice:0:4; let i=index">
+            <img src="{{post.images.low_resolution.url}}" alt="Brooke Clonts Instagram"/>
+            <p class="status-message">
+                {{post.caption.text}}
+            </p>
+        </div>
+        <a href="https://www.instagram.com/brookeclontsbooks/" target="_blank">
+            <div class="blog-button">
+                Go to Page
+            </div>
+        </a>
+    </div>
+</div>
+
+
 <app-footer></app-footer>

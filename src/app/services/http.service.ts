@@ -11,10 +11,11 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class HttpService {
-    path = '/';
-    // path = 'http://localhost:3000/';
+    // path = '/';
+    path = 'http://localhost:3000/';
     emailURL = `${this.path}api/mailchimp`;
     postsUrl = `${this.path}api/blogposts`;
+    instagramUrl = `${this.path}api/instagram`;
     // productURL = 'assets/api/products.json';
     // projectURL = 'assets/api/projects.json';
     productURL = `${this.path}api/books`;
@@ -74,6 +75,19 @@ export class HttpService {
             let res = response.json();
             this.updateProjects(res);
         });
+    }
+
+    getInstagramPost() {
+        return this._http.get(this.instagramUrl)
+            .map(res => {
+                let result: any = res.json().data;
+
+                console.log(result);
+                return result;
+            })
+            .catch((e: any): Observable<any> => {
+                return this.handleError(e);
+            });
     }
 
     postEmail(obj) {

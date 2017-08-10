@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { AnimationService } from './services/animation.service';
 import { HttpService } from './services/http.service';
 import { BlogPostsService } from './services/blog-posts.service';
+import { InstagramService } from './services/instagram.service';
 import { TattooComponent } from './tattoo/tattoo.component';
 import { AboutComponent } from './about/about.component';
 import { MessageComponent } from './message/message.component';
@@ -55,7 +56,7 @@ import { BlogComponent } from './blog/blog.component';
     JsonpModule,
     HttpModule
   ],
-  providers: [AnimationService, HttpService, BlogPostsService],
+  providers: [AnimationService, HttpService, BlogPostsService, InstagramService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
