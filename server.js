@@ -2,9 +2,11 @@ require('./server/config/config');
 
 // Get dependencies
 const express = require('express');
+const morgan = require('morgan');
 const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
+// const ExpressReactRouter = require('express-react-router');
 
 // Get our API routes
 const api = require('./server/routes/api');
@@ -13,7 +15,7 @@ const compression = require('compression')
 const app = express();
 
 // compression
-app.use(compression());
+// app.use(compression());
 
 // caching
 // app.use('production', function(){
@@ -23,29 +25,33 @@ app.use(compression());
 // });
 
 // Parsers for POST data
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
-// Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+// Setup logger
+// app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
+
+// // serve static assets normally
+// app.use(express.static(__dirname + '/build/static'))
+
+// // handle every other route with index.html, which will contain
+// // a script tag to your application's JavaScript file(s).
+// app.get('*', function (request, response){
+//   response.sendFile(__dirname + '/build/index.html')
+// })
 
 // Set our api routes
-app.use('/api', api);
+// app.use('/api', api);
 
-app.get('/robots.txt', function (req, res) {
-    res.type('text/plain');
-    res.send("User-agent: *\nDisallow: /");
-});
-
-// Catch all other routes and return the index file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
-});
-
+// app.get('/robots.txt', function (req, res) {
+//     res.type('text/plain');
+//     res.send("User-agent: *\nDisallow: /");
+// });
+// 
 /**
  * Get port from environment and store in Express.
  */
-const port = process.env.PORT || '3000';
+const port = process.env.PORT || '3001';
 app.set('port', port);
 
 /**
@@ -57,3 +63,4 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 server.listen(port, () => console.log(`API running on localhost:${port}`));
+module.exports = app;

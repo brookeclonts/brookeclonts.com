@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for Icons/Twitter.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">All files</a> / <a href="index.html">Icons</a> Twitter.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>3/3</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/0</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>2/2</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>3/3</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { PropTypes, Component } from 'react';
+&nbsp;
+class Twitter extends Component {
+    // PropTypes = {
+    //     size: String,
+    //     fill: String
+    // };
+&nbsp;
+    constructor(props) {
+        super(props);
+    }
+&nbsp;
+    render() {
+        let { size, fill } = this.props;
+&nbsp;
+        return (
+            &lt;svg 
+                width={size}
+                height={size}
+                viewBox="0 0 35 29" 
+                version="1.1" 
+                xmlns="http://www.w3.org/2000/svg" 
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+            &gt;
+                &lt;g 
+                    id="Page-1" 
+                    stroke="none" 
+                    strokeWidth="1" 
+                    fillRule="evenodd"
+                &gt;
+                    &lt;g 
+                        id="Desktop-HD" 
+                        transform="translate(-699.000000, -11661.000000)" 
+                        fill="#FFFFFF"
+                    &gt;
+                        &lt;g 
+                            id="footer" 
+                            transform="translate(-3.000000, 11446.000000)"
+                        &gt;
+                            &lt;path 
+                                fill={fill}
+                                d="M735.839992,215.536125 C734.459261,216.374227 732.933581,216.983756 731.302906,217.309891 C730.003941,215.888277 728.14748,215 726.092179,215 C722.152542,215 718.955304,218.278075 718.955304,222.320848 C718.955304,222.895069 719.016629,223.451636 719.139278,223.987761 C713.205665,223.682067 707.945692,220.77101 704.422319,216.336131 C703.807215,217.42139 703.455993,218.680401 703.455993,220.021178 C703.455993,222.559642 704.715933,224.800775 706.63279,226.113678 C705.463907,226.07837 704.360995,225.745731 703.396527,225.201243 L703.396527,225.290442 C703.396527,228.838903 705.857871,231.799205 709.126654,232.469129 C708.528275,232.641024 707.896447,232.727436 707.245106,232.727436 C706.785172,232.727436 706.336388,232.682836 705.901541,232.597353 C706.810259,235.504694 709.445356,237.622249 712.57012,237.678927 C710.127359,239.643171 707.047195,240.813912 703.70315,240.813912 C703.127071,240.813912 702.557496,240.780462 702,240.713563 C705.159143,242.787447 708.913877,244 712.944571,244 C726.078242,244 733.257858,232.846368 733.257858,223.171029 C733.257858,222.852328 733.252283,222.534555 733.240204,222.222358 C734.634872,221.190061 735.846496,219.901317 736.799814,218.433245 C735.521291,219.014899 734.144276,219.408862 732.700362,219.585403 C734.174938,218.680401 735.306655,217.245779 735.839992,215.536125" 
+                                id="Twitter"
+                            &gt;&lt;/path&gt;
+                        &lt;/g&gt;
+                    &lt;/g&gt;
+                &lt;/g&gt;
+            &lt;/svg&gt;
+        );
+    }
+}
+&nbsp;
+export default Twitter;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Fri Jan 12 2018 16:52:50 GMT-0700 (MST)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
