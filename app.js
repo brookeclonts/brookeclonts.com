@@ -5,7 +5,10 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-require('./config/config');
+var env = process.env.NODE_ENV || 'development';
+if (env === 'test' || env == 'development') {
+  require('./config/config');
+}
 
 var index = require('./routes/index');
 require('./routes/api/cors');
