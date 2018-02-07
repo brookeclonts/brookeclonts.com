@@ -25,8 +25,9 @@ var projectSchema = new Schema({
     }
 });
 
-projectSchema.set('collection', 'Project');
+// projects is the name of the db/ collection in heroku
+projectSchema.set('collection', 'projects');
 
-var Project = mongoose.model('Project', projectSchema);
+var Project = mongoose.model('projects', projectSchema);
 
 module.exports = Project;

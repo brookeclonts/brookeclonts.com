@@ -28,8 +28,9 @@ var bookSchema = new Schema({
     }
 });
 
-bookSchema.set('collection', 'Book');
+// books is the name of the db/ collection in heroku
+bookSchema.set('collection', 'books');
 
-var Book = mongoose.model('Book', bookSchema);
+var Book = mongoose.model('books', bookSchema);
 
 module.exports = Book;
