@@ -27,8 +27,9 @@ var blogPostSchema = new Schema({
     }
 });
 
-blogPostSchema.set('collection', 'BlogPost');
+// blogposts is the name of the db in heroku
+blogPostSchema.set('collection', 'blogposts');
 
-var BlogPost = mongoose.model('BlogPost', blogPostSchema);
+var BlogPost = mongoose.model('blogposts', blogPostSchema);
 
 module.exports = BlogPost;
