@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { css } from 'emotion';
+import { colors } from '../constants/colors.js';
+import { breakpoints } from '../constants/breakpoints.js';
 
 class Projects extends Component {
     state={
@@ -18,7 +20,6 @@ class Projects extends Component {
 
     render() {
         const { projects } = this.state;
-        const { colors, breakpoints } = this.props;
 
         return (
             <div
