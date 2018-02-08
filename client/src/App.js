@@ -13,6 +13,8 @@ import SubscriptionPage from './SubscriptionPage/SubscriptionPage';
 import Message from './Message/Message';
 import Draw from './Draw/Draw';
 import WrongPage from './404/404';
+import Login from './Login/Login';
+import AdminPortal from './AdminPortal/AdminPortal';
 
 class App extends Component {
 
@@ -52,6 +54,8 @@ class App extends Component {
           <Route path="/sitemap" exact component={Sitemap}/>
           <Route path="/draw" exact component={Draw}/>
           <Route path="/post/:title" render={location => (<BlogPost location={location}/>)}/>
+          <Route path="/login" exact render={() => (<Login openMessage={this.openMessage}/>)}/>
+          <Route path="/admin-portal" component={AdminPortal}/>
           <Route component={WrongPage}/>
         </Switch>
         <Footer openMessage={this.openMessage}/>
