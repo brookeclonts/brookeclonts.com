@@ -56,7 +56,7 @@ class Login extends Component {
                     this.setState({name: '', password: ''});
                     history.push('/admin-portal')
                 } else {
-                    this.props.openMessage(`Error! ${data.body.detail ? data.body.detail : data.body.errors ? data.body.errors[0].message : ''}`); 
+                    this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
                 }
             })
             .catch((err)=> {

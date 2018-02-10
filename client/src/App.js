@@ -37,7 +37,7 @@ class App extends Component {
   render() {
 
     return (
-      <div className="App">
+      <div className="App" style={{'overflow': 'hidden'}}>
         <Header/>
         {this.state.showMessage ? (
           <Message message={this.state.httpMessage} onClose={this.closeMessage}/>

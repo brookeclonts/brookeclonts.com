@@ -41,6 +41,8 @@ class Blog extends Component {
     return (
       <div
         className={css`
+            min-height: 100vh;
+            
             & p, & a {
                 text-decoration: none;
                 color: black;

@@ -403,6 +403,7 @@ class Home extends Component {
         className={css`
           display: flex;
           background-color: ${colors.green};
+          padding: 50px 0;
         `}
         id="instagram" 
       >

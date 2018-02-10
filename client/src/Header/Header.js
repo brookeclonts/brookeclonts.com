@@ -68,7 +68,7 @@ class Header extends Component {
             position: absolute;
             width: 100%;
             transition: all 0.5s ease;
-            top: ${this.state.mobileMenuOpen ? '48px' : '-260px'};
+            top: ${this.state.mobileMenuOpen ? '48px' : '-280px'};
             z-index: ${this.state.mobileMenuOpen ? 1 : 0};
         `;
 
@@ -279,7 +279,7 @@ class Header extends Component {
                             z-index: ${this.state.mobileMenuOpen ? 1 : 0};
                             width: 100%;
                             transition: all 0.5s ease;
-                            top: ${this.state.mobileMenuOpen ? '48px' : '-260px'};
+                            top: ${this.state.mobileMenuOpen ? '48px' : '-300px'};
 
                             @media (min-width: ${breakpoints.tab}) {
                                 display: none;
