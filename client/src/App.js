@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route, Router } from 'react-router-dom'
 import Home from './Home/Home';
 import About from './About/About';
 import Book from './Book/Book';
@@ -15,12 +15,17 @@ import Draw from './Draw/Draw';
 import WrongPage from './404/404';
 import Login from './Login/Login';
 import AdminPortal from './AdminPortal/AdminPortal';
+import { createBrowserHistory } from 'history';
+const history = createBrowserHistory();
 
 class App extends Component {
 
+  token;
+
   state = {
     httpMessage : '',
-    showMessage: false
+    showMessage: false,
+    token: ''
   }
 
   closeMessage = () => {
@@ -33,33 +38,49 @@ class App extends Component {
       showMessage: true,
     });
   }
+
+  updateToken = (token) => { 
+    this.token = token;
+    if (token) {
+      localStorage.setItem('brookeclonts-token', token);
+    }
+  }
+
+  componentDidMount () {
+    const token = window.localStorage.getItem('brookeclonts-token');
+    if (token) {
+      this.token = token;
+    }
+  }
   
   render() {
 
     return (
-      <div className="App" style={{'overflow': 'hidden'}}>
-        <Header/>
-        {this.state.showMessage ? (
-          <Message message={this.state.httpMessage} onClose={this.closeMessage}/>
-        ) : (
-          ''
-        )}
-        <Switch>
-          <Route path="/" exact component={Home}/>
-          <Route path="/books" exact render={location => (<Home location={location}/>)}/>
-          <Route path="/about" exact component={About}/>
-          <Route path="/landing" exact render={() => (<SubscriptionPage openMessage={this.openMessage}/>)}/>
-          <Route path="/blog" exact component={Blog}/>
-          <Route path="/projects" exact component={Projects}/>
-          <Route path="/sitemap" exact component={Sitemap}/>
-          <Route path="/draw" exact component={Draw}/>
-          <Route path="/post/:title" render={location => (<BlogPost location={location}/>)}/>
-          <Route path="/login" exact render={() => (<Login openMessage={this.openMessage}/>)}/>
-          <Route path="/admin-portal" component={AdminPortal}/>
-          <Route component={WrongPage}/>
-        </Switch>
-        <Footer openMessage={this.openMessage}/>
-      </div>
+      <Router history={history}>
+        <div className="App" style={{'overflow': 'hidden'}}>
+          <Header/>
+          {this.state.showMessage ? (
+            <Message message={this.state.httpMessage} onClose={this.closeMessage}/>
+          ) : (
+            ''
+          )}
+          <Switch>
+            <Route path="/" exact component={Home}/>
+            <Route path="/books" exact render={location => (<Home location={location}/>)}/>
+            <Route path="/about" exact component={About}/>
+            <Route path="/landing" exact render={() => (<SubscriptionPage openMessage={this.openMessage}/>)}/>
+            <Route path="/blog" exact component={Blog}/>
+            <Route path="/projects" exact component={Projects}/>
+            <Route path="/sitemap" exact component={Sitemap}/>
+            <Route path="/draw" exact component={Draw}/>
+            <Route path="/post/:title" render={location => (<BlogPost location={location}/>)}/>
+            <Route path="/login" exact render={() => (<Login openMessage={this.openMessage} history={history} updateToken={this.updateToken}/>)}/>
+            <Route path="/admin-portal" render={location => (<AdminPortal token={this.token}/>)}/>
+            <Route component={WrongPage}/>
+          </Switch>
+          <Footer openMessage={this.openMessage}/>
+        </div>
+      </Router>
     );
   }
 }

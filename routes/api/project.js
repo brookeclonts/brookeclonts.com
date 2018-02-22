@@ -4,6 +4,7 @@ const mongoose = require('../../db/mongoose');
 const Project = require('../../models/projects');
 const ObjectID = require('mongodb');
 const router = express.Router();
+const authenticate = require('../middleware/authenticate');
 
 router.get('/', (req, res) => {
     Project.find().then((projects) => {
@@ -14,7 +15,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
     let proj = req.body;
     var project = new Project({
         title: proj.title,

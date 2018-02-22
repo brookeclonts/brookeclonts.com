@@ -6,7 +6,8 @@ const ObjectID = require('mongodb');
 const router = express.Router();
 
 router.get('/', (req, res) => {
-    BlogPost.find().then((posts) => {
+    BlogPost.find()
+    .then((posts) => {
         res.setHeader('content-type', 'application/json');
         res.status(200).send(posts);
     }, (e) => {

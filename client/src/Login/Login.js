@@ -16,20 +16,15 @@ class Login extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    removeSpecialCharac(value) {
-        return value ? value.replace(/[^a-zA-Z ]/g, '') : '';
-    }
-
     handlePasswordChange(event) {
-        this.setState({password: this.removeSpecialCharac(event.target.value)});
+        this.setState({password: event.target.value});
     }
 
     handleEmailChange(event) {
         this.setState({email: event.target.value});
     }
 
-    handleSubmit(event) {
-        const { history } = this.props;
+    handleSubmit = (event) => {
         event.preventDefault();
         if (!validator.isEmail(this.state.email)) {
             this.props.openMessage(`Error! Your email is not valid.`); 
@@ -51,17 +46,19 @@ class Login extends Component {
             .then((res) => res.json())
             .then((data) =>  {
                 if (
-                    data.statusCode === 200
+                    data.success
                 ) {
                     this.setState({name: '', password: ''});
-                    history.push('/admin-portal')
+                    if (data.token) {
+                        this.props.updateToken(data.token);
+                        this.props.history.push('/admin-portal');
+                    } else {
+                        this.props.openMessage(`Error! No token received.`); 
+                    }
                 } else {
                     this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
                 }
-            })
-            .catch((err)=> {
-                this.props.openMessage(`Error! Something went wrong. Please try again.`);
-            })
+            });
     }
 
     render() {

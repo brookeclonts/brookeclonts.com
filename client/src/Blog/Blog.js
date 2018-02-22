@@ -168,12 +168,10 @@ class Blog extends Component {
             {
                 posts
                 .sort((a, b) => {
-                    const aDate = new Date( parseInt( a._id.toString().substring(0,8), 16 ) * 1000 );
-                    const bDate = new Date( parseInt( b._id.toString().substring(0,8), 16 ) * 1000 );
                     if (this.state.sort === 'oldest') {
-                        return aDate > bDate;
+                        return a._id > b._id;
                     } else {
-                        return aDate < bDate;
+                        return a._id < b._id;
                     }
                 })
                 .filter(post => {
