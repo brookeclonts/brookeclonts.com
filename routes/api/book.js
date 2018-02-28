@@ -30,6 +30,16 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/admin', (req, res) => {
+    Book.find({}, { title: 1 })
+    .then((books) => {
+        res.setHeader('content-type', 'application/json');
+        res.status(200).send(books);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 router.delete('/:id', (req, res) => {
     var id = req.params.id;
 

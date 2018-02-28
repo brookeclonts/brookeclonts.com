@@ -75,7 +75,7 @@ class App extends Component {
             <Route path="/draw" exact component={Draw}/>
             <Route path="/post/:title" render={location => (<BlogPost location={location}/>)}/>
             <Route path="/login" exact render={() => (<Login openMessage={this.openMessage} history={history} updateToken={this.updateToken}/>)}/>
-            <Route path="/admin-portal" render={location => (<AdminPortal token={this.token}/>)}/>
+            <Route path="/admin-portal" render={location => (<AdminPortal token={this.token} openMessage={this.openMessage}/>)}/>
             <Route component={WrongPage}/>
           </Switch>
           <Footer openMessage={this.openMessage}/>

@@ -31,6 +31,16 @@ router.post('/', authenticate, (req, res) => {
     });
 });
 
+router.get('/admin', (req, res) => {
+    Project.find({}, { title: 1 })
+    .then((projects) => {
+        res.setHeader('content-type', 'application/json');
+        res.status(200).send(projects);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 router.delete('/:id', (req, res) => {
     var id = req.params.id;
 

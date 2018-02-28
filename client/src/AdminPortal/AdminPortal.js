@@ -14,11 +14,13 @@ class AdminPortal extends Component {
         super(props);
 
         this.state={
+            edit: '',
             showProjectForm: false, 
             showBlogForm: false, 
             showBookForm: false,
             editOptions: {},
-            objectToBeEdited: {} 
+            objectToBeEdited: {},
+            editableItemID: null,
         };
     }
 
@@ -45,40 +47,74 @@ class AdminPortal extends Component {
         });
     }
 
+    getEditOptions(url) {
+        fetch(url, {
+            method: 'GET',
+            headers : new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .then((res) => res.json())
+        .then((data) =>  {
+            if (
+                data && data.length
+            ) {
+                this.setState({'editOptions': data})
+            } else {
+                this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
+            }
+        });
+    }
+
     goBack() {
         this.setState({
             showProjectForm: false, 
             showBlogForm: false, 
             showBookForm: false, 
+            edit: ''
         });
     }
 
-    handleShowProjectForm(show, action) {
-        this.setState({'showProjectForm': show});
+    handleProjectUpload(action) {
+        this.setState({
+            'edit': action,
+            'showProjectForm': true
+        });
+
+        if (action === 'edit') {
+            this.getEditOptions('/api/projects/admin');
+        }
     }
 
-    handleShowBlogForm(show, action) {
-        this.setState({'showBlogForm': show});
+    handleBlogUpload(action) {
+        this.setState({
+            'edit': action,
+            'showBlogForm': true
+        });
+
+        if (action === 'edit') {
+            this.getEditOptions('/api/blogposts/admin');
+        }
     }
 
-    handleShowBookForm(show, action) {
-        this.setState({'showBookForm': show});
+    handleBookUpload(action) {
+        this.setState({
+            'edit': action,
+            'showBookForm': true
+        });
+
+        if (action === 'edit') {
+            this.getEditOptions('/api/books/admin');
+        }
     }
 
     render() {
-        let edit = false;
-
-        const handleEdit = (val, type) => {
-            edit = val;
-            // run function to grab potential objects to be edited. Then assign to state
-        }
+        const { edit, editOptions, editableItemID } = this.state;
 
         return (
             <div>
                 {
-                    !this.state.showBlogForm &&
-                    !this.state.showBookForm &&
-                    !this.state.showProjectForm ? 
+                    edit === '' ? 
                     (
                         <div
                             className={css`
@@ -149,12 +185,12 @@ class AdminPortal extends Component {
                                 <h2>Blog Posts</h2>
                                 <ul className="admin-blog-posts">
                                     <li>
-                                        <a onClick={() => {this.setState({showBlogForm: true})}}>
+                                        <a onClick={() => this.handleBlogUpload('upload')}>
                                             Upload 
                                         </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => handleEdit(true, 'posts')}>
+                                    <a onClick={() => this.handleBlogUpload('edit')}>
                                             Edit 
                                         </a>
                                     </li>
@@ -162,12 +198,12 @@ class AdminPortal extends Component {
                                 <h2>Projects</h2>
                                 <ul className="admin-projects">
                                     <li>
-                                        <a onClick={() => {this.setState({showProjectForm: true})}}>
+                                        <a onClick={() => this.handleProjectUpload('upload')}>
                                             Upload 
                                         </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => handleEdit(true, 'projects')}>
+                                        <a onClick={() => this.handleProjectUpload('edit')}>
                                             Edit 
                                         </a>
                                     </li>
@@ -175,52 +211,132 @@ class AdminPortal extends Component {
                                 <h2>Books</h2>
                                 <ul className="admin-books">
                                     <li>
-                                        <a onClick={() => {this.setState({showBookForm: true})}}>
+                                        <a onClick={() => this.handleBookUpload('upload')}>
                                             Upload 
                                         </a>
                                     </li>
                                     <li>
-                                        <a onClick={() => handleEdit(true, 'books')}>
+                                        <a onClick={() => this.handleBookUpload('edit')}>
                                             Edit 
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                         </div>
-                    ) : ''
-                }
-                <div>
-                    {
-                        this.state.editOptions && this.state.editOptions.length ? (
-                            <div>   
-                                List items here to choose from. Then on select pass grab object and pass it into this.state.objectToBeEdited
-                            </div>
-                        ) : ''
-                    }
-                    {
-                        this.state.showBlogForm ? (<BlogPostForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
-                    }
-                    {
-                        this.state.showProjectForm ? (<ProjectForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
-                    }
-                    {
-                        this.state.showBookForm ? (<BookForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
-                    }
-                    {
-                        this.state.showBookForm ||
-                        this.state.showProjectForm ||
-                        this.state.showBlogForm ?
-                        (
-                            <a 
+                    ) :  (
+                    <div>
+                        <div
+                            className={css`
+                                height: 100vh;
+                                width: 100vw;
+                                text-align: center;
+                            `}
+                        >
+                            <div
                                 className={css`
-                                    &:hover {
-                                        pointer: cursor;
-                                    }
+                                    margin-top: 100px;
                                 `}
-                                onClick={() => {this.goBack()}}>Go Back</a>
-                        ) : ''
-                    }
-                </div>
+                            >
+                                <h1
+                                    className={css`
+                                        font-family: Medula One,Times New Roman,serif;
+                                        color: ${colors.medGray};
+                                        font-weight: 300;
+                                    `}
+                                >
+                                { edit === 'edit' ? 'Edit Blog Post' : 'Upload Blog Post' }
+                                </h1>
+                                <div
+                                    className={css`
+                                        background-color: ${colors.blueGray}
+                                        display: inline-block;
+                                        margin: 0px auto 100px;
+                                        padding: 50px;
+                                        text-align: center;
+    
+                                        & form {
+                                            margin: auto;
+    
+                                            & input {
+                                                width: 100%;
+                                                max-width: none;
+    
+                                                &:last-child {
+                                                    margin-top: 20px;
+                                                }
+                                            }
+                                        }
+    
+                                    `}
+                                >
+                                    {
+                                        editOptions && editOptions.length && !editableItemID ? (
+                                            <ul className={css`padding: 0;`}>
+                                                {
+                                                    editOptions.map((option) => (
+                                                        <li
+                                                            key={option._id}
+                                                            className={css`
+                                                                color: white;
+                                                                text-decoration: none;
+                                                                text-align: left;
+                                                                list-style-type: none;
+
+                                                                &:hover {
+                                                                    cursor: pointer;
+                                                                }
+                                                            `}
+                                                            onClick={() => {this.setState({'editableItemID': option._id})}}
+                                                        >
+                                                            {option.title}
+                                                        </li>
+                                                    ))
+                                                }
+                                            </ul>
+                                        ) : (
+                                            <div>
+                                                {
+                                                    this.state.showBlogForm ? (<BlogPostForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                }
+                                                {
+                                                    this.state.showProjectForm ? (<ProjectForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                }
+                                                {
+                                                    this.state.showBookForm ? (<BookForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                }
+                                            </div>
+                                        )
+                                    }
+                                    {
+                                        edit !== '' ?
+                                        (
+                                            <div
+                                                className={css`
+                                                    padding-top: 50px;
+                                                `}
+                                            >
+                                                <a 
+                                                    className={css`
+                                                        color: white;
+
+                                                        &:hover {
+                                                            color: white;
+                                                            cursor: pointer;
+                                                        }
+                                                    `}
+                                                    onClick={() => {this.goBack()}}
+                                                >
+                                                    &#8592; Go Back
+                                                </a>
+                                            </div>
+                                        ) : ''
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+                
             </div>
         );
     }
