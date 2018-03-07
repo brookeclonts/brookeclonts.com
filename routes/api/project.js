@@ -31,6 +31,17 @@ router.post('/', authenticate, (req, res) => {
     });
 });
 
+router.patch('/:id', authenticate, (req, res) => {
+    const id = req.params.id;
+    const updatedValues = req.body.values;
+    Project.findOneAndUpdate({_id: id}, {$set: updatedValues}, {new: true}).then((value) => {
+        res.setHeader('content-type', 'application/json');
+        res.status(200).send(value);
+    }, (e) => {
+        res.status(400).send(e);
+    });
+});
+
 router.get('/admin', (req, res) => {
     Project.find({}, { title: 1 })
     .then((projects) => {
