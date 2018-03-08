@@ -35,7 +35,7 @@ router.get('/one', (req, res) => {
     });
 });
 
-router.get('/:title', (req, res) => {
+router.get('/title/:title', (req, res) => {
     var title = req.params.title;
     BlogPost.findOne({title: title}).then((post) => {
         res.setHeader('content-type', 'application/json');

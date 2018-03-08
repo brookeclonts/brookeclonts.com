@@ -10,7 +10,7 @@ class BlogPost extends Component {
   }
 
   componentDidMount() {
-    fetch(`/api/blogposts/${this.props.location.match.params.title}`)
+    fetch(`/api/blogposts/title/${this.props.location.match.params.title}`)
     .then(res => res.json())
     .then(post => this.setState({ post: post }));
   }
