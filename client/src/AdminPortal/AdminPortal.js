@@ -15,20 +15,17 @@ class AdminPortal extends Component {
 
         this.state={
             edit: '',
-            showProjectForm: false, 
-            showBlogForm: false, 
-            showBookForm: false,
+            formType: '', 
             editOptions: {},
             objectToBeEdited: {},
             editableItemID: null,
         };
     }
 
-    handleSubmit(method, body) {
+    handleSubmit(url, method, body) {
         const { token } = this.props;
-        // method 'POST'
 
-        fetch('/api/users', {
+        fetch(url, {
             method: method,
             headers : new Headers({
                 'Content-Type': 'application/json'
@@ -45,6 +42,28 @@ class AdminPortal extends Component {
                 this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
             }
         });
+    }
+
+    handleEditOptionSelection(id) {
+        fetch(`/api/${this.state.formType}/${id}`, {
+            method: 'GET',
+            headers : new Headers({
+                'Content-Type': 'application/json'
+            })
+        })
+        .then((res) => res.json())
+        .then((data) =>  {
+            this.setState(
+                {
+                    'editableItemID': id,
+                    objectToBeEdited: data
+                }
+            );
+        });
+    }
+
+    handleEdit() {
+        this.handleSubmit(`/api/${this.state.formType}/${this.state.editableItemID}`, this.state.edit ? 'PATCH' : 'POST', this.state.objectToBeEdited);
     }
 
     getEditOptions(url) {
@@ -68,9 +87,7 @@ class AdminPortal extends Component {
 
     goBack() {
         this.setState({
-            showProjectForm: false, 
-            showBlogForm: false, 
-            showBookForm: false, 
+            formType: '',
             edit: ''
         });
     }
@@ -78,7 +95,7 @@ class AdminPortal extends Component {
     handleProjectUpload(action) {
         this.setState({
             'edit': action,
-            'showProjectForm': true
+            'formType': 'projects'
         });
 
         if (action === 'edit') {
@@ -89,7 +106,7 @@ class AdminPortal extends Component {
     handleBlogUpload(action) {
         this.setState({
             'edit': action,
-            'showBlogForm': true
+            'formType': 'blogposts'
         });
 
         if (action === 'edit') {
@@ -100,7 +117,7 @@ class AdminPortal extends Component {
     handleBookUpload(action) {
         this.setState({
             'edit': action,
-            'showBookForm': true
+            'formType': 'books'
         });
 
         if (action === 'edit') {
@@ -286,7 +303,7 @@ class AdminPortal extends Component {
                                                                     cursor: pointer;
                                                                 }
                                                             `}
-                                                            onClick={() => {this.setState({'editableItemID': option._id})}}
+                                                            onClick={() => {this.handleEditOptionSelection(option._id)}}
                                                         >
                                                             {option.title}
                                                         </li>
@@ -296,13 +313,13 @@ class AdminPortal extends Component {
                                         ) : (
                                             <div>
                                                 {
-                                                    this.state.showBlogForm ? (<BlogPostForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                    this.state.formType === 'blogposts' ? (<BlogPostForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
                                                 }
                                                 {
-                                                    this.state.showProjectForm ? (<ProjectForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                    this.state.formType === 'projects' ? (<ProjectForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
                                                 }
                                                 {
-                                                    this.state.showBookForm ? (<BookForm onSubmit={() => {}} editableObj={edit ? {} : this.state.objectToBeEdited}/>) : ''
+                                                    this.state.formType === 'books' ? (<BookForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
                                                 }
                                             </div>
                                         )
