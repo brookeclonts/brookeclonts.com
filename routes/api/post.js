@@ -58,7 +58,7 @@ router.get('/:id', (req, res) => {
 
 router.patch('/:id', authenticate, (req, res) => {
     const id = req.params.id;
-    const updatedValues = req.body.values;
+    const updatedValues = req.body;
     BlogPost.findOneAndUpdate({_id: id}, {$set: updatedValues}, {new: true}).then((post) => {
         res.setHeader('content-type', 'application/json');
         res.status(200).send(post);

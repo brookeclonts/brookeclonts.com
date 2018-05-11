@@ -125,9 +125,12 @@ class AdminPortal extends Component {
         }
     }
 
+    handleClose = () => {
+        this.goBack();
+    }
+
     render() {
         const { edit, editOptions, editableItemID } = this.state;
-
         return (
             <div>
                 {
@@ -313,7 +316,7 @@ class AdminPortal extends Component {
                                         ) : (
                                             <div>
                                                 {
-                                                    this.state.formType === 'blogposts' ? (<BlogPostForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
+                                                    this.state.formType === 'blogposts' ? (<BlogPostForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited} handleClose={this.handleClose}/>) : ''
                                                 }
                                                 {
                                                     this.state.formType === 'projects' ? (<ProjectForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''

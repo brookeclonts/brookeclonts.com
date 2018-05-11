@@ -1,3 +1,4 @@
+/* global window */
 import React, { Component } from 'react';
 import { Switch, Route, Router } from 'react-router-dom'
 import Home from './Home/Home';
