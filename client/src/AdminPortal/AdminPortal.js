@@ -8,6 +8,8 @@ import { BlogPostForm } from './forms/BlogPostForm';
 import { ProjectForm } from './forms/ProjectForm';
 import { BookForm } from './forms/BookForm';
 
+import { GetEditOptions, GetOptionInfo } from '../../utilities/api.js';
+
 class AdminPortal extends Component {
 
     constructor(props) {
@@ -22,67 +24,8 @@ class AdminPortal extends Component {
         };
     }
 
-    handleSubmit(url, method, body) {
-        const { token } = this.props;
-
-        fetch(url, {
-            method: method,
-            headers : new Headers({
-                'Content-Type': 'application/json'
-              }),
-            body: JSON.stringify(body)
-        })
-        .then((res) => res.json())
-        .then((data) =>  {
-            if (
-                data.success
-            ) {
-                this.goBack();
-            } else {
-                this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
-            }
-        });
-    }
-
     handleEditOptionSelection(id) {
-        fetch(`/api/${this.state.formType}/${id}`, {
-            method: 'GET',
-            headers : new Headers({
-                'Content-Type': 'application/json'
-            })
-        })
-        .then((res) => res.json())
-        .then((data) =>  {
-            this.setState(
-                {
-                    'editableItemID': id,
-                    objectToBeEdited: data
-                }
-            );
-        });
-    }
-
-    handleEdit() {
-        this.handleSubmit(`/api/${this.state.formType}/${this.state.editableItemID}`, this.state.edit ? 'PATCH' : 'POST', this.state.objectToBeEdited);
-    }
-
-    getEditOptions(url) {
-        fetch(url, {
-            method: 'GET',
-            headers : new Headers({
-                'Content-Type': 'application/json'
-            })
-        })
-        .then((res) => res.json())
-        .then((data) =>  {
-            if (
-                data && data.length
-            ) {
-                this.setState({'editOptions': data})
-            } else {
-                this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
-            }
-        });
+        GetOptionInfo(id);
     }
 
     goBack() {
@@ -99,7 +42,7 @@ class AdminPortal extends Component {
         });
 
         if (action === 'edit') {
-            this.getEditOptions('/api/projects/admin');
+            GetEditOptions('/api/projects/admin');
         }
     }
 
@@ -110,7 +53,7 @@ class AdminPortal extends Component {
         });
 
         if (action === 'edit') {
-            this.getEditOptions('/api/blogposts/admin');
+            GetEditOptions('/api/blogposts/admin');
         }
     }
 
@@ -121,7 +64,7 @@ class AdminPortal extends Component {
         });
 
         if (action === 'edit') {
-            this.getEditOptions('/api/books/admin');
+            GetEditOptions('/api/books/admin');
         }
     }
 

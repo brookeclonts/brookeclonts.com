@@ -68,7 +68,7 @@ router.put('/book/upload', uploadPosts.single('file'), function(req, res) {
     }
 });
 
-router.patch('/post/upload', uploadPosts.single('file'), function(req, res) {
+router.put('/post/upload', uploadPosts.single('file'), function(req, res) {
     const originalPath = req.body.originalPath;
     if (originalPath) {
         fs.unlink(originalPath);
@@ -78,7 +78,7 @@ router.patch('/post/upload', uploadPosts.single('file'), function(req, res) {
     }
 });
 
-router.patch('/project/upload', uploadProjects.single('file'), function(req, res) {
+router.put('/project/upload', uploadProjects.single('file'), function(req, res) {
     const originalPath = req.body.originalPath;
     if (originalPath) {
         fs.unlink(originalPath);
