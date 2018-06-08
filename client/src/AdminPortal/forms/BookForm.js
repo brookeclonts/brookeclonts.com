@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { css } from 'emotion';
 import { colors } from '../../constants/colors.js';
 import { breakpoints } from '../../constants/breakpoints.js';
@@ -95,7 +95,7 @@ export class BookForm extends Component {
                                 ${imageStyles}
                             `}
                             onClick={this.onImageClick} 
-                            src={this.props.editableObj.imageUrl} 
+                            src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/book/${this.props.editableObj.imageUrl}`} 
                         />
                     : <input 
                         type="file" 

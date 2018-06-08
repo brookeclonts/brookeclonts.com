@@ -8,7 +8,7 @@ import { BlogPostForm } from './forms/BlogPostForm';
 import { ProjectForm } from './forms/ProjectForm';
 import { BookForm } from './forms/BookForm';
 
-import { GetEditOptions, GetOptionInfo } from '../../utilities/api.js';
+import { GetEditOptions, GetOptionInfo } from '../utilities/api.js';
 
 class AdminPortal extends Component {
 
@@ -24,47 +24,97 @@ class AdminPortal extends Component {
         };
     }
 
-    handleEditOptionSelection(id) {
-        GetOptionInfo(id);
+    handleEditOptionSelection = (id) => {
+        GetOptionInfo(id, this.state.formType).then((data) =>  {
+            this.setState({
+                'editableItemID': id,
+                objectToBeEdited: data
+            });
+        });
     }
 
-    goBack() {
+    goBack = () => {
         this.setState({
             formType: '',
             edit: ''
         });
     }
 
-    handleProjectUpload(action) {
-        this.setState({
-            'edit': action,
-            'formType': 'projects'
-        });
-
+    handleProjectUpload = (action) => {
         if (action === 'edit') {
-            GetEditOptions('/api/projects/admin');
+            GetEditOptions('/api/projects/admin').then((data) =>  {
+                if (
+                    data && data.length
+                ) {
+                    this.setState({
+                        'editOptions': data,
+                        'edit': action,
+                        'formType': 'projects',
+                    })
+                } else {
+                    this.props.openMessage(`Error!`); 
+                }
+            });
+        } else {
+            this.setState({
+                'editOptions': {},
+                'objectToBeEdited': {},
+                'edit': action,
+                'formType': 'projects',
+                editableItemID: null,
+            });
         }
     }
 
-    handleBlogUpload(action) {
-        this.setState({
-            'edit': action,
-            'formType': 'blogposts'
-        });
-
+    handleBlogUpload = (action) => {
         if (action === 'edit') {
-            GetEditOptions('/api/blogposts/admin');
+            GetEditOptions('/api/blogposts/admin').then((data) =>  {
+                if (
+                    data && data.length
+                ) {
+                    this.setState({
+                        'editOptions': data,
+                        'edit': action,
+                        'formType': 'blogposts',
+                    })
+                } else {
+                    this.props.openMessage(`Error!`); 
+                }
+            });
+        } else {
+            this.setState({
+                'edit': action,
+                'formType': 'blogposts',
+                'editOptions': {},
+                'objectToBeEdited': {},
+                editableItemID: null,
+            });
         }
     }
 
-    handleBookUpload(action) {
-        this.setState({
-            'edit': action,
-            'formType': 'books'
-        });
-
+    handleBookUpload = (action) => {
         if (action === 'edit') {
-            GetEditOptions('/api/books/admin');
+            GetEditOptions('/api/books/admin').then((data) => {
+                if (
+                    data && data.length
+                ) {
+                    this.setState({
+                        'edit': action,
+                        'editOptions': data,
+                        'formType': 'books',
+                    })
+                } else {
+                    this.props.openMessage(`Error!`); 
+                }
+            });
+        } else {
+            this.setState({
+                'edit': action,
+                'editOptions': {},
+                'formType': 'books',
+                'objectToBeEdited': {},
+                editableItemID: null,
+            });
         }
     }
 

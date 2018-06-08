@@ -102,7 +102,7 @@ class About extends Component {
                         padding-bottom: 0;
                     }
                   `}
-                  src="assets/images/brookeclonts.jpg" 
+                  src="https://brookeclontsbooks.s3-us-west-1.amazonaws.com/other/brookeclonts.jpg" 
                   alt="Brooke Clonts"
                 />
             </div>

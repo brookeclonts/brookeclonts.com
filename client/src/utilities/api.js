@@ -72,7 +72,7 @@ export const PostBlogImg = async (newImg) => {
 
     return new Promise(resolve => {
         fetch(
-            `/api/external/book/upload`,
+            `/api/external/post/upload`,
             {
                 method: 'POST',
                 credentials: 'same-origin',
@@ -257,38 +257,26 @@ export const PostBookImg = async (newImg) => {
 };
 
 export const GetEditOptions = async (url) => {
-    fetch(url, {
-        method: 'GET',
-        headers : new Headers({
-            'Content-Type': 'application/json'
-        })
-    })
-    .then((res) => res.json())
-    .then((data) =>  {
-        if (
-            data && data.length
-        ) {
-            this.setState({'editOptions': data})
-        } else {
-            this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
-        }
+    return new Promise(resolve => {
+        fetch(url, {
+            method: 'GET',
+            headers : new Headers({
+                'Content-Type': 'application/json'
+            })
+        }).then(res => {
+            resolve(res.json());
+        });
     });
 }
 
-export const GetOptionInfo = async (id) => {
-    fetch(`/api/${this.state.formType}/${id}`, {
-        method: 'GET',
-        headers : new Headers({
-            'Content-Type': 'application/json'
+export const GetOptionInfo = async (id, formType) => {
+    return new Promise(resolve => {
+        fetch(`/api/${formType}/${id}`, {
+            method: 'GET',
+            headers : new Headers({
+                'Content-Type': 'application/json'
+            })
         })
-    })
-    .then((res) => res.json())
-    .then((data) =>  {
-        this.setState(
-            {
-                'editableItemID': id,
-                objectToBeEdited: data
-            }
-        );
+        .then((res) => resolve(res.json()))
     });
 }

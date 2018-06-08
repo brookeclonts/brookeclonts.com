@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { css } from 'emotion';
 import { colors } from '../../constants/colors.js';
 import { breakpoints } from '../../constants/breakpoints.js';
-export const PatchProjectImg = async (originalImgUrl, newImg) => {
 import { PostProject, PostProjectImg, PatchProjectImg, PatchProject } from '../../utilities/api.js';
 
 export class ProjectForm extends Component {
