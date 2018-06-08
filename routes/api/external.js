@@ -4,6 +4,17 @@ const router = express.Router();
 const multer = require('multer');
 const mime = require('mime');
 const fs = require('fs');
+var AWS = require('aws-sdk');
+const s3 = require('multer-s3');
+
+var accessKeyId =  process.env.AWS_ACCESS_KEY || "xxxxxx";
+var secretAccessKey = process.env.AWS_SECRET_KEY || "+xxxxxx+B+xxxxxxx";
+var awsBucket = process.env.AWS_BUCKET || "brookeclonts";
+
+// AWS.config.update({
+//     accessKeyId: accessKeyId,
+//     secretAccessKey: secretAccessKey
+// });
 
 const storageBooks = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -14,13 +25,35 @@ const storageBooks = multer.diskStorage({
     }
 });
 
-const storagePosts = multer.diskStorage({
-    destination: function (req, file, cb) {
-        cb(null, './public/assets/images/blog')
-    },
-    filename: function (req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + '.' + mime.getExtension(file.mimetype))
-    }
+// const storagePosts = multer.diskStorage({
+//     destination: function (req, file, cb) {
+//         cb(null, './public/assets/images/blog')
+//     },
+//     filename: function (req, file, cb) {
+//         cb(null, file.fieldname + '-' + Date.now() + '.' + mime.getExtension(file.mimetype))
+//     }
+// });
+
+// const storagePosts = multer({
+//     s3: s3,
+//     bucket: 'brookeclontsbooks',
+//     key: function (req, file, cb) {
+//         console.log(file);
+//         cb(null, `blog/${file.originalname.replace(/\W+/g, '-').toLowerCase()}-${Date.now()}`);
+//     }
+// });
+
+const storagePosts = multer({
+    storage: s3({
+        dirname: '/blog',
+        bucket: awsBucket,
+        secretAccessKey,
+        accessKeyId,
+        region: 'us-west-1',
+        filename: function (req, file, cb) {
+            cb(null, `${file.originalname.replace(/\W+/g, '-').toLowerCase()}-${Date.now()}`); //use Date.now() for unique file keys
+        }
+    })
 });
 
 const storageProjects = multer.diskStorage({
@@ -51,7 +84,9 @@ router.post('/book/upload', uploadBooks.single('file'), function(req, res) {
 });
 
 router.post('/post/upload', uploadPosts.single('file'), function(req, res, next) {
-    res.send({path: req.file.path.replace('public',''), name: req.file.filename})
+    // res.send({path: req.file.path.replace('public',''), name: req.file.filename})
+    console.log(req.file)
+    res.send({})
 });
 
 router.post('/project/upload', uploadProjects.single('file'), function(req, res, next) {
