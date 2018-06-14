@@ -140,7 +140,7 @@ class Projects extends Component {
                                                     max-width: 350px;
                                                     margin: auto;
                                                 `}
-                                                src={project.img} 
+                                                src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${project.img}`} 
                                                 alt={project.title}
                                             />
                                         </a>

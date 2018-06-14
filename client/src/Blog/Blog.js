@@ -226,7 +226,7 @@ class Blog extends Component {
                                         }
                                     `}
                                     alt={post.title}
-                                    src={post.imageUrl}
+                                    src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}`}
                                 />
                             </div>
                             <div 

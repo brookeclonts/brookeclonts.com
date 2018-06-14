@@ -303,7 +303,7 @@ class Home extends Component {
                     className="product"
                     key={book._id} 
                   >
-                      <img src={book.imageUrl} alt={book.title}/>
+                      <img src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${book.imageUrl}`} alt={book.title}/>
                       <p 
                         className={css`            
                           color: ${colors.blueGray};
@@ -359,7 +359,7 @@ class Home extends Component {
                       margin: auto;
                       box-sizing: border-box;
                     `}
-                    src={this.state.post.imageUrl}
+                    src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.state.post.imageUrl}`}
                     alt={this.state.post.title}
                   />
                   <p 

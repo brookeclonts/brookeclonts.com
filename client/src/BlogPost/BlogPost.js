@@ -40,7 +40,7 @@ class BlogPost extends Component {
             `}
         >
             <img 
-                src={'https://brookeclontsbooks.s3-us-west-1.amazonaws.com/blog/' + post.imageUrl}
+                src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}`}
                 alt={post.title}
                 className={css`
                     max-width: 300px;

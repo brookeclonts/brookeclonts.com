@@ -113,7 +113,7 @@ export class ProjectForm extends Component {
                                 ${imageStyles}
                             `}
                             onClick={this.onImageClick} 
-                            src={this.props.editableObj.imageUrl} 
+                            src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.props.editableObj.imageUrl}`}
                         />
                     : <input 
                         type="file" 
