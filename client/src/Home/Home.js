@@ -382,7 +382,7 @@ class Home extends Component {
                 className={css`
                   text-decoration: none;
                 `}
-                to="['/post', post.title]"
+                to={`/post/${this.state.post.title}`}
               >
                   <div 
                     className={css`

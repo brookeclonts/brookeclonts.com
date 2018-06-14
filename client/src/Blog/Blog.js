@@ -169,9 +169,9 @@ class Blog extends Component {
                 posts
                 .sort((a, b) => {
                     if (this.state.sort === 'oldest') {
-                        return a._id > b._id;
+                        return a._id > b._id ? 1 : 0;
                     } else {
-                        return a._id < b._id;
+                        return a._id < b._id ? 1 : 0;
                     }
                 })
                 .filter(post => {
