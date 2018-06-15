@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
+import convertTimeStampToDate from '../utilities/convertTimeStampToDate';
 
 class Blog extends Component {
 
@@ -32,6 +33,8 @@ class Blog extends Component {
   handleSearchStringChange(event) {
       this.setState({searchString: event.target.value});
   }
+
+  months = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
 
   render() {
     const {
@@ -169,9 +172,9 @@ class Blog extends Component {
                 posts
                 .sort((a, b) => {
                     if (this.state.sort === 'oldest') {
-                        return a._id > b._id ? 1 : 0;
+                        return convertTimeStampToDate(a._id) > convertTimeStampToDate(b._id) ? 1 : 0;
                     } else {
-                        return a._id < b._id ? 1 : 0;
+                        return convertTimeStampToDate(a._id) < convertTimeStampToDate(b._id) ? 1 : 0;
                     }
                 })
                 .filter(post => {
@@ -244,6 +247,7 @@ class Blog extends Component {
                                 <p 
                                     className={css`
                                         font-size: 18px;
+                                        margin-bottom: 4px;
                                         
                                         @media screen and (min-width: ${breakpoints.tab}) {
                                             margin-top: 0;
@@ -251,6 +255,17 @@ class Blog extends Component {
                                     `}
                                 >
                                     {post.title}
+                                </p>
+                                <p
+                                    className={css`
+                                        font-size: 12px;
+                                        font-style: italic;
+                                        
+                                        @media screen and (min-width: ${breakpoints.tab}) {
+                                            margin-top: 0;
+                                        }
+                                    `}>
+                                    {`posted ${this.months[convertTimeStampToDate(post._id).getMonth()]} ${convertTimeStampToDate(post._id).getDay()}, ${convertTimeStampToDate(post._id).getFullYear()}`}
                                 </p>
                                 <p 
                                     className="description"
