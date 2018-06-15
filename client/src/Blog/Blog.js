@@ -172,9 +172,9 @@ class Blog extends Component {
                 posts
                 .sort((a, b) => {
                     if (this.state.sort === 'oldest') {
-                        return convertTimeStampToDate(a._id) > convertTimeStampToDate(b._id) ? 1 : 0;
+                        return convertTimeStampToDate(a._id) - convertTimeStampToDate(b._id);
                     } else {
-                        return convertTimeStampToDate(a._id) < convertTimeStampToDate(b._id) ? 1 : 0;
+                        return convertTimeStampToDate(b._id) - convertTimeStampToDate(a._id);
                     }
                 })
                 .filter(post => {
@@ -265,7 +265,7 @@ class Blog extends Component {
                                             margin-top: 0;
                                         }
                                     `}>
-                                    {`posted ${this.months[convertTimeStampToDate(post._id).getMonth()]} ${convertTimeStampToDate(post._id).getDay()}, ${convertTimeStampToDate(post._id).getFullYear()}`}
+                                    {`posted ${this.months[convertTimeStampToDate(post._id).getMonth()]} ${convertTimeStampToDate(post._id).getDate()}, ${convertTimeStampToDate(post._id).getFullYear()}`}
                                 </p>
                                 <p 
                                     className="description"
