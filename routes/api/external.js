@@ -62,11 +62,13 @@ const uploadProjects = multer({
 });
 
 const deleteFile = (path, req, res) => {
-    const params = {  Key: path };
+    const params = {  
+        Bucket: awsBucket,
+        Key: path
+     };
     // TODO: this is not working! breaking here
     s3.deleteObject(params, function(err, data) {
-        if (err) { return res.status(404).send({'message': err})}
-        console.log('data', data)
+        if (err) { console.log(`delete image from s3 error: ${err}`)}
     });
 }
 
@@ -83,19 +85,19 @@ router.post('/project/upload', uploadProjects.single('file'), function(req, res,
 });
 
 router.put('/book/upload', uploadPosts.single('file'), function(req, res) {
-    const originalPath = req.body.originalPath;
+    const originalPath = req.body;
     if (originalPath) {
         deleteFile(originalPath, req, res);
-        // res.send({path: req.file.key})
+        res.send({path: req.file.key})
     } else {
         res.status(404).send({'message': 'Please send original file to be replaced.'})
     }
 });
 
 router.put('/post/upload', uploadPosts.single('file'), function(req, res) {
-    const originalPath = req.body.originalPath;
+    const originalPath = req.body;
     if (originalPath) {
-        fs.unlink(originalPath);
+        deleteFile(originalPath, req, res);
         res.send({path: req.file.key})
     } else {
         res.status(404).send({'message': 'Please send original file to be replaced.'})
@@ -103,9 +105,9 @@ router.put('/post/upload', uploadPosts.single('file'), function(req, res) {
 });
 
 router.put('/project/upload', uploadProjects.single('file'), function(req, res) {
-    const originalPath = req.body.originalPath;
+    const originalPath = req.body;
     if (originalPath) {
-        fs.unlink(originalPath);
+        deleteFile(originalPath, req, res);
         res.send({path: req.file.key})
     } else {
         res.status(404).send({'message': 'Please send original file to be replaced.'})
