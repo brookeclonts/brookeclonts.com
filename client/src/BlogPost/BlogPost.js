@@ -100,10 +100,10 @@ class BlogPost extends Component {
                 >
                     {post.title}
                 </h1>
-                <a onClick={() => {ShareTwitter(window.location, tweet)}}>
+                <a onClick={() => {ShareTwitter(window.location.href, tweet)}}>
                     <Twitter size={'30px'}/>
                 </a>
-                <a onClick={() => {ShareFacebook(window.location, tweet, `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}`)}}>
+                <a onClick={() => {ShareFacebook(window.location.href, tweet, `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}`)}}>
                     <Facebook size={'30px'}/>
                 </a>
             </div>

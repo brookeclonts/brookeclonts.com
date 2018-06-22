@@ -7,7 +7,7 @@ const setMeta = (name, info) => {
 
 export default ({title, desc, image}) => {
     document.title = title;
-    setMeta("og:url", window.location);
+    setMeta("og:url", window.location.href);
     setMeta("og:image", image);
     setMeta("og:description", desc);
 }
