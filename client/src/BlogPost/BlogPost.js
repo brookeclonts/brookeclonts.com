@@ -27,7 +27,7 @@ class BlogPost extends Component {
     const {
         post
     } = this.state;
-    const tweet = 'Checkout this awesome blog post by brookeclonts.com!'
+    const tweet = 'Check out this awesome blog post by brookeclonts.com!'
 
     return (
       <div
