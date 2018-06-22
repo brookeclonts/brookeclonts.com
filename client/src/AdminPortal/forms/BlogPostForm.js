@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { colors } from '../../constants/colors.js';
 import { breakpoints } from '../../constants/breakpoints.js';
 import { PatchBlogPost, PatchBlogImg, PostBlogImg, PostBlogPost } from '../../utilities/api.js';
+import { ShareFacebook, ShareTwitter, ReloadWidgets } from '../../utilities/socialShare.js';
 import Twitter from '../../Icons/Twitter';
 import Facebook from '../../Icons/Facebook';
 import Instagram from '../../Icons/Instagram';
@@ -26,10 +27,7 @@ export class BlogPostForm extends Component {
     }
 
     reloadWidgets() {
-        const twttr = window.twttr;
-        if (typeof twttr.widgets !== 'undefined') {
-          twttr.widgets.load()
-        }
+        ReloadWidgets();
     }
 
     onChangeTitle = (event) => {
@@ -54,12 +52,12 @@ export class BlogPostForm extends Component {
 
     shareFacebook(url, text, image) {
         this.reloadWidgets();
-        window.open('http://facebook.com/sharer.php?s=100&p[url]=' + url + '&p[images][0]=' + image + '&p[title]=' + text, 'fbshare', 'height=380,width=660,resizable=0,toolbar=0,menubar=0,status=0,location=0,scrollbars=0');
+        ShareFacebook(url, text, image)
     }
 
     shareTwitter(url, text) {
         this.reloadWidgets();
-        window.open('http://twitter.com/share?url=' + url + '&text=' + text, 'tshare', 'height=400,width=550,resizable=1,toolbar=0,menubar=0,status=0,location=0');  
+        ShareTwitter(url, text);
     }
 
     onSubmit = async (event) => {
