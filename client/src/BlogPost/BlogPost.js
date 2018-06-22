@@ -6,7 +6,7 @@ import { breakpoints } from '../constants/breakpoints.js';
 import Twitter from '../Icons/Twitter';
 import Facebook from '../Icons/Facebook';
 import { ShareFacebook, ShareTwitter, ReloadWidgets } from '../utilities/socialShare.js';
-
+import setHeaderInfo from '../utilities/setHeaderInfo.js';
 
 class BlogPost extends Component {
   state = {
@@ -16,8 +16,11 @@ class BlogPost extends Component {
   componentDidMount() {
     fetch(`/api/blogposts/title/${this.props.location.match.params.title}`)
     .then(res => res.json())
-    .then(post => this.setState({ post: post }));
-    ReloadWidgets();
+    .then(post => {
+        this.setState({ post: post });
+        setHeaderInfo({ title: post.title, desc: post.description, image: `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}` });
+        ReloadWidgets();    
+    });
   }
 
   render() {
@@ -100,7 +103,7 @@ class BlogPost extends Component {
                 <a onClick={() => {ShareTwitter(window.location, tweet)}}>
                     <Twitter size={'30px'}/>
                 </a>
-                <a onClick={() => {ShareFacebook(window.location, tweet, post.imageUrl)}}>
+                <a onClick={() => {ShareFacebook(window.location, tweet, `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}`)}}>
                     <Facebook size={'30px'}/>
                 </a>
             </div>

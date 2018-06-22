@@ -104,101 +104,101 @@ export class BlogPostForm extends Component {
                     max-width: 400px;
                 `}
             >
-            {!this.state.showSocial ? 
-                <div>
-                    <input 
-                        className={css`
-                            ${inputStyles}
-                        `}
-                        type="text" 
-                        placeholder="title"
-                        value={this.state.title} 
-                        onChange={this.onChangeTitle} 
-                    />
-                    <input 
-                        className={css`
-                            ${inputStyles}
-                        `}
-                        type="text" 
-                        placeholder="description"
-                        value={this.state.description} 
-                        onChange={this.onChangeDesc} 
-                    />
-                    <textarea 
-                        className={css`
-                            ${inputStyles}
-                        `}
-                        placeholder="body"
-                        value={this.state.body} 
-                        onChange={this.onChangeBody} 
-                        width="100%"
-                        rows="10"
-
-                    />
-                    {
-                        this.props.editableObj && this.props.editableObj.imageUrl && !this.state.uploadImage ?
-                            <img 
-                                className={css`
-                                    ${imageStyles}
-                                `}
-                                onClick={this.onImageClick} 
-                                src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.props.editableObj.imageUrl}`}
-                            />
-                        : <input 
+                {!this.state.showSocial ? 
+                    <div>
+                        <input 
                             className={css`
-                                margin-bottom: 10px;
+                                ${inputStyles}
                             `}
-                            type="file" 
-                            name="imageUrl" 
-                            onChange={ (e) => this.onChangeImgUrl(e.target.files) }
+                            type="text" 
+                            placeholder="title"
+                            value={this.state.title} 
+                            onChange={this.onChangeTitle} 
                         />
-                    }
-                    <button 
-                        className={css`${buttonStyles}`}
-                        onClick={this.onSubmit}
-                    >
-                        Submit
-                    </button>
-                </div> : null
-            }
-                
-                <div>
-                    {this.state.showSocial ? 
-                        <div>
-                            <div className={css`
-                                & svg {
-                                    margin: 5px;
-                                }
+                        <input 
+                            className={css`
+                                ${inputStyles}
+                            `}
+                            type="text" 
+                            placeholder="description"
+                            value={this.state.description} 
+                            onChange={this.onChangeDesc} 
+                        />
+                        <textarea 
+                            className={css`
+                                ${inputStyles}
+                            `}
+                            placeholder="body"
+                            value={this.state.body} 
+                            onChange={this.onChangeBody} 
+                            width="100%"
+                            rows="10"
 
-                                & svg path {
-                                    fill: ${colors.white}
+                        />
+                        {
+                            this.props.editableObj && this.props.editableObj.imageUrl && !this.state.uploadImage ?
+                                <img 
+                                    className={css`
+                                        ${imageStyles}
+                                    `}
+                                    onClick={this.onImageClick} 
+                                    src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.props.editableObj.imageUrl}`}
+                                />
+                            : <input 
+                                className={css`
+                                    margin-bottom: 10px;
+                                `}
+                                type="file" 
+                                name="imageUrl" 
+                                onChange={ (e) => this.onChangeImgUrl(e.target.files) }
+                            />
+                        }
+                        <button 
+                            className={css`${buttonStyles}`}
+                            onClick={this.onSubmit}
+                        >
+                            Submit
+                        </button>
+                    </div> : null
+                }
+                    
+                    <div>
+                        {this.state.showSocial ? 
+                            <div>
+                                <div className={css`
+                                    & svg {
+                                        margin: 5px;
+                                    }
 
-                                    &:hover {
-                                        cursor: pointer;
-                                        fill: ${colors.green};
-                                    } 
-                                }
-                            `}>
-                                <a onClick={() => {this.shareTwitter(postUrl, tweet)}}>
-                                    <Twitter size={'30px'}/>
-                                </a>
-                                <a onClick={() => {this.shareFacebook(postUrl, tweet, this.state.imageUrl)}}>
-                                    <Facebook size={'30px'}/>
-                                </a>
-                                <a href={`mailto:brooke@brookeclonts.com?subject=latest blog post: ${title}&body=${postUrl}`}>
-                                    <Instagram size={'30px'}/>
-                                </a>
-                            </div>
-                            <button 
-                                className={css`${buttonStyles}`}
-                                onClick={this.props.handleClose}
-                            >
-                                Close
-                            </button>
-                        </div> 
-                        : ''
-                    }
-                </div>
+                                    & svg path {
+                                        fill: ${colors.white}
+
+                                        &:hover {
+                                            cursor: pointer;
+                                            fill: ${colors.green};
+                                        } 
+                                    }
+                                `}>
+                                    <a onClick={() => {this.shareTwitter(postUrl, tweet)}}>
+                                        <Twitter size={'30px'}/>
+                                    </a>
+                                    <a onClick={() => {this.shareFacebook(postUrl, tweet, `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.state.imageUrl}`)}}>
+                                        <Facebook size={'30px'}/>
+                                    </a>
+                                    <a href={`mailto:brooke@brookeclonts.com?subject=latest blog post: ${title}&body=${postUrl}`}>
+                                        <Instagram size={'30px'}/>
+                                    </a>
+                                </div>
+                                <button 
+                                    className={css`${buttonStyles}`}
+                                    onClick={this.props.handleClose}
+                                >
+                                    Close
+                                </button>
+                            </div> 
+                            : ''
+                        }
+                    </div>
             </div>
         )
     }
