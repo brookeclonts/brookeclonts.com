@@ -113,6 +113,7 @@ class BlogPost extends Component {
                     color: black;
                     font-weight: 300;
                     font-size: 14px;
+                    white-space: pre-wrap;
 
                     & a {
                         text-decoration: none;

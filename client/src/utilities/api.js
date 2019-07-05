@@ -31,7 +31,7 @@ export const PatchBlogImg = async (originalImgUrl, newImg) => {
 
     return new Promise(resolve => {
         fetch(
-            `/api/external/book/upload`,
+            `/api/external/post/upload`,
             {
                 method: 'PUT',
                 credentials: 'same-origin',

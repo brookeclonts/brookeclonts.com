@@ -3,11 +3,6 @@ import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
-
-import { BlogPostForm } from './forms/BlogPostForm';
-import { ProjectForm } from './forms/ProjectForm';
-import { BookForm } from './forms/BookForm';
-
 import { GetEditOptions, GetOptionInfo } from '../utilities/api.js';
 
 class AdminPortal extends Component {
@@ -16,118 +11,73 @@ class AdminPortal extends Component {
         super(props);
 
         this.state={
-            edit: '',
+            edit: false,
             formType: '', 
             editOptions: {},
-            objectToBeEdited: {},
-            editableItemID: null,
         };
-    }
-
-    handleEditOptionSelection = (id) => {
-        GetOptionInfo(id, this.state.formType).then((data) =>  {
-            this.setState({
-                'editableItemID': id,
-                objectToBeEdited: data
-            });
-        });
     }
 
     goBack = () => {
         this.setState({
             formType: '',
-            edit: ''
+            edit: false
         });
     }
 
-    handleProjectUpload = (action) => {
-        if (action === 'edit') {
-            GetEditOptions('/api/projects/admin').then((data) =>  {
-                if (
-                    data && data.length
-                ) {
-                    this.setState({
-                        'editOptions': data,
-                        'edit': action,
-                        'formType': 'projects',
-                    })
-                } else {
-                    this.props.openMessage(`Error!`); 
-                }
-            });
-        } else {
-            this.setState({
-                'editOptions': {},
-                'objectToBeEdited': {},
-                'edit': action,
-                'formType': 'projects',
-                editableItemID: null,
-            });
-        }
+    handleProjectEdit = () => {
+        GetEditOptions('/api/projects/admin').then((data) =>  {
+            if (
+                data && data.length
+            ) {
+                this.setState({
+                    'editOptions': data,
+                    'edit': true,
+                    'formType': 'projects',
+                })
+            } else {
+                this.props.openMessage(`Error!`); 
+            }
+        });
     }
 
-    handleBlogUpload = (action) => {
-        if (action === 'edit') {
-            GetEditOptions('/api/blogposts/admin').then((data) =>  {
-                if (
-                    data && data.length
-                ) {
-                    this.setState({
-                        'editOptions': data,
-                        'edit': action,
-                        'formType': 'blogposts',
-                    })
-                } else {
-                    this.props.openMessage(`Error!`); 
-                }
-            });
-        } else {
-            this.setState({
-                'edit': action,
-                'formType': 'blogposts',
-                'editOptions': {},
-                'objectToBeEdited': {},
-                editableItemID: null,
-            });
-        }
+    handleBlogEdit = () => {
+        GetEditOptions('/api/blogposts/admin').then((data) =>  {
+            if (
+                data && data.length
+            ) {
+                this.setState({
+                    'editOptions': data,
+                    'edit': true, 
+                    'formType': 'blog',
+                });
+            } else {
+                this.props.openMessage(`Error!`); 
+            }
+        });
     }
 
-    handleBookUpload = (action) => {
-        if (action === 'edit') {
-            GetEditOptions('/api/books/admin').then((data) => {
-                if (
-                    data && data.length
-                ) {
-                    this.setState({
-                        'edit': action,
-                        'editOptions': data,
-                        'formType': 'books',
-                    })
-                } else {
-                    this.props.openMessage(`Error!`); 
-                }
-            });
-        } else {
-            this.setState({
-                'edit': action,
-                'editOptions': {},
-                'formType': 'books',
-                'objectToBeEdited': {},
-                editableItemID: null,
-            });
-        }
-    }
-
-    handleClose = () => {
-        this.goBack();
+    handleBookEdit = () => {
+        GetEditOptions('/api/books/admin').then((data) => {
+            if (
+                data && data.length
+            ) {
+                this.setState({
+                    'edit': true,
+                    'editOptions': data,
+                    'formType': 'books',
+                })
+            } else {
+                this.props.openMessage(`Error!`); 
+            }
+        });
     }
 
     render() {
-        const { edit, editOptions, editableItemID } = this.state;
+        const { edit, editOptions } = this.state;
         return (
             <div>
                 {
-                    edit === '' ? 
+                    !edit ? 
                     (
                         <div
                             className={css`
@@ -198,12 +148,12 @@ class AdminPortal extends Component {
                                 <h2>Blog Posts</h2>
                                 <ul className="admin-blog-posts">
                                     <li>
-                                        <a onClick={() => this.handleBlogUpload('upload')}>
+                                        <Link to="/admin-portal/blog/upload">
                                             Upload 
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                    <a onClick={() => this.handleBlogUpload('edit')}>
+                                    <a onClick={() => this.handleBlogEdit()}>
                                             Edit 
                                         </a>
                                     </li>
@@ -211,12 +161,12 @@ class AdminPortal extends Component {
                                 <h2>Projects</h2>
                                 <ul className="admin-projects">
                                     <li>
-                                        <a onClick={() => this.handleProjectUpload('upload')}>
+                                        <Link to="/admin-portal/projects/upload">
                                             Upload 
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a onClick={() => this.handleProjectUpload('edit')}>
+                                        <a onClick={() => this.handleProjectEdit()}>
                                             Edit 
                                         </a>
                                     </li>
@@ -224,12 +174,12 @@ class AdminPortal extends Component {
                                 <h2>Books</h2>
                                 <ul className="admin-books">
                                     <li>
-                                        <a onClick={() => this.handleBookUpload('upload')}>
+                                        <Link to="/admin-portal/books/upload">
                                             Upload 
-                                        </a>
+                                        </Link>
                                     </li>
                                     <li>
-                                        <a onClick={() => this.handleBookUpload('edit')}>
+                                        <a onClick={() => this.handleBookEdit()}>
                                             Edit 
                                         </a>
                                     </li>
@@ -250,15 +200,6 @@ class AdminPortal extends Component {
                                     margin-top: 100px;
                                 `}
                             >
-                                <h1
-                                    className={css`
-                                        font-family: Medula One,Times New Roman,serif;
-                                        color: ${colors.medGray};
-                                        font-weight: 300;
-                                    `}
-                                >
-                                { edit === 'edit' ? 'Edit Blog Post' : 'Upload Blog Post' }
-                                </h1>
                                 <div
                                     className={css`
                                         background-color: ${colors.blueGray}
@@ -283,67 +224,56 @@ class AdminPortal extends Component {
                                     `}
                                 >
                                     {
-                                        editOptions && editOptions.length && !editableItemID ? (
+                                        editOptions && editOptions.length ? (
                                             <ul className={css`padding: 0;`}>
                                                 {
                                                     editOptions.map((option) => (
-                                                        <li
-                                                            key={option._id}
+                                                        <li 
                                                             className={css`
-                                                                color: white;
                                                                 text-decoration: none;
                                                                 text-align: left;
                                                                 list-style-type: none;
-
-                                                                &:hover {
-                                                                    cursor: pointer;
-                                                                }
                                                             `}
-                                                            onClick={() => {this.handleEditOptionSelection(option._id)}}
+                                                            key={option._id} 
                                                         >
-                                                            {option.title}
+                                                            <Link 
+                                                                className={css`
+                                                                    color: white;
+                                                                    text-decoration: none;
+                                                                    
+                                                                    &:hover {
+                                                                        cursor: pointer;
+                                                                    }
+                                                                `}
+                                                                to={`/admin-portal/${this.state.formType}/edit/${option._id}`} 
+                                                            >
+                                                                {option.title}
+                                                            </Link>
                                                         </li>
                                                     ))
                                                 }
                                             </ul>
-                                        ) : (
-                                            <div>
-                                                {
-                                                    this.state.formType === 'blogposts' ? (<BlogPostForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited} handleClose={this.handleClose}/>) : ''
-                                                }
-                                                {
-                                                    this.state.formType === 'projects' ? (<ProjectForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
-                                                }
-                                                {
-                                                    this.state.formType === 'books' ? (<BookForm onSubmit={() => {}} editableObj={this.state.objectToBeEdited}/>) : ''
-                                                }
-                                            </div>
-                                        )
+                                        ) : null
                                     }
-                                    {
-                                        edit !== '' ?
-                                        (
-                                            <div
-                                                className={css`
-                                                    padding-top: 50px;
-                                                `}
-                                            >
-                                                <a 
-                                                    className={css`
-                                                        color: white;
+                                    <div
+                                        className={css`
+                                            padding-top: 50px;
+                                        `}
+                                    >
+                                        <a 
+                                            className={css`
+                                                color: white;
 
-                                                        &:hover {
-                                                            color: white;
-                                                            cursor: pointer;
-                                                        }
-                                                    `}
-                                                    onClick={() => {this.goBack()}}
-                                                >
-                                                    &#8592; Go Back
-                                                </a>
-                                            </div>
-                                        ) : ''
-                                    }
+                                                &:hover {
+                                                    color: white;
+                                                    cursor: pointer;
+                                                }
+                                            `}
+                                            onClick={() => {this.goBack()}}
+                                        >
+                                            &#8592; Go Back
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

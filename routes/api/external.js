@@ -98,7 +98,7 @@ router.put('/post/upload', uploadPosts.single('file'), function(req, res) {
     const originalPath = req.body;
     if (originalPath) {
         deleteFile(originalPath, req, res);
-        res.send({path: req.file.key})
+        return res.send({path: res.req.file.key})
     } else {
         res.status(404).send({'message': 'Please send original file to be replaced.'})
     }

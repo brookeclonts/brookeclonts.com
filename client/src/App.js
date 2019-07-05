@@ -16,6 +16,9 @@ import Draw from './Draw/Draw';
 import WrongPage from './404/404';
 import Login from './Login/Login';
 import AdminPortal from './AdminPortal/AdminPortal';
+import { BlogPostForm } from './AdminPortal/forms/BlogPostForm';
+import { ProjectForm } from './AdminPortal/forms/ProjectForm';
+import { BookForm } from './AdminPortal/forms/BookForm';
 import { createBrowserHistory } from 'history';
 const history = createBrowserHistory();
 
@@ -76,6 +79,12 @@ class App extends Component {
             <Route path="/draw" exact component={Draw}/>
             <Route path="/post/:title" render={location => (<BlogPost location={location}/>)}/>
             <Route path="/login" exact render={() => (<Login openMessage={this.openMessage} history={history} updateToken={this.updateToken}/>)}/>
+            <Route path="/admin-portal/blog/upload" render={location => (<BlogPostForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
+            <Route path="/admin-portal/blog/edit/:id" render={location => (<BlogPostForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
+            <Route path="/admin-portal/books/upload" render={location => (<BookForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
+            <Route path="/admin-portal/books/edit/:id" render={location => (<BookForm token={this.token} openMessage={this.openMessage} location={location}/>)} />
+            <Route path="/admin-portal/projects/upload" render={location => (<ProjectForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
+            <Route path="/admin-portal/projects/edit/:id" render={location => (<ProjectForm token={this.token} openMessage={this.openMessage}/>)} />
             <Route path="/admin-portal" render={location => (<AdminPortal token={this.token} openMessage={this.openMessage}/>)}/>
             <Route component={WrongPage}/>
           </Switch>

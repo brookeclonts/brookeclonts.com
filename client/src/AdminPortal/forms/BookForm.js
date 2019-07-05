@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { colors } from '../../constants/colors.js';
 import { breakpoints } from '../../constants/breakpoints.js';
 import { PostBook, PostBookImg, PatchBookImg, PatchBook } from '../../utilities/api.js';
+import { GetOptionInfo } from '../../utilities/api.js';
 
 export class BookForm extends Component {
 
@@ -10,9 +11,9 @@ export class BookForm extends Component {
         super(props);
         this.state = {
             uploadImage : false,
-            title: this.props.editableObj ? this.props.editableObj.title : '',
-            description: this.props.editableObj ? this.props.editableObj.description : '',
-            imageUrl: this.props.editableObj ? this.props.editableObj.imageUrl : '',
+            title: '',
+            description: '',
+            imageUrl: '',
         };
     }
 
@@ -30,6 +31,21 @@ export class BookForm extends Component {
 
     onImageClick = () => {
         this.setState({uploadImage: true});
+    }
+
+    componentDidMount() {
+        const id = this.props.match && this.props.match.params.id;
+
+        if (id) {
+            GetOptionInfo(id, 'books').then((data) =>  {
+                this.setState({
+                    title: data.title,
+                    description: data.editableObj,
+                    imageUrl: data.editableObj,
+                    objectToBeEdited: data
+                });
+            });
+        }
     }
 
     onSubmit = async (event) => {
@@ -63,53 +79,95 @@ export class BookForm extends Component {
 
     render() {
         const title = this.props.editableObj ? this.props.editableObj.title : '';
+        const id = this.props.match && this.props.match.params.id;
+
         return (
-            <div 
-                className={css`
-                    margin-right: 0;
-                    max-width: 400px;
-                `}
-            >
-                <input 
+            <div className={css`
+                height: auto;
+                width: 100vw;
+                text-align: center;
+            `}>
+                <div
                     className={css`
-                        ${inputStyles}
+                        background-color: ${colors.blueGray};
+                        display: inline-block;
+                        margin: 100px auto;
+                        padding: 50px;
+                        text-align: center;
+
+                        & form {
+                            margin: auto;
+
+                            & input {
+                                width: 100%;
+                                max-width: none;
+
+                                &:last-child {
+                                    margin-top: 20px;
+                                }
+                            }
+                        }
+
                     `}
-                    type="text" 
-                    placeholder="title"
-                    value={this.state.title} 
-                    onChange={this.onChangeTitle} 
-                />
-                <input 
-                    className={css`
-                        ${inputStyles}
-                    `}
-                    type="text" 
-                    placeholder="description"
-                    value={this.state.description} 
-                    onChange={this.onChangeDesc} 
-                />
-                {
-                    this.props.editableObj && this.props.editableObj.imageUrl && !this.state.uploadImage ?
-                        <img 
-                            className={css`
-                                ${imageStyles}
-                            `}
-                            onClick={this.onImageClick} 
-                            src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.props.editableObj.imageUrl}`} 
-                        />
-                    : <input 
-                        type="file" 
-                        name="imageUrl" 
-                        onChange={ (e) => this.onChangeImgUrl(e.target.files) }
-                    />
-                }
-                
-                <button 
-                    className={css`${buttonStyles}`}
-                    onClick={this.onSubmit}
                 >
-                    Submit
-                </button>
+                    
+                    <h1
+                        className={css`
+                            font-family: Medula One,Times New Roman,serif;
+                            color: ${colors.white};
+                            font-weight: 300;
+                        `}
+                    >
+                        { id ? 'Edit Book' : 'Upload Book' }
+                    </h1>
+                    <div 
+                        className={css`
+                            margin-right: 0;
+                            max-width: 400px;
+                        `}
+                    >
+                        <input 
+                            className={css`
+                                ${inputStyles}
+                            `}
+                            type="text" 
+                            placeholder="title"
+                            value={this.state.title} 
+                            onChange={this.onChangeTitle} 
+                        />
+                        <input 
+                            className={css`
+                                ${inputStyles}
+                            `}
+                            type="text" 
+                            placeholder="description"
+                            value={this.state.description} 
+                            onChange={this.onChangeDesc} 
+                        />
+                        {
+                            this.props.editableObj && this.props.editableObj.imageUrl && !this.state.uploadImage ?
+                                <img 
+                                    className={css`
+                                        ${imageStyles}
+                                    `}
+                                    onClick={this.onImageClick} 
+                                    src={`https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${this.props.editableObj.imageUrl}`} 
+                                />
+                            : <input 
+                                type="file" 
+                                name="imageUrl" 
+                                onChange={ (e) => this.onChangeImgUrl(e.target.files) }
+                            />
+                        }
+                        
+                        <button 
+                            className={css`${buttonStyles}`}
+                            onClick={this.onSubmit}
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </div>
             </div>
         )
     }
