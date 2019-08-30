@@ -1,5 +1,0 @@
-{
-    "presets": ["env", "react", "stage-0", "es2015", "es2017"],
-    "plugins": ["transform-class-properties"]
-}
-  
