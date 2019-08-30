@@ -1,11 +1,48 @@
 {
-    "presets": [[
-        "@babel/env",
-        {"modules": false}
-    ]],
-    "plugins": [
-        "@babel/plugin-transform-async-to-generator",
-        "transform-runtime",
-        "transform-async-to-generator"
-    ]
-}
+    "env": {
+      "development": {
+        "presets": [
+          [ "@babel/preset-env", {
+            "targets": {
+              "browsers": [ "last 2 versions", "ie >= 11" ]
+            }
+          } ],
+          "@babel/preset-react",
+      [ "@babel/preset-stage-2", {
+          "decoratorsLegacy": true
+      }],
+          "@babel/preset-flow"
+        ],
+        "plugins": [
+          ["emotion"],
+          "@babel/plugin-transform-runtime",
+          "@babel/plugin-proposal-do-expressions",
+          "@babel/plugin-syntax-flow"
+        ],
+        "comments": true
+      },
+      "test": {
+        "sourceMaps": false,
+        "presets": [
+          [ "@babel/preset-env", {
+            "targets": {
+              "browsers": [ "last 2 versions", "ie >= 11" ]
+            }
+          } ],
+          "@babel/preset-react",
+      [ "@babel/preset-stage-2", {
+          "decoratorsLegacy": true
+      }],        
+          "@babel/preset-flow"
+        ],
+        "plugins": [
+          ["emotion"],
+          "@babel/plugin-transform-runtime",
+          "@babel/plugin-proposal-do-expressions",
+          "@babel/plugin-syntax-flow",
+      "babel-plugin-dynamic-import-node"
+        ],
+        "comments": true
+      }
+    }
+  }
