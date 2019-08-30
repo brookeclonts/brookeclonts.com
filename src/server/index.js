@@ -4,7 +4,8 @@ import cors from "cors"
 import { renderToString } from "react-dom/server"
 import App from '../browser/App'
 import React from 'react'
-import { StaticRouter, matchPath } from "react-router-dom"
+import { StaticRouter } from "react-router-dom"
+import "isomorphic-fetch" // gives the ability to use fetch in server-loaded react code
 
 const app = express()
 
