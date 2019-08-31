@@ -61,7 +61,7 @@ class SubscriptionForm extends Component {
                     this.setState({name: '', email: ''});
                     this.props.openMessage('Thank You! Your information has been successfully added to my email list.')
                     if (this.props.attachmentUrl) {
-                        // window.open(this.props.attachmentUrl);
+                        window.open(this.props.attachmentUrl);
                     }
                 } else {
                     this.props.openMessage(`Error! ${data.body.detail ? data.body.detail : data.body.errors ? data.body.errors[0].message : ''}`); 

@@ -40,7 +40,7 @@ app.use('/api/blogposts', blogposts);
 app.use('/api/users', users);
 app.use('/api/external', external);
 
-
+app.use(express.static("public"))
 app.get("*", (req, res, next) => {
     const markup = renderToString(
       <StaticRouter location={req.url} context={{}}>
@@ -60,14 +60,11 @@ app.get("*", (req, res, next) => {
             <script src="/bundle.js" defer></script>
           <style>
             body {
-              padding: 50px;
-              font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+              margin: 0;
+              padding: 0;
+              font-family: sans-serif;
             }
-            
-            a {
-              color: #00B7FF;
-            }
-          </style>
+            </style>
         </head>
   
         <body>
