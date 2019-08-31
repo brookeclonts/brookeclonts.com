@@ -8,6 +8,7 @@ import Facebook from '../Icons/Facebook';
 import { ShareFacebook, ShareTwitter, ReloadWidgets } from '../utilities/socialShare.js';
 import setHeaderInfo from '../utilities/setHeaderInfo.js';
 import SubscriptionForm from './../SubscriptionForm/SubscriptionForm';
+import { getPostFromTitle } from './../utilities/api.js';
 
 class BlogPost extends Component {
   state = {
@@ -20,8 +21,7 @@ class BlogPost extends Component {
 
   componentDidMount() {
     if (this.props.location) {
-        fetch(`/api/blogposts/title/${this.props.location.match.params.title}`)
-        .then(res => res.json())
+        getPostFromTitle(this.props.location.match.params.title)
         .then(post => {
             this.setState({ post: post });
             setHeaderInfo({ title: post.title, desc: post.description, image: `https://brookeclontsbooks.s3-us-west-1.amazonaws.com/${post.imageUrl}` });

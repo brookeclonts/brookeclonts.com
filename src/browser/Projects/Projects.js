@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
+import { getProjects } from './../utilities/api.js';
 
 class Projects extends Component {
     state={
@@ -13,8 +14,7 @@ class Projects extends Component {
     }
 
     componentDidMount() {
-        fetch('/api/projects')
-            .then(res => res.json())
+        getProjects()
             .then(projects => this.setState({ projects }));
     }
 

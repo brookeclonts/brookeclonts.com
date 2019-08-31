@@ -14,7 +14,7 @@ const options = {
 mongoose.connect(process.env.MONGODB_URI, options).then(
     () => {},
     err => { console.log(`${err}: unable to connect to db`) }
-  );;
+  );
 
 module.exports = {
     mongoose

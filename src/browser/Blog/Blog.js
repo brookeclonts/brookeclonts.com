@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
 import convertTimeStampToDate from '../utilities/convertTimeStampToDate';
+import { getAllBlogPosts } from './../utilities/api.js';
 
 class Blog extends Component {
 
@@ -14,8 +15,7 @@ class Blog extends Component {
   }
 
   componentDidMount() {
-    fetch('/api/blogposts')
-    .then(res => res.json())
+    getAllBlogPosts()
     .then(posts => this.setState({ posts: posts }));
   }
 

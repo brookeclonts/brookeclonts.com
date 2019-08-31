@@ -10,6 +10,7 @@
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.5.5",
     "@babel/runtime": "^7.5.5",
+    "@emotion/core": "^10.0.16",
     "aws-sdk": "2.x",
     "babel-loader": "^8.0.6",
     "bcrypt": "^3.0.6",

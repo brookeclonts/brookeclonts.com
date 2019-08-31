@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import validator from 'validator';
+import { RequestLogin } from './../utilities/api.js';
 
 class Login extends Component {
 
@@ -36,29 +37,21 @@ class Login extends Component {
             password: this.state.password
         };
 
-        fetch('/api/users', {
-                method: 'POST',
-                headers : new Headers({
-                    'Content-Type': 'application/json'
-                  }),
-                body: JSON.stringify(body)
-            })
-            .then((res) => res.json())
-            .then((data) =>  {
-                if (
-                    data.success
-                ) {
-                    this.setState({name: '', password: ''});
-                    if (data.token) {
-                        this.props.updateToken(data.token);
-                        this.props.history.push('/admin-portal');
-                    } else {
-                        this.props.openMessage(`Error! No token received.`); 
-                    }
+        RequestLogin().then((data) =>  {
+            if (
+                data.success
+            ) {
+                this.setState({name: '', password: ''});
+                if (data.token) {
+                    this.props.updateToken(data.token);
+                    this.props.history.push('/admin-portal');
                 } else {
-                    this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
+                    this.props.openMessage(`Error! No token received.`); 
                 }
-            });
+            } else {
+                this.props.openMessage(`Error! ${data.message ? data.message : ''}`); 
+            }
+        });
     }
 
     render() {

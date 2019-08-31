@@ -39,14 +39,14 @@ class Header extends Component {
             transform-origin: left center;
             transition: .25s ease-in-out;
 
-            &:nth-child(1) {
+            &:nth-of-type(1) {
                 transform: ${this.state.mobileMenuOpen ? 'rotate(39deg)' : 'rotate(0deg)'};
             }
-            &:nth-child(2) {
+            &:nth-of-type(2) {
                 width: ${this.state.mobileMenuOpen ? '0%' : '30px'};
                 opacity: ${this.state.mobileMenuOpen ? 0 : 1};
             }
-            &:nth-child(3) {
+            &:nth-of-type(3) {
                 transform: ${this.state.mobileMenuOpen ? 'rotate(-39deg)' : 'rotate(0deg)'};
             }
         `;
@@ -200,10 +200,10 @@ class Header extends Component {
         
                                     & svg path {
                                         fill: ${colors.blueGray}
-        
-                                    &:hover {
-                                        fill: ${colors.green};
-                                    } 
+         
+                                        &:hover {
+                                            fill: ${colors.green};
+                                        } 
                                     }
                                 `}>
                                 <a

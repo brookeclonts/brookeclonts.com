@@ -1,10 +1,68 @@
 /* global window */
+// import { server } from './../../server/config/config.js';
+// console.log('server', server)
 
 const getToken = () => {
     return window.localStorage.getItem('brookeclonts-token');
 }
 
+//MAILCHIMP
+export function postMailChimp(body) {
+    return fetch(`/api/external/mailchimp`, {
+        method: 'POST',
+        headers : new Headers({
+            'Content-Type': 'application/json'
+          }),
+        body: JSON.stringify(body)
+    })
+    .then((res) => res.json())
+}
+
+// LOGIN
+export function RequestLogin() {
+    fetch(`/api/users`, {
+        method: 'POST',
+        headers : new Headers({
+            'Content-Type': 'application/json'
+          }),
+        body: JSON.stringify(body)
+    })
+    .then((res) => res.json())
+}
+
+// HOME init
+export function getRecentBlogPost() {
+    return fetch(`/api/blogposts/one`)
+        .then(res => res.json())
+}
+
+export function getInstagramFeed() {
+    return fetch(`/api/external/instagram`)
+      .then(res => res.json())
+}
+
+export function getBooks() {
+    return fetch(`/api/books`)
+      .then(res => res.json())
+}
+
+// GET PROJECTS
+export function getProjects() {
+    return fetch(`/api/projects`)
+    .then(res => res.json())
+}
+
 // BLOG POSTS
+export function getAllBlogPosts(title) {
+    return fetch(`/api/blogposts`)
+    .then(res => res.json())
+}
+
+export function getPostFromTitle(title) {
+    return fetch(`/api/blogposts/title/${title}`)
+    .then(res => res.json());
+}
+
 export function PatchBlogPost(id, data) {
     return new Promise(resolve => {
         fetch(
@@ -258,7 +316,7 @@ export const PostBookImg = async (newImg) => {
 
 export const GetEditOptions = async (url) => {
     return new Promise(resolve => {
-        fetch(url, {
+        fetch(`${url}`, {
             method: 'GET',
             headers : new Headers({
                 'Content-Type': 'application/json'

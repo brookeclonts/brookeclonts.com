@@ -2,6 +2,7 @@ import React, { PropTypes, Component } from 'react';
 import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import validator from 'validator';
+import { postMailChimp } from './../utilities/api.js';
 
 class SubscriptionForm extends Component {
 
@@ -52,14 +53,7 @@ class SubscriptionForm extends Component {
             lName: name[1], 
             email: this.state.email
         };
-        fetch('/api/external/mailchimp', {
-                method: 'POST',
-                headers : new Headers({
-                    'Content-Type': 'application/json'
-                  }),
-                body: JSON.stringify(body)
-            })
-            .then((res) => res.json())
+        postMailChimp(body)
             .then((data) =>  {
                 if (
                     data.statusCode === 200

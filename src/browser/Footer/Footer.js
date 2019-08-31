@@ -57,7 +57,7 @@ class Footer extends Component {
                 flex-grow: 1;
             }
 
-            &:not(:first-child) {
+            &:not(:first-of-type) {
                 margin-top: 30px;
 
                 @media screen and (min-width: ${breakpoints.tab}) {

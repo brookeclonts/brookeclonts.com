@@ -5,6 +5,8 @@ import Tattoo from '../Icons/Tattoo';
 import { Link } from 'react-router-dom';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
+import { getRecentBlogPost, getInstagramFeed, getBooks } from './../utilities/api.js'
+
 
 class Home extends Component {
   state = {
@@ -34,21 +36,11 @@ class Home extends Component {
     }, 1500));
   }
   
-  componentWillMount() {
-    fetch('/api/blogposts/one')
-      .then(res => res.json())
-      .then(post => this.setState({ post: post[0] }));
-
-    fetch('/api/external/instagram')
-      .then(res => res.json())
-      .then(feed => this.setState({ feed: feed.data.slice(0, 4) }));
-
-    fetch('/api/books')
-      .then(res => res.json())
-      .then(books => this.setState({ books }));
-  }
-
   componentDidMount() {
+    getRecentBlogPost().then(post => this.setState({ post: post[0] }));
+    getInstagramFeed().then(feed => this.setState({ feed: feed.data.slice(0, 4) }));
+    getBooks().then(books => this.setState({ books }));
+
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         this.scrollToBooks();
