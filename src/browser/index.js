@@ -1,6 +1,10 @@
 require('./TwitterScripts');
 require('./FacebookScripts');
 
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+environment.plugins.delete("UglifyJs");
+environment.plugins.set("UglifyJs", new UglifyJSPlugin());
+
 import React from 'react'
 import { hydrate } from 'react-dom'
 import App from './App'
