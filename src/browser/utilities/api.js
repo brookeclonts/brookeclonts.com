@@ -19,8 +19,8 @@ export function postMailChimp(body) {
 }
 
 // LOGIN
-export function RequestLogin() {
-    fetch(`/api/users`, {
+export function RequestLogin(body) {
+    return fetch(`/api/users`, {
         method: 'POST',
         headers : new Headers({
             'Content-Type': 'application/json'

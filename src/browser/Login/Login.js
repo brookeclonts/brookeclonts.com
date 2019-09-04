@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import validator from 'validator';
 import { RequestLogin } from './../utilities/api.js';
+import history from './../utilities/routeHistory.js';
 
 class Login extends Component {
 
@@ -37,14 +38,14 @@ class Login extends Component {
             password: this.state.password
         };
 
-        RequestLogin().then((data) =>  {
+        RequestLogin(body).then((data) =>  {
             if (
                 data.success
             ) {
                 this.setState({name: '', password: ''});
                 if (data.token) {
                     this.props.updateToken(data.token);
-                    this.props.history.push('/admin-portal');
+                    history.push({ pathname: '/admin-portal' });
                 } else {
                     this.props.openMessage(`Error! No token received.`); 
                 }
@@ -113,7 +114,7 @@ class Login extends Component {
                         </h1>
                         <div
                             className={css`
-                                background-color: ${colors.blueGray}
+                                background-color: ${colors.blueGray};
                                 display: inline-block;
                                 margin: 0px auto 100px;
                                 padding: 50px;

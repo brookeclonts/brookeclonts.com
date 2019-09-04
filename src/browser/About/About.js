@@ -124,7 +124,7 @@ class About extends Component {
               `}
             >
                 <p>
-                    Brooke Clonts is fantasy author and web developer from Salt Lake City, Utah. She is married, has two beautiful huskies, and loves to read, wakesurf, hike, take pictures of her family, and, obviously, write. She works as a web developer and writes with all her spare time. Her favorite books include <i>Harry Potter</i>, <i>The Lord of the Rings</i>, <i>Eragon</i>, <i>Howl's Moving Castle</i>, and <i>East</i>.
+                  When she's not writing, Brooke Clonts is a software engineer who can be caught in the mountains with her two huskies, playing D&D with her writing group, or traveling the world to experience diverse cultures. Her favorite books include <i>Harry Potter and The Goblet of Fire</i>, <i>The Hobbit</i>, <i>The Two Princesses of Bamarre</i>, <i>Ella Enchanted</i>, <i>Howl's Moving Castle</i>, and <i>East</i>. 
                 </p>
                 <p>
                     Contact Brooke via email: <a href="mailto:brooke@brookeclonts.com?Subject=Hello%20Brooke">brooke@brookeclonts.com</a>

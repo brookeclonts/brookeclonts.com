@@ -33,11 +33,10 @@ app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
 app.use(cookieParser());
-
-app.use('/api/projects', projects);
-app.use('/api/books', books);
-app.use('/api/blogposts', blogposts);
 app.use('/api/users', users);
+app.use('/api/books', books);
+app.use('/api/projects', projects);
+app.use('/api/blogposts', blogposts);
 app.use('/api/external', external);
 
 app.use(express.static("public"))

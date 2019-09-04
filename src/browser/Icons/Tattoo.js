@@ -29,7 +29,7 @@ class Tattoo extends Component {
                 </style>
                 <g
                     className={css`
-                        stroke: ${fill}
+                        stroke: ${fill};
                     `}>
                     <circle className="st0" cx="383" cy="382.1" r="347"/>
                     <path className="st0" d="M566.3,347.7c-54.2,0-98.1,43.9-98.1,98.1V574"/>

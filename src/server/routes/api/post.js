@@ -73,7 +73,8 @@ router.post('/', authenticate, (req, res) => {
         title: newPost.title,
         description: newPost.description,
         body: newPost.body,
-        imageUrl: newPost.imageUrl
+        imageUrl: newPost.imageUrl,
+        attachmentUrl: newPost.attachmentUrl,
     });
 
     post.save().then((doc) => {

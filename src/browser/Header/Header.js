@@ -197,10 +197,10 @@ class Header extends Component {
                                         margin: 5px;
                                         vertical-align: middle;
                                     }
-        
-                                    & svg path {
-                                        fill: ${colors.blueGray}
-         
+
+                                    & path {
+                                        fill: ${colors.blueGray};
+    
                                         &:hover {
                                             fill: ${colors.green};
                                         } 

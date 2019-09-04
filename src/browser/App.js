@@ -1,5 +1,6 @@
 /* global window */
 import React, { Component } from 'react';
+import { object } from 'prop-types';
 import { Route, Switch } from 'react-router-dom'
 import Home from './Home/Home';
 import About from './About/About';
@@ -21,14 +22,21 @@ import { ProjectForm } from './AdminPortal/forms/ProjectForm';
 import { BookForm } from './AdminPortal/forms/BookForm';
 
 class App extends Component {
+  static contextTypes = {
+    router: object
+  }
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      httpMessage : '',
+      showMessage: false,
+      token: ''
+    }
+  }
 
   token;
-
-  state = {
-    httpMessage : '',
-    showMessage: false,
-    token: ''
-  }
 
   closeMessage = () => {
     this.setState({showMessage: false});
@@ -75,7 +83,7 @@ class App extends Component {
             <Route path="/sitemap" exact component={Sitemap}/>
             <Route path="/draw" exact component={Draw}/>
             <Route path="/post/:title" render={location => (<BlogPost location={location} openMessage={this.openMessage}/>)}/>
-            <Route path="/login" exact render={() => (<Login openMessage={this.openMessage} history={this.context.history} updateToken={this.updateToken}/>)}/>
+            <Route path="/login" exact render={() => (<Login openMessage={this.openMessage} updateToken={this.updateToken}/>)}/>
             <Route path="/admin-portal/blog/upload" render={location => (<BlogPostForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
             <Route path="/admin-portal/blog/edit/:id" render={location => (<BlogPostForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
             <Route path="/admin-portal/books/upload" render={location => (<BookForm token={this.token} openMessage={this.openMessage} location={location}/>)}/>
