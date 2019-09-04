@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import { colors } from '../constants/colors.js';
 import validator from 'validator';
 import { postMailChimp } from './../utilities/api.js';
+import download_file from './../utilities/download.js';
 
 class SubscriptionForm extends Component {
 
@@ -61,7 +62,8 @@ class SubscriptionForm extends Component {
                     this.setState({name: '', email: ''});
                     this.props.openMessage('Thank You! Your information has been successfully added to my email list.')
                     if (this.props.attachmentUrl) {
-                        window.open(this.props.attachmentUrl);
+                        console.log('it exists!!!')
+                        download_file(this.props.attachmentUrl);
                     }
                 } else {
                     this.props.openMessage(`Error! ${data.body.detail ? data.body.detail : data.body.errors ? data.body.errors[0].message : ''}`); 

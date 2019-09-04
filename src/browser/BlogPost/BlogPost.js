@@ -74,7 +74,7 @@ class BlogPost extends Component {
                 }
 
                 & svg path {
-                    fill: ${colors.pink}
+                    fill: ${colors.pink};
 
                     &:hover {
                         cursor: pointer;
@@ -140,7 +140,16 @@ class BlogPost extends Component {
             `}
         >
         {post.attachmentUrl ? (
-            <SubscriptionForm openMessage={this.props.openMessage} attachmentUrl={post.attachmentUrl}/>
+            <div
+                className={css`
+                    padding: 50px;
+                    background: ${colors.blueGray};
+                    margin: auto;
+                    max-width: 400px;
+                `}
+            >
+                <SubscriptionForm openMessage={this.props.openMessage} attachmentUrl={post.attachmentUrl}/>
+            </div>
         ) : (
             <Link 
                 to="/landing">

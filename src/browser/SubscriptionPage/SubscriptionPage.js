@@ -35,7 +35,7 @@ class SubscriptionPage extends Component {
                 </h1>
                 <div
                     className={css`
-                        background-color: ${colors.blueGray}
+                        background-color: ${colors.blueGray};
                         display: inline-block;
                         margin: 0px auto 100px;
                         padding: 50px;
