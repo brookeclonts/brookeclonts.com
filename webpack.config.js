@@ -9,6 +9,9 @@ var browserConfig = {
     filename: 'bundle.js',
     publicPath: '/'
   },
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' },
@@ -18,6 +21,9 @@ var browserConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "true"
     })
+  ],
+  externals: [
+    'child_process'
   ]
 }
 
@@ -30,6 +36,9 @@ var serverConfig = {
     filename: 'server.js',
     publicPath: '/'
   },
+  node: {
+    fs: 'empty'
+  },
   module: {
     rules: [
       { test: /\.(js)$/, use: 'babel-loader' }
@@ -40,7 +49,10 @@ var serverConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "false"
     })
-  ]
+  ],
+  externals: [
+    'child_process'
+  ],
 }
 
 module.exports = [browserConfig, serverConfig]
