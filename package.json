@@ -45,7 +45,10 @@
     "request": "^2.83.0",
     "serialize-javascript": "^1.8.0",
     "serve-favicon": "~2.4.5",
-    "validator": "^11.1.0"
+    "validator": "^11.1.0",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.0"
   },
   "devDependencies": {
     "@babel/cli": "7.6.0",
@@ -64,9 +67,6 @@
     "jest": "22.1.4",
     "nodemon": "^1.14.11",
     "react-test-renderer": "16.2.0",
-    "regenerator-runtime": "^0.13.3",
-    "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0",
-    "webpack-node-externals": "^1.7.2"
+    "regenerator-runtime": "^0.13.3"
   }
 }
