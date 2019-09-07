@@ -8,16 +8,14 @@
             }
           } ],
           "@babel/preset-react",
-      [ "@babel/preset-stage-2", {
-          "decoratorsLegacy": true
-      }],
           "@babel/preset-flow"
         ],
         "plugins": [
           ["emotion"],
           "@babel/plugin-transform-runtime",
           "@babel/plugin-proposal-do-expressions",
-          "@babel/plugin-syntax-flow"
+          "@babel/plugin-syntax-flow",
+          "@babel/plugin-proposal-class-properties",
         ],
         "comments": true
       },
@@ -29,18 +27,16 @@
               "browsers": [ "last 2 versions", "ie >= 11" ]
             }
           } ],
-          "@babel/preset-react",
-      [ "@babel/preset-stage-2", {
-          "decoratorsLegacy": true
-      }],        
+          "@babel/preset-react",        
           "@babel/preset-flow"
         ],
         "plugins": [
-          ["emotion"],
-          "@babel/plugin-transform-runtime",
-          "@babel/plugin-proposal-do-expressions",
-          "@babel/plugin-syntax-flow",
-      "babel-plugin-dynamic-import-node"
+            ["emotion"],
+            "@babel/plugin-transform-runtime",
+            "@babel/plugin-proposal-do-expressions",
+            "@babel/plugin-syntax-flow",
+            "babel-plugin-dynamic-import-node",
+            "@babel/plugin-proposal-class-properties",
         ],
         "comments": true
       }

@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack -w & nodemon server.js",
-    "start": "node server.js",
-    "build": "webpack",
-    "heroku-postbuild": "webpack -p"
+    "start": "webpack & node server.js",
+    "heroku-postbuild": "yarn && yarn build",
+    "build": "webpack"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.5.5",
@@ -45,19 +45,19 @@
     "request": "^2.83.0",
     "serialize-javascript": "^1.8.0",
     "serve-favicon": "~2.4.5",
-    "uglifyjs-webpack-plugin": "^1.0.0-rc.0",
     "validator": "^11.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-beta.52",
-    "@babel/core": "7.0.0-beta.52",
-    "@babel/plugin-proposal-do-expressions": "7.0.0-beta.52",
-    "@babel/plugin-syntax-flow": "7.0.0-beta.52",
-    "@babel/plugin-transform-regenerator": "7.0.0-beta.52",
-    "@babel/preset-env": "7.0.0-beta.52",
-    "@babel/preset-flow": "7.0.0-beta.52",
-    "@babel/preset-react": "7.0.0-beta.52",
-    "@babel/preset-stage-2": "7.0.0-beta.52",
+    "@babel/cli": "7.6.0",
+    "@babel/core": "7.6.0",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/plugin-proposal-do-expressions": "7.6.0",
+    "@babel/plugin-syntax-flow": "7.2.0",
+    "@babel/plugin-transform-regenerator": "7.4.5",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/preset-flow": "7.0.0",
+    "@babel/preset-react": "7.0.0",
+    "@babel/preset-stage-2": "7.0.0",
     "css-loader": "^0.28.11",
     "emotion": "^10.0.14",
     "html-webpack-plugin": "^3.2.0",
