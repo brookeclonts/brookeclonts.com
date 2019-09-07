@@ -55,4 +55,4 @@ var serverConfig = {
   ],
 }
 
-module.exports = [browserConfig, serverConfig]
+module.exports = [ serverConfig, browserConfig ]

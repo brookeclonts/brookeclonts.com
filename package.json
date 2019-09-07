@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack -w & nodemon server.js",
-    "start": "webpack & node server.js",
-    "heroku-postbuild": "yarn && yarn build",
-    "build": "webpack"
+    "start": "node server.js",
+    "heroku-postbuild": "webpack -p",
+    "build": "yarn",
+    "nuke": "rm -rf node_modules; yarn"
   },
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.5.5",
@@ -22,6 +23,7 @@
     "debug": "~2.6.9",
     "ejs": "2.x",
     "es6-promise": "^4.2.8",
+    "emotion": "^10.0.14",
     "express": "^4.17.1",
     "form-data": "^2.3.2",
     "fs": "^0.0.1-security",
@@ -41,16 +43,16 @@
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "1.1.0",
+    "react-test-renderer": "16.2.0",
     "react-validation": "3.0.7",
     "request": "^2.83.0",
     "serialize-javascript": "^1.8.0",
     "serve-favicon": "~2.4.5",
     "validator": "^11.1.0",
+    "webpack": "4.0.0",
     "webpack-node-externals": "^1.7.2",
     "webpack-cli": "^3.3.7",
-    "webpack-dev-server": "^3.8.0"
-  },
-  "devDependencies": {
+    "webpack-dev-server": "^3.8.0",
     "@babel/cli": "7.6.0",
     "@babel/core": "7.6.0",
     "@babel/plugin-proposal-class-properties": "^7.5.5",
@@ -60,13 +62,10 @@
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-flow": "7.0.0",
     "@babel/preset-react": "7.0.0",
-    "@babel/preset-stage-2": "7.0.0",
-    "css-loader": "^0.28.11",
-    "emotion": "^10.0.14",
-    "html-webpack-plugin": "^3.2.0",
+    "@babel/preset-stage-2": "7.0.0"
+  },
+  "devDependencies": {
     "jest": "22.1.4",
-    "nodemon": "^1.14.11",
-    "react-test-renderer": "16.2.0",
-    "regenerator-runtime": "^0.13.3"
+    "nodemon": "^1.14.11"
   }
 }
