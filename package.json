@@ -7,7 +7,6 @@
     "dev": "webpack -w & nodemon server.js",
     "start": "node server.js",
     "heroku-postbuild": "webpack -p",
-    "build": "yarn",
     "nuke": "rm -rf node_modules; yarn"
   },
   "dependencies": {
