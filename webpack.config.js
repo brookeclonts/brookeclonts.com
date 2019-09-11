@@ -21,9 +21,6 @@ var browserConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "true"
     })
-  ],
-  externals: [
-    'child_process'
   ]
 }
 
@@ -49,10 +46,7 @@ var serverConfig = {
     new webpack.DefinePlugin({
       __isBrowser__: "false"
     })
-  ],
-  externals: [
-    'child_process'
-  ],
+  ]
 }
 
 module.exports = [ serverConfig, browserConfig ]
