@@ -10,9 +10,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var env = process.env.NODE_ENV || 'development';
-if (env === 'test' || env == 'development') {
-  require('./config/config');
-}
+// if (env === 'test' || env == 'development') {
+//   require('./config/config');
+// }
 require('./routes/api/cors');
 var books = require('./routes/api/book');
 var blogposts = require('./routes/api/post');
