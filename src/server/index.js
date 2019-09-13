@@ -19,6 +19,7 @@ var blogposts = require('./routes/api/post');
 var projects = require('./routes/api/project');
 var users = require('./routes/api/user');
 var external = require('./routes/api/external');
+var port = process.env.PORT || 3000;
 
 const app = express()
 //merge app.js into this file!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -76,6 +77,6 @@ app.get("*", (req, res, next) => {
   )
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Server is listening on port: 3000`)
 })
