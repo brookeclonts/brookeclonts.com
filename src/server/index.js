@@ -1,18 +1,13 @@
 'use strict';
 import express from "express"
-import { renderToString } from "react-dom/server"
-import App from '../browser/App'
-import React from 'react'
-import { StaticRouter } from "react-router-dom"
 import "isomorphic-fetch" // gives the ability to use fetch in server-loaded react code
-var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var env = process.env.NODE_ENV || 'development';
-// if (env === 'test' || env == 'development') {
-//   require('./config/config');
-// }
+if (env === 'test' || env == 'development') {
+  require('./config/config');
+}
 require('./routes/api/cors');
 var books = require('./routes/api/book');
 var blogposts = require('./routes/api/post');
@@ -22,14 +17,7 @@ var external = require('./routes/api/external');
 var port = process.env.PORT || 3000;
 
 const app = express()
-//merge app.js into this file!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// We're going to serve up the public
-// folder since that's where our
-// client bundle.js file will end up.
-// uncomment after placing your favicon in /public
-// app.use(favicon(path.join(__dirname, 'favicon.ico')));
-// app.use(favicon(__dirname + 'src/browser/Icons/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({ extended: false, limit: '50mb' }));
@@ -39,15 +27,10 @@ app.use('/api/books', books);
 app.use('/api/projects', projects);
 app.use('/api/blogposts', blogposts);
 app.use('/api/external', external);
+app.use('/favicon.ico', express.static('src/browser/Icons/favicon.ico'));
 
 app.use(express.static("public"))
 app.get("*", (req, res, next) => {
-    const markup = renderToString(
-      <StaticRouter location={req.url} context={{}}>
-        <App />
-      </StaticRouter>
-    )
-  
     res.send(`
       <!DOCTYPE html>
       <html>
@@ -68,10 +51,8 @@ app.get("*", (req, res, next) => {
         </head>
   
         <body>
-          <div id="app">
-            ${markup}</div>
+          <div id="app"/>
         </body>
-        <script id="facebook-jssdk" src="//connect.facebook.net/en_US/sdk.js#xfbml=1&amp;version=v2.8"></script>
       </html>
     `
   )

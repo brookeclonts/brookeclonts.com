@@ -46,7 +46,6 @@
     "react-validation": "3.0.7",
     "request": "^2.83.0",
     "serialize-javascript": "^1.8.0",
-    "serve-favicon": "~2.4.5",
     "validator": "^11.1.0",
     "webpack": "4.0.0",
     "webpack-node-externals": "^1.7.2",
