@@ -264,7 +264,7 @@ class Home extends Component {
           </div>
       </div>
       
-      <div 
+      {/* <div 
         className={css`
           background-color: ${colors.green};
           display: table;
@@ -308,7 +308,7 @@ class Home extends Component {
                 )
               }
           </div>
-      </div>
+      </div> */}
       <div 
         className={css`
           background-color: ${colors.trueWhite};
