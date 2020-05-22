@@ -312,17 +312,30 @@ class Home extends Component {
       <div 
         className={css`
           background-color: ${colors.trueWhite};
-          display: flex;
           padding: 50px 0;
+
+          @media screen and (min-width: ${breakpoints.desktop}) {
+            display: flex;
+            text-align: center;
+          }
         `} 
         id="blog"
       >
+          <div className={css`
+            text-align: center;
+          `}>
+            <img src="https://brookeclontsbooks.s3-us-west-1.amazonaws.com/characters.png"/>
+          </div>
           <div 
             className={css`
               ${wrapper}
-              display: table-cell;
+              display: block;
               vertical-align: middle;
               margin: auto;
+
+              @media screen and (min-width: ${breakpoints.desktop}) {
+                display: table-cell;
+              }
             `}
           >
               <h2
