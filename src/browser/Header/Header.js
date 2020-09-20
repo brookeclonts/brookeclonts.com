@@ -219,7 +219,7 @@ class Header extends Component {
                                     <Facebook size={'30px'}/>
                                 </a>
                                 <a 
-                                    href="https://www.instagram.com/brookeclontsbooks/" 
+                                    href="https://www.instagram.com/brookeclonts/" 
                                     target="_blank"
                                 >
                                     <Instagram size={'30px'}/>
@@ -307,7 +307,7 @@ class Header extends Component {
                             <a href="https://www.facebook.com/brookeclonts" target="_blank">
                                 <Facebook size={'30px'}/>
                             </a>
-                            <a href="https://www.instagram.com/brookeclontsbooks/" target="_blank">
+                            <a href="https://www.instagram.com/brookeclonts" target="_blank">
                                 <Instagram size={'30px'}/>
                             </a>
                         </div>

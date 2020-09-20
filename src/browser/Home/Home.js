@@ -485,7 +485,7 @@ class Home extends Component {
                 className={css`
                   text-decoration: none;
                 `}
-                href="https://www.instagram.com/brookeclontsbooks/" 
+                href="https://www.instagram.com/brookeclonts/" 
                 target="_blank"
               >
                   <div className={css`

@@ -218,7 +218,7 @@ class Footer extends Component {
                                         <Facebook size={'30px'}/>
                                     </a>
                                     <a 
-                                        href="https://www.instagram.com/brookeclontsbooks/" 
+                                        href="https://www.instagram.com/brookeclonts/" 
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
