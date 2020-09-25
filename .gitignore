@@ -5,3 +5,6 @@ config
 public/assets/images/blog
 public/assets/images/books
 public/assets/images/projects
+server.crt
+server.csr
+server.key

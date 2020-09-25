@@ -324,7 +324,15 @@ class Home extends Component {
           <div className={css`
             text-align: center;
           `}>
-            <img src="https://brookeclontsbooks.s3-us-west-1.amazonaws.com/characters.png"/>
+            <img 
+              className={css`
+              width: 100%;
+
+                @media screen and (min-width: ${breakpoints.desktop}) {
+                    width: auto;
+                }`} 
+            src="https://brookeclontsbooks.s3-us-west-1.amazonaws.com/characters.png"
+          />
           </div>
           <div 
             className={css`
