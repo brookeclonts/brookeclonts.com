@@ -112,7 +112,7 @@ exports[`renders correctly 1`] = `
             </svg>
           </a>
           <a
-            href="https://www.instagram.com/brookeclontsbooks/"
+            href="https://www.instagram.com/brookeclonts"
             target="_blank"
           >
             <svg
@@ -225,7 +225,7 @@ exports[`renders correctly 1`] = `
           </svg>
         </a>
         <a
-          href="https://www.instagram.com/brookeclontsbooks/"
+          href="https://www.instagram.com/brookeclonts/"
           target="_blank"
         >
           <svg
