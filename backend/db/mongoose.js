@@ -1,7 +1,6 @@
 var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-// mongoose.createConnection(process.env.MONGODB_URI);
 const options = {
     useMongoClient: true,
     autoIndex: false, // Don't build indexes
