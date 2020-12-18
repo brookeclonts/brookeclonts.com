@@ -8,3 +8,4 @@ server.csr
 server.key
 .env
 .parcel-cache
+lib

@@ -40,7 +40,7 @@
     "build:frontend:watch": "parcel watch --target frontend --port 8181 ./frontend/index.html",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
-    "nuke": "rm -rf lib/ public/ node_modules/ .parcel-cache/ temp-postgres-data/ && yarn",
+    "nuke": "rm -rf lib/ public/ node_modules/ .parcel-cache/ && yarn",
     "test": "jest"
   },
   "dependencies": {
