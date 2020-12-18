@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import Tattoo from '../Icons/Tattoo';
 import { Link } from 'react-router-dom';
 import { colors } from '../constants/colors.js';

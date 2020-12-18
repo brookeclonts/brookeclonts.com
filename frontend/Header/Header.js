@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { 
     Link
   } from 'react-router-dom';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import Twitter from '../Icons/Twitter';
 import Facebook from '../Icons/Facebook';
 import Instagram from '../Icons/Instagram';

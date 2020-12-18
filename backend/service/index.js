@@ -1,9 +1,9 @@
 import fastify from 'fastify';
 import helmet from 'fastify-helmet';
 import compression from 'fastify-compress';
-import healthCheck from './routes/healthCheck';
-import apiRoutes from './routes';
-import staticFiles from './routes/staticFiles';
+import healthCheck from '../routes/healthCheck';
+import apiRoutes from './../routes';
+import staticFiles from '../routes/staticFiles';
 var logger = require('morgan');
 
 
@@ -44,12 +44,5 @@ export default class Server {
     this.app.register(healthCheck);
     this.app.register(staticFiles);
     this.app.register(apiRoutes, { prefix: '/api' });
-    // old routes to reference 
-    // app.use('/api/users', users);
-    // app.use('/api/books', books);
-    // app.use('/api/projects', projects);
-    // app.use('/api/blogposts', blogposts);
-    // app.use('/api/external', external);
-    // app.use('/favicon.ico', express.static('src/browser/Icons/favicon.ico'));
   }
 }

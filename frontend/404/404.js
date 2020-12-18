@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { colors } from '../constants/colors.js';
 import { breakpoints } from '../constants/breakpoints.js';
 

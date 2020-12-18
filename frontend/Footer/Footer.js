@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import { Link } from 'react-router-dom';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import SubscriptionForm from '../SubscriptionForm/SubscriptionForm';
 import Twitter from '../Icons/Twitter';
 import Facebook from '../Icons/Facebook';

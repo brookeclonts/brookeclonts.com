@@ -1,16 +1,15 @@
 require('./TwitterScripts');
 require('./FacebookScripts');
 
-import React from 'react'
-import { hydrate } from 'react-dom'
-import App from './App'
+import React from 'react';
+import { render } from 'react-dom';
 import { BrowserRouter as Router } from "react-router-dom";
+import App from './App';
+import 'rbx/index.css';
 
-const jsx = (
-  <Router><App /></Router>
-)
+function renderApp(AppToRender) {
+  render(<Router><AppToRender /></Router>, document.getElementById('app'));
+}
 
-hydrate(
-  jsx,
-  document.getElementById('app')
-);
+// Render App
+renderApp(App);

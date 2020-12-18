@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { colors } from '../constants/colors.js';
 import validator from 'validator';
 import { RequestLogin } from './../utilities/api.js';

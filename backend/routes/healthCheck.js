@@ -1,5 +1,5 @@
 import { FastifyPluginAsync } from 'fastify';
-import { APP_VERSION } from '../../constants';
+import { APP_VERSION } from '../common/constants';
 
 const schema = {
   description: 'Check service health',

@@ -1,6 +1,6 @@
 /* global window */
 import React, { Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 
 class Draw extends Component {
 

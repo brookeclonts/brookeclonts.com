@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import { colors } from '../../constants/colors.js';
 import { PatchBlogPost, PatchBlogImg, PostBlogImg, PostBlogPost } from '../../utilities/api.js';
 import { ShareFacebook, ShareTwitter, ReloadWidgets } from '../../utilities/socialShare.js';

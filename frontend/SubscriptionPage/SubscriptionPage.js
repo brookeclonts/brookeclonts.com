@@ -1,5 +1,5 @@
 import React, { PropTypes, Component } from 'react';
-import { css } from 'emotion';
+import { css } from '@emotion/core';
 import SubscriptionForm from '../SubscriptionForm/SubscriptionForm';
 import { colors } from '../constants/colors.js';
 

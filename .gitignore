@@ -1,11 +1,10 @@
 node_modules
 coverage
-config
 .DS_Store
-public/assets/images/blog
-public/assets/images/books
-public/assets/images/projects
+public
+dist
 server.crt
 server.csr
 server.key
 .env
+.parcel-cache
