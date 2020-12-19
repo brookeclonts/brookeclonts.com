@@ -1,7 +1,5 @@
-# Base Image
-FROM node:12.18 as BASE
+FROM node:15-alpine as BASE
 
-# Builder Image
 FROM BASE as BUILD
 WORKDIR /src
 # Copy source dir
@@ -18,7 +16,7 @@ COPY ./tools/yarn/.yarnclean .yarnclean
 
 
 # Production Image
-FROM node:12.18-alpine
+FROM node:15-alpine
 LABEL maintainer="Brooke Clonts"
 
 WORKDIR /app

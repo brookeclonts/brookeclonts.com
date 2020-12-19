@@ -31,8 +31,8 @@
   "scripts": {
     "start": "NODE_ENV=production node ./lib/index.js | pino-sentry --level error",
     "start:watch": "NODE_ENV=development nodemon --on-change-only --watch lib/index.js --exec 'node --inspect=0.0.0.0' lib/index.js",
-    "dev": "concurrently -p '[{name}]' -n 'BuildB,BuildF,Server' -c 'bgBlue.bold,bgBlue.bold,bgMagenta.bold' 'yarn build:backend:watch' 'yarn build:frontend:watch' 'yarn start:watch'",
-    "dev:backend": "concurrently -p '[{name}]' -n 'Build ,Server' -c 'bgBlue.bold,bgMagenta.bold' 'yarn build:backend:watch' 'yarn start:watch'",
+    "dev": "concurrently -p '[{name}]' -n 'BuildB,BuildF,Server' -c 'yarn build:backend:watch' 'yarn build:frontend:watch' 'yarn start:watch'",
+    "dev:backend": "concurrently -p '[{name}]' -n 'Build ,Server' -c 'yarn build:backend:watch' 'yarn start:watch'",
     "build": "concurrently -n 'Backend ,Frontend' 'yarn build:backend' 'yarn build:frontend'",
     "build:backend": "parcel build --target main ./backend/index.js --no-scope-hoist",
     "build:backend:watch": "parcel watch --target main --port 8282 ./backend/index.js",
