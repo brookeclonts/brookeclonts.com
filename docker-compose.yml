@@ -1,0 +1,65 @@
+version: '3'
+services:
+  database:
+    image: mongo
+    ports:
+      - '27017:27017'
+      - '27018:27018'
+      - '27019:27019'
+    # environment:
+    #   - MONGO_USER=mongo
+    #   - MONGO_PASSWORD=mongo
+    # volumes:
+    #   - ./scripts/local-db-init.sh:/docker-entrypoint-initdb.d/local-db-init.sh
+    #   - ./temp-mongo-data/data:/var/lib/mongo/data
+    # healthcheck:
+    #   test: ["CMD-SHELL", "mongo_isready -U mongo"]
+    #   interval: 5s
+    #   timeout: 30s
+    #   retries: 10
+  backend:
+    build:
+      context: .
+      target: BUILD
+    container_name: backend
+    working_dir: /app
+    command: bash -c "yarn install && yarn dev:backend"
+    tty: true
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      # DATABASE_URL: mongodb://localhost:27017/BrookeClonts
+      PARCEL_WORKERS: 1
+      PORT: 8080
+    ports:
+      # Server port
+      - '8080:8080'
+      # Live reload port
+      - '8282:8282'
+      # Server node debug port
+      - '9229:9229'
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules/:delegated
+      - backend-parcel-cache:/app/.parcel-cache
+  frontend:
+    build:
+      context: .
+      target: BUILD
+    container_name: frontend
+    working_dir: /app
+    command: bash -c "yarn install && yarn build:frontend:watch"
+    environment:
+      PARCEL_WORKERS: 1
+    ports:
+      # Live reload port
+      - '8181:8181'
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules/:cached
+      - frontend-parcel-cache:/app/.parcel-cache
+volumes:
+  node_modules:
+  frontend-parcel-cache:
+  backend-parcel-cache:

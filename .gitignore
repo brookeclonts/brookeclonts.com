@@ -9,3 +9,4 @@ server.key
 .env
 .parcel-cache
 lib
+.cache

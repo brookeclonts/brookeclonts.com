@@ -2,7 +2,7 @@ import fastify from 'fastify';
 import helmet from 'fastify-helmet';
 import compression from 'fastify-compress';
 import healthCheck from '../routes/healthCheck';
-import apiRoutes from './../routes';
+import { apiRoutes } from './../routes';
 import staticFiles from '../routes/staticFiles';
 var logger = require('morgan');
 
