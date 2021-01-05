@@ -6,6 +6,7 @@ export const IS_DEV = process.env.NODE_ENV !== 'production';
 export const APP_VERSION = version;
 export const APP_NAME = name;
 export const APP_DESCRIPTION = description;
+export const IS_TEST = process.env.NODE_ENV === 'test';
 
 export const ROOT_PATH = path.join(
     __dirname,
@@ -13,13 +14,25 @@ export const ROOT_PATH = path.join(
     .../* istanbul ignore next */ (IS_TEST ? ['..', '..'] : ['..'])
 );
 
+const MILLISECOND = 1;
+const SECOND = MILLISECOND * 1000;
+const MINUTE = SECOND * 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+const WEEK = DAY * 7;
+// Yeah 30 is about the average.
+// Precision isn't that important here
+const MONTH = DAY * 30;
+const YEAR = MONTH * 12;
+
 export const TIME = {
-    MILLISECOND: 1,
-    SECOND: MILLISECOND * 1000,
-    MINUTE: SECOND * 60,
-    HOUR: MINUTE * 60,
-    DAY: HOUR * 24,
-    WEEK :DAY * 7,
-    MONTH: DAY * 30,
-    YEAR: MONTH * 12,
-}
+    MILLISECOND,
+    SECOND,
+    MINUTE,
+    HOUR,
+    DAY,
+    WEEK,
+    MONTH,
+    YEAR,
+};
+  

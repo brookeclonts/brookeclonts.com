@@ -13,6 +13,7 @@ export default class Server {
     // Request logging is a bit verbose. Turn on as needed
     disableRequestLogging: true,
     ignoreTrailingSlash: true,
+    trustProxy: true,
   });
 
   constructor() {
