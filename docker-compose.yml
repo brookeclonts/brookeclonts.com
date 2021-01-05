@@ -6,30 +6,30 @@ services:
       - '27017:27017'
       - '27018:27018'
       - '27019:27019'
-    # environment:
-    #   - MONGO_USER=mongo
-    #   - MONGO_PASSWORD=mongo
-    # volumes:
-    #   - ./scripts/local-db-init.sh:/docker-entrypoint-initdb.d/local-db-init.sh
-    #   - ./temp-mongo-data/data:/var/lib/mongo/data
-    # healthcheck:
-    #   test: ["CMD-SHELL", "mongo_isready -U mongo"]
-    #   interval: 5s
-    #   timeout: 30s
-    #   retries: 10
+    environment:
+      - MONGO_USER=mongo
+      - MONGO_PASSWORD=mongo
+    volumes:
+      - ./scripts/local-db-init.sh:/docker-entrypoint-initdb.d/local-db-init.sh
+      - ./temp-mongo-data/data:/var/lib/mongo/data
+    healthcheck:
+      test: ["CMD-SHELL", "mongo_isready -U mongo"]
+      interval: 15s
+      timeout: 30s
+      retries: 10
   backend:
     build:
       context: .
       target: BUILD
     container_name: backend
     working_dir: /app
-    command: bash -c "yarn install && yarn dev:backend"
+    command:  bash -c "yarn install && yarn dev:backend"
     tty: true
     depends_on:
-      database:
-        condition: service_healthy
+      - database
+        # condition: service_healthy
     environment:
-      # DATABASE_URL: mongodb://localhost:27017/BrookeClonts
+      DATABASE_URL: mongodb://localhost:27017/BrookeClonts
       PARCEL_WORKERS: 1
       PORT: 8080
     ports:

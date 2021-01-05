@@ -1,0 +1,10 @@
+.vscode/
+.parcel-cache/
+/node_modules
+lib/
+/dist
+/coverage
+Dockerfile
+docker-compose.yml
+tmp*
+/public/dist

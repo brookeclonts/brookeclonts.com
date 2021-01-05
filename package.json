@@ -38,8 +38,6 @@
     "build:backend:watch": "parcel watch --target main --port 8282 ./backend/index.js",
     "build:frontend": "parcel build --target frontend ./frontend/index.html",
     "build:frontend:watch": "parcel watch --target frontend --port 8181 ./frontend/index.html",
-    "lint": "eslint .",
-    "lint:fix": "yarn lint --fix",
     "nuke": "rm -rf lib/ public/ node_modules/ .parcel-cache/ && yarn",
     "test": "jest"
   },

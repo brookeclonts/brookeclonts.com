@@ -1,6 +1,7 @@
 node_modules
 coverage
 .DS_Store
+.DS_STORE
 public
 dist
 server.crt
@@ -8,5 +9,7 @@ server.csr
 server.key
 .env
 .parcel-cache
-lib
+lib*
 .cache
+tmp*
+/public/dist
